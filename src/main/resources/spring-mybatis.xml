@@ -9,7 +9,7 @@
     <!--1) 注解驱动 -->
     <context:annotation-config/>
     <!--2) 用注解方式注入bean，并指定查找范围：com.zking.oa及子子孙孙包-->
-    <context:component-scan base-package="com.zkin.ssm"/>
+    <context:component-scan base-package="com.zking.ssm"/>
 
     <!-- 已在spring.xml中配置，只能引入一次 -->
     <!--2. 引入外置jdbc配置文件 -->
@@ -46,7 +46,7 @@
         <!-- 指定mybatis核心配置文件 -->
         <property name="configLocation" value="classpath:mybatis.cfg.xml"/>
         <!-- 自动扫描XxxMapping.xml文件，**任意路径 -->
-        <property name="mapperLocations" value="classpath:com/zkin/ssm/**/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/zking/ssm/**/mapper/*.xml"/>
         <!-- 指定别名 -->
         <property name="typeAliasesPackage" value="com.zkin.ssm.model"/>
     </bean>
