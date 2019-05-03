@@ -1,5 +1,7 @@
 package com.zking.ssm.Borrowing.serviec;
 
+import com.zking.ssm.base.model.Borrower;
+
 /**
  * @author mi
  * @create 2019-05-03 20:05

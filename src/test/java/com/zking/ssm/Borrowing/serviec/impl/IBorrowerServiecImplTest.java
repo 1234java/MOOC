@@ -29,10 +29,14 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
 
     @Test
     public void insert() {
+
     }
 
     @Test
     public void selectByPrimaryKey() {
+        borrower.setBId(1);
+        Borrower b = borrowerServiec.selectByPrimaryKey(borrower.getBId());
+        System.out.println(b);
     }
 
     @Test

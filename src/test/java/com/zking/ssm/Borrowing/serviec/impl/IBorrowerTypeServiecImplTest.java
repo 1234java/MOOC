@@ -1,5 +1,6 @@
 package com.zking.ssm.Borrowing.serviec.impl;
 
+import com.zking.ssm.Borrowing.serviec.IBorrowerTypeServiec;
 import com.zking.ssm.base.model.BorrowerType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
 public class IBorrowerTypeServiecImplTest extends BaseTestCase {
 
     @Autowired
-    private IBorrowerTypeServiecImpl borrowerTypeServiec;
+    private IBorrowerTypeServiec borrowerTypeServiec;
 
     private BorrowerType borrowerType;
 
@@ -29,13 +30,16 @@ public class IBorrowerTypeServiecImplTest extends BaseTestCase {
 
     @Test
     public void insert() {
-        borrowerType.setbTypeName("生活");
+        borrowerType.setbTypeName("科学");
         borrowerTypeServiec.insert(borrowerType);
 
     }
 
     @Test
     public void selectByPrimaryKey() {
+        borrowerType.setbTypeId(1);
+        BorrowerType b = borrowerTypeServiec.selectByPrimaryKey(this.borrowerType.getbTypeId());
+        System.out.println(b);
     }
 
     @Test
