@@ -3,7 +3,7 @@
 <mapper namespace="com.zking.ssm.base.mapper.BorrowerMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Borrower" >
     <constructor >
-      <arg column="b_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="b_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="b_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="b_username" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="b_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
@@ -20,6 +20,20 @@
       <arg column="b_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List" >
+    b_id, b_name, b_username, b_money, b_rate, b_money_deadline, b_phone, b_house, b_total_value, 
+    b_use, b_describe, b_condition, b_borrower_type, b_bidCount, b_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrower
+    where b_id = #{bId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrower
+    where b_id = #{bId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Borrower" >
     insert into borrower (b_id, b_name, b_username, 
       b_money, b_rate, b_money_deadline, 
@@ -131,4 +145,70 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.Borrower" >
+    update borrower
+    <set >
+      <if test="bName != null" >
+        b_name = #{bName,jdbcType=VARCHAR},
+      </if>
+      <if test="bUsername != null" >
+        b_username = #{bUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="bMoney != null" >
+        b_money = #{bMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="bRate != null" >
+        b_rate = #{bRate,jdbcType=INTEGER},
+      </if>
+      <if test="bMoneyDeadline != null" >
+        b_money_deadline = #{bMoneyDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bPhone != null" >
+        b_phone = #{bPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bHouse != null" >
+        b_house = #{bHouse,jdbcType=INTEGER},
+      </if>
+      <if test="bTotalValue != null" >
+        b_total_value = #{bTotalValue,jdbcType=DOUBLE},
+      </if>
+      <if test="bUse != null" >
+        b_use = #{bUse,jdbcType=VARCHAR},
+      </if>
+      <if test="bDescribe != null" >
+        b_describe = #{bDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="bCondition != null" >
+        b_condition = #{bCondition,jdbcType=INTEGER},
+      </if>
+      <if test="bBorrowerType != null" >
+        b_borrower_type = #{bBorrowerType,jdbcType=INTEGER},
+      </if>
+      <if test="bBidcount != null" >
+        b_bidCount = #{bBidcount,jdbcType=INTEGER},
+      </if>
+      <if test="bStatus != null" >
+        b_status = #{bStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.Borrower" >
+    update borrower
+    set b_name = #{bName,jdbcType=VARCHAR},
+      b_username = #{bUsername,jdbcType=VARCHAR},
+      b_money = #{bMoney,jdbcType=DOUBLE},
+      b_rate = #{bRate,jdbcType=INTEGER},
+      b_money_deadline = #{bMoneyDeadline,jdbcType=TIMESTAMP},
+      b_phone = #{bPhone,jdbcType=VARCHAR},
+      b_house = #{bHouse,jdbcType=INTEGER},
+      b_total_value = #{bTotalValue,jdbcType=DOUBLE},
+      b_use = #{bUse,jdbcType=VARCHAR},
+      b_describe = #{bDescribe,jdbcType=VARCHAR},
+      b_condition = #{bCondition,jdbcType=INTEGER},
+      b_borrower_type = #{bBorrowerType,jdbcType=INTEGER},
+      b_bidCount = #{bBidcount,jdbcType=INTEGER},
+      b_status = #{bStatus,jdbcType=INTEGER}
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
 </mapper>

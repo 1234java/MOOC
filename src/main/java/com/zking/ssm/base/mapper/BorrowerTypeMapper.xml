@@ -3,10 +3,23 @@
 <mapper namespace="com.zking.ssm.base.mapper.BorrowerTypeMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.BorrowerType" >
     <constructor >
-      <arg column="b_type_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="b_type_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="b_type_name" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List" >
+    b_type_id, b_type_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrower_type
+    where b_type_id = #{bTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrower_type
+    where b_type_id = #{bTypeId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.BorrowerType" >
     insert into borrower_type (b_type_id, b_type_name)
     values (#{bTypeId,jdbcType=INTEGER}, #{bTypeName,jdbcType=VARCHAR})
@@ -30,4 +43,18 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.BorrowerType" >
+    update borrower_type
+    <set >
+      <if test="bTypeName != null" >
+        b_type_name = #{bTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where b_type_id = #{bTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.BorrowerType" >
+    update borrower_type
+    set b_type_name = #{bTypeName,jdbcType=VARCHAR}
+    where b_type_id = #{bTypeId,jdbcType=INTEGER}
+  </update>
 </mapper>

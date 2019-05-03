@@ -1,12 +1,5 @@
 package com.zking.ssm.base.model;
 
-import lombok.Data;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
-
-@Component
-@Data
-@ToString
 public class FundType {
     private Integer fTId;
 

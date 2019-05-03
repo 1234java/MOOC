@@ -3,13 +3,26 @@
 <mapper namespace="com.zking.ssm.base.mapper.FundMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Fund" >
     <constructor >
-      <arg column="f_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="f_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="f_p_o_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="f_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="f_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="f_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List" >
+    f_id, f_p_o_id, f_type, f_status, f_money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund
+    where f_id = #{fId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fund
+    where f_id = #{fId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Fund" >
     insert into fund (f_id, f_p_o_id, f_type, 
       f_status, f_money)
@@ -53,4 +66,30 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.Fund" >
+    update fund
+    <set >
+      <if test="fPOId != null" >
+        f_p_o_id = #{fPOId,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        f_type = #{fType,jdbcType=INTEGER},
+      </if>
+      <if test="fStatus != null" >
+        f_status = #{fStatus,jdbcType=INTEGER},
+      </if>
+      <if test="fMoney != null" >
+        f_money = #{fMoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.Fund" >
+    update fund
+    set f_p_o_id = #{fPOId,jdbcType=VARCHAR},
+      f_type = #{fType,jdbcType=INTEGER},
+      f_status = #{fStatus,jdbcType=INTEGER},
+      f_money = #{fMoney,jdbcType=DOUBLE}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
 </mapper>

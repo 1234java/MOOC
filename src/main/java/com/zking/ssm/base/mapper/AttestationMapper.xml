@@ -3,7 +3,7 @@
 <mapper namespace="com.zking.ssm.base.mapper.AttestationMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Attestation" >
     <constructor >
-      <arg column="a_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="a_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="p_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="a_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="a_sfz" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -13,6 +13,19 @@
       <arg column="a_state" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List" >
+    a_id, p_id, a_name, a_sfz, a_reverse, a_front, a_message, a_state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_attestation
+    where a_id = #{aId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_attestation
+    where a_id = #{aId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Attestation" >
     insert into p_attestation (a_id, p_id, a_name, 
       a_sfz, a_reverse, a_front, 
@@ -76,4 +89,42 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.Attestation" >
+    update p_attestation
+    <set >
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="aName != null" >
+        a_name = #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aSfz != null" >
+        a_sfz = #{aSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="aReverse != null" >
+        a_reverse = #{aReverse,jdbcType=VARCHAR},
+      </if>
+      <if test="aFront != null" >
+        a_front = #{aFront,jdbcType=VARCHAR},
+      </if>
+      <if test="aMessage != null" >
+        a_message = #{aMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="aState != null" >
+        a_state = #{aState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.Attestation" >
+    update p_attestation
+    set p_id = #{pId,jdbcType=VARCHAR},
+      a_name = #{aName,jdbcType=VARCHAR},
+      a_sfz = #{aSfz,jdbcType=VARCHAR},
+      a_reverse = #{aReverse,jdbcType=VARCHAR},
+      a_front = #{aFront,jdbcType=VARCHAR},
+      a_message = #{aMessage,jdbcType=VARCHAR},
+      a_state = #{aState,jdbcType=VARCHAR}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
 </mapper>

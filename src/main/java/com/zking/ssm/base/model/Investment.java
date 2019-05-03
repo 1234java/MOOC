@@ -2,13 +2,6 @@ package com.zking.ssm.base.model;
 
 import java.util.Date;
 
-import lombok.Data;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
-
-@Component
-@Data
-@ToString
 public class Investment {
     private Integer iId;
 
