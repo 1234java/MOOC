@@ -1,7 +1,14 @@
 package com.zking.ssm.base.model;
 
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
+@Data
+@ToString
 public class Borrower {
     private Integer bId;
 
