@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.InvestmentTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.InvestmentType" >
+    <constructor >
+      <arg column="i_typeid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="i_typename" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.InvestmentType" >
+    insert into investment_type (i_typeid, i_typename)
+    values (#{iTypeid,jdbcType=INTEGER}, #{iTypename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.InvestmentType" >
+    insert into investment_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iTypeid != null" >
+        i_typeid,
+      </if>
+      <if test="iTypename != null" >
+        i_typename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iTypeid != null" >
+        #{iTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="iTypename != null" >
+        #{iTypename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.FundMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Fund" >
+    <constructor >
+      <arg column="f_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_p_o_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.Fund" >
+    insert into fund (f_id, f_p_o_id, f_type, 
+      f_status, f_money)
+    values (#{fId,jdbcType=INTEGER}, #{fPOId,jdbcType=VARCHAR}, #{fType,jdbcType=INTEGER}, 
+      #{fStatus,jdbcType=INTEGER}, #{fMoney,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Fund" >
+    insert into fund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="fPOId != null" >
+        f_p_o_id,
+      </if>
+      <if test="fType != null" >
+        f_type,
+      </if>
+      <if test="fStatus != null" >
+        f_status,
+      </if>
+      <if test="fMoney != null" >
+        f_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="fPOId != null" >
+        #{fPOId,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        #{fType,jdbcType=INTEGER},
+      </if>
+      <if test="fStatus != null" >
+        #{fStatus,jdbcType=INTEGER},
+      </if>
+      <if test="fMoney != null" >
+        #{fMoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

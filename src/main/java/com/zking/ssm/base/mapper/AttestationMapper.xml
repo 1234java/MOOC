@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.AttestationMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Attestation" >
+    <constructor >
+      <arg column="a_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="p_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_sfz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_reverse" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_front" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_message" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_state" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.Attestation" >
+    insert into p_attestation (a_id, p_id, a_name, 
+      a_sfz, a_reverse, a_front, 
+      a_message, a_state)
+    values (#{aId,jdbcType=INTEGER}, #{pId,jdbcType=VARCHAR}, #{aName,jdbcType=VARCHAR}, 
+      #{aSfz,jdbcType=VARCHAR}, #{aReverse,jdbcType=VARCHAR}, #{aFront,jdbcType=VARCHAR}, 
+      #{aMessage,jdbcType=VARCHAR}, #{aState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Attestation" >
+    insert into p_attestation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="aName != null" >
+        a_name,
+      </if>
+      <if test="aSfz != null" >
+        a_sfz,
+      </if>
+      <if test="aReverse != null" >
+        a_reverse,
+      </if>
+      <if test="aFront != null" >
+        a_front,
+      </if>
+      <if test="aMessage != null" >
+        a_message,
+      </if>
+      <if test="aState != null" >
+        a_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="aName != null" >
+        #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aSfz != null" >
+        #{aSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="aReverse != null" >
+        #{aReverse,jdbcType=VARCHAR},
+      </if>
+      <if test="aFront != null" >
+        #{aFront,jdbcType=VARCHAR},
+      </if>
+      <if test="aMessage != null" >
+        #{aMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="aState != null" >
+        #{aState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

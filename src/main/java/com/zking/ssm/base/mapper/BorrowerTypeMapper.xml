@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.BorrowerTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.BorrowerType" >
+    <constructor >
+      <arg column="b_type_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="b_type_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.BorrowerType" >
+    insert into borrower_type (b_type_id, b_type_name)
+    values (#{bTypeId,jdbcType=INTEGER}, #{bTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.BorrowerType" >
+    insert into borrower_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bTypeId != null" >
+        b_type_id,
+      </if>
+      <if test="bTypeName != null" >
+        b_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bTypeId != null" >
+        #{bTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="bTypeName != null" >
+        #{bTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

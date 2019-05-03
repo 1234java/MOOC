@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.InvestmentMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Investment" >
+    <constructor >
+      <arg column="i_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="i_o_p_userid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="b_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="b_type_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="i_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="i_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="i_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.Investment" >
+    insert into investment (i_id, i_o_p_userid, b_id, 
+      b_type_id, i_date, i_money, 
+      i_status)
+    values (#{iId,jdbcType=INTEGER}, #{iOPUserid,jdbcType=VARCHAR}, #{bId,jdbcType=INTEGER}, 
+      #{bTypeId,jdbcType=INTEGER}, #{iDate,jdbcType=TIMESTAMP}, #{iMoney,jdbcType=DOUBLE}, 
+      #{iStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Investment" >
+    insert into investment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        i_id,
+      </if>
+      <if test="iOPUserid != null" >
+        i_o_p_userid,
+      </if>
+      <if test="bId != null" >
+        b_id,
+      </if>
+      <if test="bTypeId != null" >
+        b_type_id,
+      </if>
+      <if test="iDate != null" >
+        i_date,
+      </if>
+      <if test="iMoney != null" >
+        i_money,
+      </if>
+      <if test="iStatus != null" >
+        i_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="iOPUserid != null" >
+        #{iOPUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="bId != null" >
+        #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="bTypeId != null" >
+        #{bTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="iDate != null" >
+        #{iDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iMoney != null" >
+        #{iMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="iStatus != null" >
+        #{iStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
