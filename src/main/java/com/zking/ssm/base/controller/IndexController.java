@@ -20,6 +20,12 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/zking/jsp")
+    public  String toborrow(){
+
+        return "Borrowing/borrow";
+    }
+
     @RequestMapping("/i18n")
     public String I18n(String locale, HttpSession session){
         if(locale.equals("zh")){
