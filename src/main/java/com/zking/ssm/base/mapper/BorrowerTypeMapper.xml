@@ -21,8 +21,8 @@
     where b_type_id = #{bTypeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.BorrowerType" >
-    insert into borrower_type (b_type_id, b_type_name)
-    values (#{bTypeId,jdbcType=INTEGER}, #{bTypeName,jdbcType=VARCHAR})
+    insert into borrower_type ( b_type_name)
+    values ( #{bTypeName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.ssm.base.model.BorrowerType" >
     insert into borrower_type
