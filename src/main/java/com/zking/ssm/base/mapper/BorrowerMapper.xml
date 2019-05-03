@@ -35,13 +35,13 @@
     where b_id = #{bId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Borrower" >
-    insert into borrower (b_id, b_name, b_username, 
+    insert into borrower ( b_name, b_username,
       b_money, b_rate, b_money_deadline, 
       b_phone, b_house, b_total_value, 
       b_use, b_describe, b_condition, 
       b_borrower_type, b_bidCount, b_status
       )
-    values (#{bId,jdbcType=INTEGER}, #{bName,jdbcType=VARCHAR}, #{bUsername,jdbcType=VARCHAR}, 
+    values ( #{bName,jdbcType=VARCHAR}, #{bUsername,jdbcType=VARCHAR},
       #{bMoney,jdbcType=DOUBLE}, #{bRate,jdbcType=INTEGER}, #{bMoneyDeadline,jdbcType=TIMESTAMP}, 
       #{bPhone,jdbcType=VARCHAR}, #{bHouse,jdbcType=INTEGER}, #{bTotalValue,jdbcType=DOUBLE}, 
       #{bUse,jdbcType=VARCHAR}, #{bDescribe,jdbcType=VARCHAR}, #{bCondition,jdbcType=INTEGER}, 

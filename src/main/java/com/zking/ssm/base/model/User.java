@@ -1,6 +1,15 @@
 package com.zking.ssm.base.model;
 
-public class User {
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
+@Component
+@Data
+@ToString
+public class User implements Serializable{
     private String pUserid;
 
     private String pUsername;

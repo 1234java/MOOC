@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Data
 @ToString
 @Component
+
 public class ResponseResult<T> implements Serializable {
 
     //状态

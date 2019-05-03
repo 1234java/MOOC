@@ -1,6 +1,15 @@
 package com.zking.ssm.base.model;
 
-public class Vip {
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
+@Component
+@Data
+@ToString
+public class Vip implements Serializable{
     private Integer vId;
 
     private Integer vVip;
