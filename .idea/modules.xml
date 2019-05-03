@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MOOC.iml" filepath="$PROJECT_DIR$/MOOC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ss/ss.iml" filepath="$PROJECT_DIR$/ss/ss.iml" />
     </modules>
   </component>
 </project>
