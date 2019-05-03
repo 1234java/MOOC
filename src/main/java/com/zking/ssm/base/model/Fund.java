@@ -1,5 +1,14 @@
 package com.zking.ssm.base.model;
 
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
+@Component
+@Data
+@ToString
 public class Fund {
     private Integer fId;
 
