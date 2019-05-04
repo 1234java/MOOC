@@ -20,11 +20,22 @@ public class IndexController {
         return "index";
     }
 
+
     @RequestMapping("/zking/jsp")
     public  String toborrow(){
-
         return "Borrowing/borrow";
     }
+
+    @RequestMapping("/zking/vehicle")
+    public  String tovehicle(){
+        return "Borrowing/Vehicle";
+    }
+
+    @RequestMapping("/zking/credit")
+    public  String tocredit(){
+        return "Borrowing/Credit";
+    }
+
 
     @RequestMapping("/i18n")
     public String I18n(String locale, HttpSession session){

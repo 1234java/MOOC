@@ -77,9 +77,8 @@
         <div class="bor_detail">
             <h2 class="bor_detail_tit">
                 <span class="bor_decurspan">房产抵押</span>
-                <span>车辆抵押</span>
-                <span>信用贷款</span>
-                <span>零首付车贷</span>
+                <span><a href="${ctx}/zking/vehicle">车辆抵押</a></span>
+                <span><a href="${ctx}/zking/credit">信用贷款</a></span>
             </h2>
             <div class="bor_detail_box">
                 <div class="bor_det_one clearfix pt30 pb30">
@@ -180,17 +179,17 @@
                     </div>
                 </div>
                 <!-- end 房产抵押 -->
-                <div class="bor_det_one" style="display:none;">
-                    2
-                </div>
-                <!-- end  -->
-                <div class="bor_det_one" style="display:none;">
-                    3
-                </div>
-                <!-- end  -->
-                <div class="bor_det_one" style="display:none;">
-                    4
-                </div>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--2--%>
+                <%--</div>--%>
+                <%--<!-- end  -->--%>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--3--%>
+                <%--</div>--%>
+                <%--<!-- end  -->--%>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--4--%>
+                <%--</div>--%>
                 <!-- end  -->
             </div>
         </div>
