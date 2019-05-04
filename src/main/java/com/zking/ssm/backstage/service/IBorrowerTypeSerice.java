@@ -3,15 +3,15 @@ package com.zking.ssm.backstage.service;
 import com.zking.ssm.base.model.BorrowerType;
 
 public interface IBorrowerTypeSerice {
-    int deleteByPrimaryKey(Integer bTypeId);
+    int deleteByPrimaryKey(BorrowerType borrowerType);
 
-    int insert(BorrowerType record);
+    int insert(BorrowerType borrowerType);
 
-    int insertSelective(BorrowerType record);
+    int insertSelective(BorrowerType borrowerType);
 
-    BorrowerType selectByPrimaryKey(Integer bTypeId);
+    BorrowerType selectByPrimaryKey(BorrowerType borrowerType);
 
-    int updateByPrimaryKeySelective(BorrowerType record);
+    int updateByPrimaryKeySelective(BorrowerType borrowerType);
 
-    int updateByPrimaryKey(BorrowerType record);
+    int updateByPrimaryKey(BorrowerType borrowerType);
 }
