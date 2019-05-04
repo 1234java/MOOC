@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class Investment {
+public class Investment implements Serializable{
     private Integer iId;
 
     private String iOPUserid;

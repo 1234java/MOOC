@@ -69,7 +69,7 @@ ${ctx}
             <li><a class="a" href="javascript:void(0);"
                    onClick="openurl('videoQuery.html');">系统字典</a></li>
             <li><a class="a" href="javascript:void(0);"
-                   onClick="openurl('uservideoQuery.html');">用户视频列表</a></li>
+                   onClick="openurl('uservideoQuery.html');">管理后台用户</a></li>
 
         </div>
         <div class="div2">
