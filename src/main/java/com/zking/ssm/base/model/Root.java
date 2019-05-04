@@ -2,14 +2,12 @@ package com.zking.ssm.base.model;
 
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-import java.io.Serializable;
-
-@Component
 @Data
 @ToString
-public class Root implements Serializable{
+@Controller
+public class Root {
     private Integer rId;
 
     private String rName;
