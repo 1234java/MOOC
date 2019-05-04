@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class Organization {
+public class Organization implements Serializable{
     private String oOrganization;
 
     private String oPassword;

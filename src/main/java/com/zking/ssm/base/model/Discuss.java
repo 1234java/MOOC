@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class Discuss {
+public class Discuss implements Serializable{
     private Integer dId;
 
     private String dPId;

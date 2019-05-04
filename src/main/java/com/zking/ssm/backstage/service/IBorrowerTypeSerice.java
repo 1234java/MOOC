@@ -1,11 +1,8 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.backstage.service;
 
 import com.zking.ssm.base.model.BorrowerType;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
-public interface BorrowerTypeMapper {
+public interface IBorrowerTypeSerice {
     int deleteByPrimaryKey(Integer bTypeId);
 
     int insert(BorrowerType record);
