@@ -48,14 +48,14 @@
         <!-- 自动扫描XxxMapping.xml文件，**任意路径 -->
         <property name="mapperLocations" value="classpath:com/zking/ssm/**/mapper/*.xml"/>
         <!-- 指定别名 -->
-        <property name="typeAliasesPackage" value="com.zkin.ssm.model"/>
+        <property name="typeAliasesPackage" value="com.zking.ssm.base.model"/>
     </bean>
     <!--2) 自动扫描com/zking/oa/**/mapper下的所有XxxMapper接口(其实就是DAO接口)，并实现这些接口，-->
     <!--   即可直接在程序中使用dao接口，不用再获取sqlsession对象-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--basePackage 属性是映射器接口文件的包路径。-->
         <!--你可以使用分号或逗号 作为分隔符设置多于一个的包路径-->
-        <property name="basePackage" value="com/zkin/ssm/**/mapper"/>
+        <property name="basePackage" value="com/zking/ssm/**/mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

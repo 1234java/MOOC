@@ -5,8 +5,6 @@ import com.zking.ssm.base.model.Borrower;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
-
 /**
  * @author mi
  * @create 2019-05-03 20:15
@@ -34,8 +32,8 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
 
     @Test
     public void selectByPrimaryKey() {
-        borrower.setBId(1);
-        Borrower b = borrowerServiec.selectByPrimaryKey(borrower.getBId());
+        borrower.setbId(1);
+        Borrower b = borrowerServiec.selectByPrimaryKey(borrower.getbId());
         System.out.println(b);
     }
 
