@@ -6,15 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/head.jsp" %>
 <html>
 <head>
     <meta charset="utf-8">
     <title>理财借贷网站</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="admin/css/adminStyle.css" rel="stylesheet" type="text/css" />
+
+    <link href="${ctx}/admin/css/adminStyle.css" rel="stylesheet" type="text/css" />
+    <link href="${ctx}/admin/css/adminindex.css" rel="stylesheet" type="text/css" />
 
     <title>理财借贷管理系统</title>
-    <script type="text/javascript" src="/admin/js/jquery1.js"></script>
+    <script type="text/javascript" src="${ctx}/admin/js/jquery1.js"></script>
     <script type="text/javascript">
         $(document).ready(
             function() {
@@ -28,185 +31,9 @@
             rframe.src = url;
         }
     </script>
+
     <style>
-        body {
-            margin: 0;
-            font-family: 微软雅黑;
-            background-size: cover;
-            background-image: url(/admin/images/77.jpg);
-            background-color: #DDDDDD;
-            background-attachment: fixed;
 
-        }
-
-        .top1 {
-            position: absolute;
-            top: 0px;
-            width: 100%;
-            height: 20px;
-            text-align: center;
-            color: #FFFFFF;
-            font-size: 17px;
-            font-height: 20px;
-            font-family: 楷体;
-            background-color: #888888
-        }
-
-        .title {
-            float:left;
-            margin:-32px  20px;
-            font-size: 40px;
-            color: #FFFFFF;
-            font-height: 55px;
-            font-family: 隶书;
-        }
-
-        .top2 {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            height: 77px;
-            text-align: center;
-            color: #ccffff;
-            background-color: #888888
-        }
-
-        .left {
-            position: absolute;
-            left: 0px;
-            top: 97px;
-            width: 200px;
-            height: 85%;
-            border-right: 1px solid #9370DB;
-            color: #000000;
-            font-size: 20px;
-            text-align: center;
-            background-color: #B3B3B3
-        }
-
-        .right {
-            position: absolute;
-            left: 200px;
-            top:97px;
-            width: 85.2%;
-            height: 85%;
-            border-top: 0px solid #484860;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .end {
-            position: absolute;
-            bottom: 0px;
-            width: 100%;
-            height: 30px;
-            text-align: center;
-            color: #556B2F;
-            font-size: 17px;
-            font-height: 20px;
-            font-family: 楷体;
-            background-color: #C0C0C0
-        }
-
-        .div1 {
-            text-align: center;
-            width: 200px;
-            padding-top: 10px;
-        }
-
-        .div2 {
-            height: 40px;
-            line-height: 40px;
-            cursor: pointer;
-            font-size: 18px;
-            position: relative;
-            border-bottom: #ccc 0px dotted;
-        }
-
-        .spgl {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/1.png);
-        }
-
-        .yhgl {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/4.png);
-        }
-
-        .gggl {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/4.png);
-        }
-
-        .zlgl {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/4.png);
-        }
-
-        .pjgl {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/4.png);
-        }
-
-        .tcht {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            left: 40px;
-            top: 10px;
-            background-image: url(/admin/images/2.png);
-        }
-
-        .div3 {
-            display: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .div3 ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .div3 li {
-            height: 30px;
-            line-height: 30px;
-            list-style: none;
-            border-bottom: #ccc 1px dotted;
-            text-align: center;
-        }
-
-        .a {
-            text-decoration: none;
-            color: #000000;
-            font-size: 15px;
-        }
-
-        .a1 {
-            text-decoration: none;
-            color: #000000;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
@@ -216,7 +43,7 @@
 </div>
 <div class="top2">
     <div class="logo">
-        <img src="/admin/images/admin_logo.png" title="在哪儿" />
+        <img src="${ctx}/admin/images/admin_logo.png" title="在哪儿" />
     </div>
     <div class="title" >
         <h3>理财借贷后台管理系统</h3>
@@ -226,33 +53,33 @@
                 class="adminIcon"></i><span>管理员：DeathGhost</span></a>
     </div>
 </div>
-
+${ctx}
 <div class="left">
     <div class="div1">
         <div class="left_top">
-            <img src="/admin/images/bbb_01.jpg"><img src="/admin/images/bbb_02.jpg" id="2">
-            <img src="/admin/images/bbb_03.jpg"><img src="/admin/images/bbb_04.jpg">
+            <img src="${ctx}/admin/images/bbb_01.jpg"><img src="${ctx}/admin/images/bbb_02.jpg" id="2">
+            <img src="${ctx}/admin/images/bbb_03.jpg"><img src="${ctx}/admin/images/bbb_04.jpg">
         </div>
 
         <div class="div2">
             <div class="spgl"></div>
-            视频管理
+            系统管理
         </div>
         <div class="div3">
             <li><a class="a" href="javascript:void(0);"
-                   onClick="openurl('videoQuery.html');">查看所有视频</a></li>
+                   onClick="openurl('videoQuery.html');">系统字典</a></li>
             <li><a class="a" href="javascript:void(0);"
                    onClick="openurl('uservideoQuery.html');">用户视频列表</a></li>
 
         </div>
         <div class="div2">
             <div class="spgl"></div>
-            文档管理
+            用户账号管理
         </div>
         <div class="div3">
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('documentQuery.html');">查看所有文档</a></li>
+                       onClick="openurl('documentQuery.html');">账号管理</a></li>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('userdocumentQuery.html');">用户文档列表</a></li>
 
@@ -260,54 +87,82 @@
         </div>
         <div class="div2">
             <div class="spgl"></div>
-            类别管理
+            用户认证管理
         </div>
         <div class="div3">
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('classQuery.html');">大类信息</a></li>
+                       onClick="openurl('classQuery.html');">认证管理</a></li>
 
             </ul>
         </div>
-        <div class="div2">
-            <div class="yhgl"></div>
-            用户管理
-        </div>
-        <div class="div3">
-            <ul>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('studentQuery.html');">学生管理</a></li>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('teacherQuery.html');">老师管理</a></li>
-            </ul>
-        </div>
+
 
         <div class="div2">
             <div class="gggl"></div>
-            评价管理
+            用户授信管理
         </div>
         <div class="div3">
 
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('deletecomment.html');">评价删除</a></li>
+                       onClick="openurl('useredit.html');">用户借贷资料管理</a></li>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">用户禁言</a></li>
+                       onClick="openurl('deletecomment.html');">用户信用管理</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('useredit.html');">用户额度管理</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('useredit.html');">举报信息管理</a></li>
+
             </ul>
 
         </div>
+
+        <div class="div2">
+            <div class="yhgl"></div>
+            申请管理
+        </div>
+        <div class="div3">
+            <ul>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('studentQuery.html');">借贷申请处理</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('teacherQuery.html');">资金登记情况</a></li>
+            </ul>
+        </div>
+
         <div class="div2">
             <div class="pjgl"></div>
-            公告管理
+            借贷管理
+        </div>
+        <div class="div3">
+            <ul>
+
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('afficheAdd.html');">等待初审的借贷</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('afficheAdd.html');">还款中的借贷</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('afficheQuery.html');">发布新借贷</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('afficheAdd.html');">逾期的借款</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('afficheAdd.html');">借款明细</a></li>
+
+            </ul>
+        </div>
+
+        <div class="div2">
+            <div class="pjgl"></div>
+          评论管理
         </div>
         <div class="div3">
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('afficheQuery.html');">查看公告</a></li>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('afficheAdd.html');">添加公告</a></li>
+                       onClick="openurl('afficheQuery.html');">评论删除</a></li>
             </ul>
         </div>
+
         <a class="a1" href="login.html"><div class="div2">
             <div class="tcht"></div>
             退出后台
