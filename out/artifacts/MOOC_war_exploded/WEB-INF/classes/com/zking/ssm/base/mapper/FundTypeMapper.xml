@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.FundTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.FundType" >
+    <constructor >
+      <idArg column="f_t_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_t_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    f_t_id, f_t_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund_type
+    where f_t_id = #{fTId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fund_type
+    where f_t_id = #{fTId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.FundType" >
+    insert into fund_type (f_t_id, f_t_name)
+    values (#{fTId,jdbcType=INTEGER}, #{fTName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.FundType" >
+    insert into fund_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fTId != null" >
+        f_t_id,
+      </if>
+      <if test="fTName != null" >
+        f_t_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fTId != null" >
+        #{fTId,jdbcType=INTEGER},
+      </if>
+      <if test="fTName != null" >
+        #{fTName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.FundType" >
+    update fund_type
+    <set >
+      <if test="fTName != null" >
+        f_t_name = #{fTName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_t_id = #{fTId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.FundType" >
+    update fund_type
+    set f_t_name = #{fTName,jdbcType=VARCHAR}
+    where f_t_id = #{fTId,jdbcType=INTEGER}
+  </update>
+</mapper>

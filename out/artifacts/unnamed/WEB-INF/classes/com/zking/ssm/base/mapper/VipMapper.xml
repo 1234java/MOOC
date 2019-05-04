@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.VipMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Vip" >
+    <constructor >
+      <idArg column="v_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="v_vip" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="v_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="v_release" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="v_enterprise_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="v_enterprise_release" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    v_id, v_vip, v_money, v_release, v_enterprise_money, v_enterprise_release
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vip
+    where v_id = #{vId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vip
+    where v_id = #{vId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.Vip" >
+    insert into vip (v_id, v_vip, v_money, 
+      v_release, v_enterprise_money, v_enterprise_release
+      )
+    values (#{vId,jdbcType=INTEGER}, #{vVip,jdbcType=INTEGER}, #{vMoney,jdbcType=DOUBLE}, 
+      #{vRelease,jdbcType=DOUBLE}, #{vEnterpriseMoney,jdbcType=DOUBLE}, #{vEnterpriseRelease,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Vip" >
+    insert into vip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vId != null" >
+        v_id,
+      </if>
+      <if test="vVip != null" >
+        v_vip,
+      </if>
+      <if test="vMoney != null" >
+        v_money,
+      </if>
+      <if test="vRelease != null" >
+        v_release,
+      </if>
+      <if test="vEnterpriseMoney != null" >
+        v_enterprise_money,
+      </if>
+      <if test="vEnterpriseRelease != null" >
+        v_enterprise_release,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vId != null" >
+        #{vId,jdbcType=INTEGER},
+      </if>
+      <if test="vVip != null" >
+        #{vVip,jdbcType=INTEGER},
+      </if>
+      <if test="vMoney != null" >
+        #{vMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vRelease != null" >
+        #{vRelease,jdbcType=DOUBLE},
+      </if>
+      <if test="vEnterpriseMoney != null" >
+        #{vEnterpriseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vEnterpriseRelease != null" >
+        #{vEnterpriseRelease,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.Vip" >
+    update vip
+    <set >
+      <if test="vVip != null" >
+        v_vip = #{vVip,jdbcType=INTEGER},
+      </if>
+      <if test="vMoney != null" >
+        v_money = #{vMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vRelease != null" >
+        v_release = #{vRelease,jdbcType=DOUBLE},
+      </if>
+      <if test="vEnterpriseMoney != null" >
+        v_enterprise_money = #{vEnterpriseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vEnterpriseRelease != null" >
+        v_enterprise_release = #{vEnterpriseRelease,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.Vip" >
+    update vip
+    set v_vip = #{vVip,jdbcType=INTEGER},
+      v_money = #{vMoney,jdbcType=DOUBLE},
+      v_release = #{vRelease,jdbcType=DOUBLE},
+      v_enterprise_money = #{vEnterpriseMoney,jdbcType=DOUBLE},
+      v_enterprise_release = #{vEnterpriseRelease,jdbcType=DOUBLE}
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+</mapper>
