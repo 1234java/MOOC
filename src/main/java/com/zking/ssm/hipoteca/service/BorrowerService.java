@@ -1,10 +1,8 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.hipoteca.service;
 
 import com.zking.ssm.base.model.Borrower;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface BorrowerMapper {
+public interface BorrowerService {
     int deleteByPrimaryKey(Integer bId);
 
     int insert(Borrower record);
