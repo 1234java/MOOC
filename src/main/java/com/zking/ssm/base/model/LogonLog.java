@@ -6,10 +6,12 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
 @Data
 @ToString
-public class LogonLog {
+public class LogonLog implements Serializable{
     private Integer lId;
 
     private String lPOId;

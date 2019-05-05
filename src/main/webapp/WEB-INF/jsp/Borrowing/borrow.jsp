@@ -77,9 +77,8 @@
         <div class="bor_detail">
             <h2 class="bor_detail_tit">
                 <span class="bor_decurspan">房产抵押</span>
-                <span>车辆抵押</span>
-                <span>信用贷款</span>
-                <span>零首付车贷</span>
+                <span><a href="${ctx}/zking/vehicle">车辆抵押</a></span>
+                <span><a href="${ctx}/zking/credit">信用贷款</a></span>
             </h2>
             <div class="bor_detail_box">
                 <div class="bor_det_one clearfix pt30 pb30">
@@ -107,7 +106,7 @@
                         </ul>
                         <h3 class="bor_onel_tit"><span>提交资料</span></h3>
                         <ul class="bor_onel_ul">
-                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">省份证
+                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">身份证
                             </li>
                             <li><img src="images/bor_pic06.png" alt="">申请资料
                             </li>
@@ -119,52 +118,64 @@
                     </div>
                     <!-- end l -->
                     <div class="bor_det_oner fl">
-                        <form>
+                        <f:form action="${ctx}/hipoteca/add"  method="post" modelAttribute="borrow">
+                     <%--   <form   action="${ctx}/hipoteca/add"  method="get" >--%>
                             <fieldset>
-                                <div>
-                                    <label>申请人</label>
-                                    <input type="">
-                                </div>
-                                <div class="mt15">
-                                    <label>*借款金额</label>
-                                    <input type="" class="bor_inputbg01">
-                                </div>
-                                <div class="mt15">
-                                    <label>*借款期限</label>
-                                    <input type="" class="bor_inputbg02">
-                                </div>
-                                <div class="mt15">
-                                    <label>*手机号码</label>
-                                    <input type="">
-                                </div>
-                                <div class="mt15 guarmethod clearfix">
-                                    <label class="guarmethod_l fl">*担保方式</label>
-                                    <div class="fl">
+                                    <div>
+                                        <label>申请人</label>
+                                        <input type="" name="bUsername">
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款金额</label>
+                                        <input type="" class="bor_inputbg01" name="bMoney">
+
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*还款期限</label>
+                                        <input type="date" class="bor_inputbg02" name="bMoneyDeadline">
+
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*手机号码</label>
+                                        <input type="" name="bPhone">
+
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label class="guarmethod_l fl">*担保方式</label>
+                                        <div class="fl">
                                         <span>房屋数量</span>
-                                        <input type="text" class="bor_inputbg03 input2"><br><br>
+                                        <input type="text" class="bor_inputbg03 input2" name="bHouse"><br><br>
+
                                         <span>总价值</span>
-                                        <input type="text" class="bor_inputbg04 input2"><br>
+                                        <input type="text" class="bor_inputbg04 input2" name="bTotalValue"><br>
+
                                     </div>
 
                                 </div>
                                 <div class="mt15">
                                     <label>*借款用途</label>
-                                    <select>
+                                    <select name="bUse">
+
                                         <option>选择借款类别</option>
-                                        <option>1</option>
+                                        <option value="1">信用贷款</option>
+                                        <option value="2">抵押贷款</option>
+                                        <option value="3">质押贷款</option>
+
                                     </select>
                                 </div>
                                 <div class="mt15">
                                     <label>*借款描述</label>
-                                    <textarea></textarea>
+                                    <textarea name="bDescribe"></textarea>
+
 
                                 </div>
                                 <div class="mt15">
                                     <label>*借款情况</label>
-                                    <input type="radio" class="input3">
+                                    <input type="radio" value="1"  class="input3" name="bCondition">
                                     普通借款
-                                    <input type="radio" class="input3">
+                                    <input type="radio" value="2" class="input3" name="bCondition">
                                     紧急借款
+
                                 </div>
                                 <div class="mt15">
                                     <label>*验证码</label>
@@ -173,24 +184,26 @@
                                 </div>
                                 <div class="mt30">
                                     <label></label>
-                                    <a href="" class="bor_btn">提交材料</a>
+                                   <%-- <a href="" class="bor_btn">提交材料</a>--%>
+                                    <button type="submit" class="bor_btn">提交材料</button>
                                 </div>
                             </fieldset>
-                        </form>
+                        </f:form>
+                       <%-- </form >--%>
                     </div>
                 </div>
                 <!-- end 房产抵押 -->
-                <div class="bor_det_one" style="display:none;">
-                    2
-                </div>
-                <!-- end  -->
-                <div class="bor_det_one" style="display:none;">
-                    3
-                </div>
-                <!-- end  -->
-                <div class="bor_det_one" style="display:none;">
-                    4
-                </div>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--2--%>
+                <%--</div>--%>
+                <%--<!-- end  -->--%>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--3--%>
+                <%--</div>--%>
+                <%--<!-- end  -->--%>
+                <%--<div class="bor_det_one" style="display:none;">--%>
+                    <%--4--%>
+                <%--</div>--%>
                 <!-- end  -->
             </div>
         </div>

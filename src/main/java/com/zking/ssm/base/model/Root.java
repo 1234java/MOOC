@@ -2,11 +2,11 @@ package com.zking.ssm.base.model;
 
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
 @Data
 @ToString
+@Controller
 public class Root {
     private Integer rId;
 
