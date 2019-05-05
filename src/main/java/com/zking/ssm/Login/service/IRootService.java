@@ -1,12 +1,11 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.Login.service;
 
 import com.zking.ssm.base.model.Root;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface RootMapper {
+public interface IRootService {
     int deleteByPrimaryKey(Integer rId);
 
     int insert(Root record);
