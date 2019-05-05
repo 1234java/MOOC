@@ -15,5 +15,14 @@ public class adminIndex {
     }
 
 
+    @RequestMapping("/userlist")
+    public  String userlist(){
+
+        return  "admin/user";
+    }
+
+
+
+
 
 }

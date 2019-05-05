@@ -3,9 +3,12 @@ package com.zking.ssm.backstage.service.impl;
 import com.zking.ssm.backstage.service.IBorrowerTypeSerice;
 import com.zking.ssm.base.mapper.BorrowerTypeMapper;
 import com.zking.ssm.base.model.BorrowerType;
+import com.zking.ssm.base.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -47,5 +50,11 @@ public class BorrowerTypeSericeImpl implements IBorrowerTypeSerice {
     public int updateByPrimaryKey(BorrowerType borrowerType)
     {
         return typeMapper.updateByPrimaryKey(borrowerType);
+    }
+
+
+    @Override
+    public List<BorrowerType> list(BorrowerType borrowerType, PageBean pageBean) {
+        return typeMapper.list(borrowerType);
     }
 }

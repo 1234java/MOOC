@@ -1,6 +1,9 @@
 package com.zking.ssm.backstage.service;
 
 import com.zking.ssm.base.model.BorrowerType;
+import com.zking.ssm.base.utils.PageBean;
+
+import java.util.List;
 
 public interface IBorrowerTypeSerice {
     int deleteByPrimaryKey(BorrowerType borrowerType);
@@ -14,4 +17,5 @@ public interface IBorrowerTypeSerice {
     int updateByPrimaryKeySelective(BorrowerType borrowerType);
 
     int updateByPrimaryKey(BorrowerType borrowerType);
+    List<BorrowerType> list(BorrowerType borrowerType, PageBean pageBean);
 }
