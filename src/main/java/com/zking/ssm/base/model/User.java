@@ -1,14 +1,12 @@
 package com.zking.ssm.base.model;
 
-import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 @Component
-@Data
 @ToString
 public class User {
-    private String pUserid;
+    private Integer pUserid;
 
     private String pUsername;
 
@@ -26,7 +24,7 @@ public class User {
 
     private Double pCredit;
 
-    public User(String pUserid, String pUsername, String pPassword, String pInvite, Integer pStatus, Integer pVip, Double pCapital, Double pUsable, Double pCredit) {
+    public User(Integer pUserid, String pUsername, String pPassword, String pInvite, Integer pStatus, Integer pVip, Double pCapital, Double pUsable, Double pCredit) {
         this.pUserid = pUserid;
         this.pUsername = pUsername;
         this.pPassword = pPassword;
@@ -42,11 +40,11 @@ public class User {
         super();
     }
 
-    public String getpUserid() {
+    public Integer getpUserid() {
         return pUserid;
     }
 
-    public void setpUserid(String pUserid) {
+    public void setpUserid(Integer pUserid) {
         this.pUserid = pUserid;
     }
 

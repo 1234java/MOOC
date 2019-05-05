@@ -1,13 +1,15 @@
 package com.zking.ssm.base.model;
 
-import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-@Data
 @ToString
-public class Organization {
+public class Organization implements Serializable{
+    private Integer oOid;
+
     private String oOrganization;
 
     private String oPassword;
@@ -36,7 +38,8 @@ public class Organization {
 
     private Double oCredit;
 
-    public Organization(String oOrganization, String oPassword, Integer oInstitutionalType, String oAddress, String oLinkman, String oSex, String oPhone, String oFixedNumber, String oEmail, String oInvite, Integer oStatus, Integer oVip, Double oCapital, Double oCredit) {
+    public Organization(Integer oOid, String oOrganization, String oPassword, Integer oInstitutionalType, String oAddress, String oLinkman, String oSex, String oPhone, String oFixedNumber, String oEmail, String oInvite, Integer oStatus, Integer oVip, Double oCapital, Double oCredit) {
+        this.oOid = oOid;
         this.oOrganization = oOrganization;
         this.oPassword = oPassword;
         this.oInstitutionalType = oInstitutionalType;
@@ -55,6 +58,14 @@ public class Organization {
 
     public Organization() {
         super();
+    }
+
+    public Integer getoOid() {
+        return oOid;
+    }
+
+    public void setoOid(Integer oOid) {
+        this.oOid = oOid;
     }
 
     public String getoOrganization() {
