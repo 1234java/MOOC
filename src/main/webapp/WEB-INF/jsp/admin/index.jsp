@@ -69,9 +69,9 @@ ${ctx}
         </div>
         <div class="div3">
             <li class="l"><a class="a" href="javascript:void(0);"
-                   onClick="openurl('videoQuery.html');">系统字典</a></li>
+                   onClick="openurl('${ctx}/admin/tosyso');">系统字典</a></li>
             <li class="l"><a class="a" href="javascript:void(0);"
-                   onClick="openurl('uservideoQuery.html');">管理后台用户</a></li>
+                   onClick="openurl('${ctx}/admin/toadminlist');">管理后台用户</a></li>
 
         </div>
         <div class="div2">
@@ -105,8 +105,7 @@ ${ctx}
         <div class="div3">
 
             <ul>
-                <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">用户借贷资料管理</a></li>
+
                 <li class="l"><a class="a" href="javascript:void(0);"
                        onClick="openurl('deletecomment.html');">用户信用管理</a></li>
                 <li class="l"><a class="a" href="javascript:void(0);"

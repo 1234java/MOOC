@@ -110,7 +110,6 @@
                 </div>
             </div>
 
-
             <div id="login2" class="left_form fl" style="display:none;text-align: center" >
                 <form>
                     <table class="table" style="text-align: center">
@@ -118,7 +117,6 @@
                             <td><lable>机构用户名:</lable></td>
                             <td><input type="text" class="form-control" value="请输入机构用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入机构用户名';}"></td>
                         </tr>
-
                         <tr>
                             <td>机构类型:</td>
                             <td><select name="select" id="select_k1" class="xla_k">
@@ -133,10 +131,11 @@
 
                         <tr>
                             <td><lable>办公所在地:</lable></td>
-                            <td><select name="select" id="form_lb_diqu" class="form_lb_diqu">
+                            <td>
+                                <select name="select"  class="">
                                 <option value="国营企业">北京</option>
                             </select><span style="margin:auto 5px;color:#808080;">省</span>
-                                <select name="select" id="form_lb_diqu" class="form_lb_diqu">
+                                <select name="select"  class="form_lb_diqu">
                                     <option value="国营企业">北京</option>
                                 </select><span style="margin:auto 5px;color:#808080;">市</span></td>
                         </tr>
