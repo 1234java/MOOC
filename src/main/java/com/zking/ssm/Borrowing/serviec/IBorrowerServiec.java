@@ -1,6 +1,9 @@
 package com.zking.ssm.Borrowing.serviec;
 
 import com.zking.ssm.base.model.Borrower;
+import com.zking.ssm.base.utils.PageBean;
+
+import java.util.List;
 
 /**
  * @author mi
@@ -20,4 +23,6 @@ public interface IBorrowerServiec {
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
+
+    List<Borrower> listBorrower(Borrower borrower, PageBean pageBean);
 }
