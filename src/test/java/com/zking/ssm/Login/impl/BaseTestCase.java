@@ -1,4 +1,4 @@
-package com.zking.ssm.Login.service.impl;
+package com.zking.ssm.Login.impl;
 
 import com.zking.ssm.base.utils.PageBean;
 import org.junit.Before;

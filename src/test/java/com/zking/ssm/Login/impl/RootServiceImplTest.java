@@ -1,14 +1,11 @@
-package com.zking.ssm.Login.service.impl;
+package com.zking.ssm.Login.impl;
 
 import com.zking.ssm.Login.service.IRootService;
 import com.zking.ssm.base.model.Root;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.print.Book;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class RootServiceImplTest extends BaseTestCase {
     @Autowired
