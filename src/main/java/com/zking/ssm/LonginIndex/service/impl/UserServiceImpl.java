@@ -22,6 +22,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> list(User user) {
 
-        return userMapper.list(user);
+        return null;
     }
 }

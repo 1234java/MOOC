@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+
 @Service
 @Transactional
-public class UserServiceImpl implements IUserService {
-
+public class UseServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
@@ -47,11 +48,6 @@ public class UserServiceImpl implements IUserService {
     public int updateByPrimaryKey(User record) {
 
         return userMapper.updateByPrimaryKey(record);
-    }
-
-    @Override
-    public int updatePstatus(User record) {
-        return userMapper.updatePstatus(record);
     }
 
     @Override

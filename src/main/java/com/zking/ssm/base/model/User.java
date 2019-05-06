@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ToString
 public class User {
-    private Integer pUserid;
+    private String pUserid;
 
     private String pUsername;
 
@@ -24,7 +24,7 @@ public class User {
 
     private Double pCredit;
 
-    public User(Integer pUserid, String pUsername, String pPassword, String pInvite, Integer pStatus, Integer pVip, Double pCapital, Double pUsable, Double pCredit) {
+    public User(String pUserid, String pUsername, String pPassword, String pInvite, Integer pStatus, Integer pVip, Double pCapital, Double pUsable, Double pCredit) {
         this.pUserid = pUserid;
         this.pUsername = pUsername;
         this.pPassword = pPassword;
@@ -40,11 +40,11 @@ public class User {
         super();
     }
 
-    public Integer getpUserid() {
+    public String getpUserid() {
         return pUserid;
     }
 
-    public void setpUserid(Integer pUserid) {
+    public void setpUserid(String pUserid) {
         this.pUserid = pUserid;
     }
 

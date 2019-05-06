@@ -17,7 +17,5 @@ public interface IUserService {
 
     int updateByPrimaryKey(User record);
 
-    int updatePstatus (User record);
-
     List<User> listUser(User user);
 }

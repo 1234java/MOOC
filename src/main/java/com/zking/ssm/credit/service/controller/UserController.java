@@ -22,7 +22,7 @@ public class UserController {
     @ModelAttribute
     public void init(Model model){
         User user = new User();
-        model.addAttribute("user",user);
+        model.addAttribute(user);
     }
 
     @RequestMapping(value = "/toLoad")
