@@ -39,9 +39,9 @@
             url:url,
             type:"post",
             data:"json",
+            async: false,
             success: function(msg) {
                 alert("Data Saved: " + msg);
-                alert("Data Saved: " + msg.length());
             }
 
         })
