@@ -81,7 +81,7 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('${ctx}/admin/userlist');">账号管理</a></li>
+                       onClick="openurl('${ctx}/admin/userindex');">账号管理</a></li>
 
             </ul>
         </div>
@@ -92,7 +92,7 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('classQuery.html');">认证管理</a></li>
+                       onClick="openurl('${ctx}/admin/attestation');">认证管理</a></li>
 
             </ul>
         </div>
@@ -107,11 +107,11 @@ ${ctx}
             <ul>
 
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('deletecomment.html');">用户信用管理</a></li>
+                       onClick="openurl('${ctx}/admin/cradit');">用户信用管理</a></li>
                 <li class="l"><a class="a" href="javascript:void(0);"
                        onClick="openurl('useredit.html');">用户额度管理</a></li>
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">举报信息管理</a></li>
+                       onClick="openurl('${ctx}/admin/cradit/report');">举报信息管理</a></li>
 
             </ul>
 
@@ -124,9 +124,9 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('studentQuery.html');">借贷申请处理</a></li>
-                <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('teacherQuery.html');">资金登记情况</a></li>
+                       onClick="openurl('${ctx}/admin/debit');">借贷申请处理</a></li>
+                <%--<li class="l"><a class="a" href="javascript:void(0);"
+                       onClick="openurl('teacherQuery.html');">资金登记情况</a></li>--%>
             </ul>
         </div>
 
@@ -158,7 +158,7 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li class="l"><a class="a" href="javascript:void(0);"
-                       onClick="openurl('afficheQuery.html');">评论删除</a></li>
+                       onClick="openurl('${ctx}/admin/comment');">评论删除</a></li>
             </ul>
         </div>
 

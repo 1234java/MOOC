@@ -30,6 +30,32 @@
     <button  class="btn btn-default" title="添加类别" data-dismiss="modal" data-toggle="modal" data-target="#drdc"><span class="glyphicon glyphicon-plus"></span></button>
 </div>
 
+<script type="text/javascript">
+
+    function s(){
+        var url ="${ctx}/system/borrowertypelist";
+        //alert(url);
+        $.ajax({
+            url:url,
+            type:"post",
+            data:"json",
+            success: function(msg) {
+                alert("Data Saved: " + msg);
+                alert("Data Saved: " + msg.length());
+            }
+
+        })
+
+    }
+
+
+
+
+
+
+
+
+</script>
 <div class="modal fade" data-backdrop="false" id="drdc" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -56,7 +82,7 @@
 
 
 
-<table class="table table-bordered table-hover table-responsive">
+<table class="table table-bordered table-hover table-responsive" id="tab">
     <tr>
         <th>编号</th>
         <th>类型名称</th>
@@ -66,7 +92,7 @@
         <td>1</td>
         <td>2</td>
         <td width="150px">
-            <a href="#" style="margin-right: 10px;" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
+            <a href="javascript:void(0);" onclick="s()" style="margin-right: 10px;" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
         </td>
     </tr>
 </table>
