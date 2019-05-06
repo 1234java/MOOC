@@ -1,12 +1,5 @@
 package com.zking.ssm.base.model;
 
-import lombok.Data;
-import lombok.ToString;
-import org.springframework.stereotype.Controller;
-
-@Data
-@ToString
-@Controller
 public class Root {
     private Integer rId;
 
@@ -16,11 +9,14 @@ public class Root {
 
     private Integer rStatus;
 
-    public Root(Integer rId, String rName, String rPassword, Integer rStatus) {
+    private String salt;
+
+    public Root(Integer rId, String rName, String rPassword, Integer rStatus, String salt) {
         this.rId = rId;
         this.rName = rName;
         this.rPassword = rPassword;
         this.rStatus = rStatus;
+        this.salt = salt;
     }
 
     public Root() {
@@ -57,5 +53,13 @@ public class Root {
 
     public void setrStatus(Integer rStatus) {
         this.rStatus = rStatus;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }
