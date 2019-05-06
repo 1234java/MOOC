@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Component
 @Data
@@ -18,6 +19,8 @@ public class BorrowerType implements Serializable {
         this.bTypeId = bTypeId;
         this.bTypeName = bTypeName;
     }
+
+    private List<Borrower> borrowerList;
 
     public BorrowerType() {
         super();

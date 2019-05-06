@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 
 @Component
 @ToString
-public class Borrower {
+public class Borrower implements Serializable {
 
     public static interface ValidateGroups{
 

@@ -9,8 +9,7 @@
     <!--1) 扫描com.zking.zf及子子孙孙包下的控制器(扫描范围过大，耗时)-->
     <!--<context:component-scan base-package="com.zking.ssm"/>-->
     <context:component-scan base-package="com.zking.ssm" use-default-filters="false">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
     </context:component-scan>
 
     <!--&lt;!&ndash;1) use-dafault-filters="false"的情况下，根据表达式包含(include-filter)或排除(exclude-filter)指定包&ndash;&gt;-->
@@ -37,12 +36,13 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/fonts/" mapping="/fonts/**"/>
 
     <!--4) 后台单独处理图片、样式、js等资源 -->
     <mvc:resources mapping="/admin/css/**" location="/admin/css/"/>
     <mvc:resources mapping="/admin/images/**" location="/admin/images/"/>
     <mvc:resources mapping="/admin/js/**" location="/admin/js/"/>
-
+    <mvc:resources location="/admin/fonts/" mapping="/admin/fonts/**"/>
     <!--1) 配置国际化资源文件 -->
     <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">-->
         <!--<property name="basenames">-->

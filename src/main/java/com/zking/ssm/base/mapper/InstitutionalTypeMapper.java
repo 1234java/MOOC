@@ -1,7 +1,12 @@
 package com.zking.ssm.base.mapper;
 
 import com.zking.ssm.base.model.InstitutionalType;
+import org.springframework.stereotype.Repository;
 
+/*
+机构类型
+ */
+@Repository
 public interface InstitutionalTypeMapper {
     int deleteByPrimaryKey(Integer iTypeid);
 

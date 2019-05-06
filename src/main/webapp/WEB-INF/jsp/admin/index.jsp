@@ -69,7 +69,7 @@ ${ctx}
             <li><a class="a" href="javascript:void(0);"
                    onClick="openurl('videoQuery.html');">系统字典</a></li>
             <li><a class="a" href="javascript:void(0);"
-                   onClick="openurl('uservideoQuery.html');">用户视频列表</a></li>
+                   onClick="openurl('uservideoQuery.html');">管理后台用户</a></li>
 
         </div>
         <div class="div2">
@@ -167,8 +167,7 @@ ${ctx}
                        onClick="openurl('afficheQuery.html');">发布新借贷</a></li>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('afficheAdd.html');">逾期的借款</a></li>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('afficheAdd.html');">借款明细</a></li>
+                <li><a class="a" href="${ctx}/adminBorrowing/toBorrowingDetails">借款明细</a></li>
 
             </ul>
         </div>

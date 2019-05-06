@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class Fund {
+public class Fund implements Serializable {
     private Integer fId;
 
     private String fPOId;

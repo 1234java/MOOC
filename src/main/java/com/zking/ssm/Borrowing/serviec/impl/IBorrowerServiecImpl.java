@@ -3,9 +3,12 @@ package com.zking.ssm.Borrowing.serviec.impl;
 import com.zking.ssm.Borrowing.serviec.IBorrowerServiec;
 import com.zking.ssm.base.mapper.BorrowerMapper;
 import com.zking.ssm.base.model.Borrower;
+import com.zking.ssm.base.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author mi
@@ -47,5 +50,10 @@ public class IBorrowerServiecImpl implements IBorrowerServiec {
     @Override
     public int updateByPrimaryKey(Borrower record) {
         return borrowerMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Borrower> listBorrower(Borrower borrower, PageBean pageBean) {
+        return borrowerMapper.listBorrower(borrower);
     }
 }

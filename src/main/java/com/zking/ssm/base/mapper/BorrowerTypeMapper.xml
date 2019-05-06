@@ -16,7 +16,22 @@
     from borrower_type
     where b_type_id = #{bTypeId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <resultMap id="lis" type="com.zking.ssm.base.model.BorrowerType" >
+      <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
+      <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
+  </resultMap>
+
+
+    <select id="list"  resultMap="lis" parameterType="com.zking.ssm.base.model.BorrowerType">
+      SELECT * FROM  borrower_type where 1=1
+      <if test="bTypeName != null and bTypeName!= ''">
+        and b_type_name like  concat('%',#{bTypeName,jdbcType=VARCHAR},'%')
+      </if>
+
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from borrower_type
     where b_type_id = #{bTypeId,jdbcType=INTEGER}
   </delete>

@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class InvestmentType {
+public class InvestmentType implements Serializable{
     private Integer iTypeid;
 
     private String iTypename;

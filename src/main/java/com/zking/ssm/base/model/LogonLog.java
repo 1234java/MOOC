@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Component
 @Data
 @ToString
-public class LogonLog {
+public class LogonLog implements Serializable{
     private Integer lId;
 
     private String lPOId;

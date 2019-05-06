@@ -3,6 +3,7 @@
 <mapper namespace="com.zking.ssm.base.mapper.OrganizationMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.Organization" >
     <constructor >
+      <idArg column="o_oid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="o_organization" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="o_password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="o_institutional_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -19,21 +20,61 @@
       <arg column="o_credit" jdbcType="DOUBLE" javaType="java.lang.Double" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.Organization" >
+      <id column="o_oid" property="oOid" javaType="java.lang.Integer" />
+      <result column="o_organization" property="oOrganization" javaType="java.lang.String" />
+      <result column="o_password" property="oPassword" javaType="java.lang.String" />
+      <result column="o_institutional_type" property="oInstitutionalType" javaType="java.lang.Integer" />
+      <result column="o_address" property="oAddress" javaType="java.lang.String" />
+      <result column="o_linkman" property="oLinkman" javaType="java.lang.String" />
+      <result column="o_sex" property="oSex" javaType="java.lang.String" />
+      <result column="o_phone" property="oPhone" javaType="java.lang.String" />
+      <result column="o_fixed_number" property="oFixedNumber" javaType="java.lang.String" />
+      <result column="o_email" property="oEmail" javaType="java.lang.String" />
+      <result column="o_invite" property="oInvite" javaType="java.lang.String" />
+      <result column="o_status" property="oStatus" javaType="java.lang.Integer" />
+      <result column="o_vip" property="oVip" javaType="java.lang.Integer" />
+      <result column="o_capital" property="oCapital" javaType="java.lang.Double" />
+      <result column="o_credit" property="oCredit" javaType="java.lang.Double" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    o_oid, o_organization, o_password, o_institutional_type, o_address, o_linkman, o_sex, 
+    o_phone, o_fixed_number, o_email, o_invite, o_status, o_vip, o_capital, o_credit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where o_oid = #{oOid,jdbcType=INTEGER}
+  </select>
+  <select id="list" resultMap="row1" parameterType="com.zking.ssm.base.model.Organization" >
+    SELECT * FROM organization WHERE 1=1;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organization
+    where o_oid = #{oOid,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Organization" >
-    insert into organization (o_organization, o_password, o_institutional_type, 
-      o_address, o_linkman, o_sex, 
-      o_phone, o_fixed_number, o_email, 
-      o_invite, o_status, o_vip, 
-      o_capital, o_credit)
-    values (#{oOrganization,jdbcType=VARCHAR}, #{oPassword,jdbcType=VARCHAR}, #{oInstitutionalType,jdbcType=INTEGER}, 
-      #{oAddress,jdbcType=VARCHAR}, #{oLinkman,jdbcType=VARCHAR}, #{oSex,jdbcType=VARCHAR}, 
-      #{oPhone,jdbcType=VARCHAR}, #{oFixedNumber,jdbcType=VARCHAR}, #{oEmail,jdbcType=VARCHAR}, 
-      #{oInvite,jdbcType=VARCHAR}, #{oStatus,jdbcType=INTEGER}, #{oVip,jdbcType=INTEGER}, 
-      #{oCapital,jdbcType=DOUBLE}, #{oCredit,jdbcType=DOUBLE})
+    insert into organization (o_organization, o_password,
+      o_institutional_type, o_address, o_linkman, 
+      o_sex, o_phone, o_fixed_number, 
+      o_email, o_invite, o_status, 
+      o_vip, o_capital, o_credit
+      )
+    values (#{oOrganization,jdbcType=VARCHAR}, #{oPassword,jdbcType=VARCHAR},
+      #{oInstitutionalType,jdbcType=INTEGER}, #{oAddress,jdbcType=VARCHAR}, #{oLinkman,jdbcType=VARCHAR}, 
+      #{oSex,jdbcType=VARCHAR}, #{oPhone,jdbcType=VARCHAR}, #{oFixedNumber,jdbcType=VARCHAR}, 
+      #{oEmail,jdbcType=VARCHAR}, #{oInvite,jdbcType=VARCHAR}, #{oStatus,jdbcType=INTEGER}, 
+      #{oVip,jdbcType=INTEGER}, #{oCapital,jdbcType=DOUBLE}, #{oCredit,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Organization" >
     insert into organization
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oOid != null" >
+        o_oid,
+      </if>
       <if test="oOrganization != null" >
         o_organization,
       </if>
@@ -78,6 +119,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oOid != null" >
+        #{oOid,jdbcType=INTEGER},
+      </if>
       <if test="oOrganization != null" >
         #{oOrganization,jdbcType=VARCHAR},
       </if>
@@ -122,4 +166,70 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.Organization" >
+    update organization
+    <set >
+      <if test="oOrganization != null" >
+        o_organization = #{oOrganization,jdbcType=VARCHAR},
+      </if>
+      <if test="oPassword != null" >
+        o_password = #{oPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oInstitutionalType != null" >
+        o_institutional_type = #{oInstitutionalType,jdbcType=INTEGER},
+      </if>
+      <if test="oAddress != null" >
+        o_address = #{oAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="oLinkman != null" >
+        o_linkman = #{oLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="oSex != null" >
+        o_sex = #{oSex,jdbcType=VARCHAR},
+      </if>
+      <if test="oPhone != null" >
+        o_phone = #{oPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="oFixedNumber != null" >
+        o_fixed_number = #{oFixedNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="oEmail != null" >
+        o_email = #{oEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="oInvite != null" >
+        o_invite = #{oInvite,jdbcType=VARCHAR},
+      </if>
+      <if test="oStatus != null" >
+        o_status = #{oStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oVip != null" >
+        o_vip = #{oVip,jdbcType=INTEGER},
+      </if>
+      <if test="oCapital != null" >
+        o_capital = #{oCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="oCredit != null" >
+        o_credit = #{oCredit,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where o_oid = #{oOid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.Organization" >
+    update organization
+    set o_organization = #{oOrganization,jdbcType=VARCHAR},
+      o_password = #{oPassword,jdbcType=VARCHAR},
+      o_institutional_type = #{oInstitutionalType,jdbcType=INTEGER},
+      o_address = #{oAddress,jdbcType=VARCHAR},
+      o_linkman = #{oLinkman,jdbcType=VARCHAR},
+      o_sex = #{oSex,jdbcType=VARCHAR},
+      o_phone = #{oPhone,jdbcType=VARCHAR},
+      o_fixed_number = #{oFixedNumber,jdbcType=VARCHAR},
+      o_email = #{oEmail,jdbcType=VARCHAR},
+      o_invite = #{oInvite,jdbcType=VARCHAR},
+      o_status = #{oStatus,jdbcType=INTEGER},
+      o_vip = #{oVip,jdbcType=INTEGER},
+      o_capital = #{oCapital,jdbcType=DOUBLE},
+      o_credit = #{oCredit,jdbcType=DOUBLE}
+    where o_oid = #{oOid,jdbcType=INTEGER}
+  </update>
 </mapper>
