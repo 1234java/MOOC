@@ -1,12 +1,10 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.credit.service;
 
 import com.zking.ssm.base.model.User;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface UserMapper {
+public interface IUserService {
     int deleteByPrimaryKey(String pUserid);
 
     int insert(User record);
@@ -18,6 +16,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int updatePstatus (User record);
 
     List<User> listUser(User user);
 }

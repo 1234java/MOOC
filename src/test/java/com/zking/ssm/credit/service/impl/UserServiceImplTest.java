@@ -35,7 +35,7 @@ public class UserServiceImplTest extends BaseTestCase {
         user.setpPassword("666666");
         user.setpInvite("老米头");
         user.setpStatus(1);
-        user.setpVip(6);
+        user.setpVip(5);
         user.setpCapital(10000d);
         user.setpUsable(5000d);
         user.setpCredit(100d);

@@ -54,6 +54,6 @@ public class IBorrowerServiecImpl implements IBorrowerServiec {
 
     @Override
     public List<Borrower> listBorrower(Borrower borrower, PageBean pageBean) {
-        return borrowerMapper.listBorrower(borrower);
+        return null;
     }
 }
