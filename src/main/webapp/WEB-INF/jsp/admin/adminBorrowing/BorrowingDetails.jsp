@@ -46,13 +46,13 @@
 
     </style>
 </head>
-<body onload="mya()">
+<body >
 <script type="text/javascript">
 
 
 
     $(function (){
-        alert("李江涛傻狗");
+        //alert("李江涛傻狗");
      $("#btn1").click(function() {
             var userIdcard = $("#menuname").val();
             alert(userIdcard)
@@ -67,8 +67,6 @@
                         $("#list2").remove();
                     }
                     $.each(data,function (index,res) {
-                        alert(res.borrowerTypeList.length);
-
                             for(var i=0;i<res.borrowerTypeList.length ;i++){
                             var str="<tr id='list2'> <td>"+res.bName+"</td>"+
                                 "<td>"+res.bUsername+"</td>"
@@ -79,7 +77,7 @@
                                 +
                                 "<td>投资中</td>"
 
-                                +"<td><a href=''>详情</a></td></tr>";
+                                +"<td><a href='http://localhost:8080/MOOC/adminBorrowing'>详情</a></td></tr>";
                             }
                             $("thead").append(str);
 
@@ -96,10 +94,11 @@
 
 
 </script>
-<f:form id="form1" cssClass="form-inline definewidth m20" action=""   method="get">
+<f:form id="form1" cssClass="form-inline definewidth m20" action="${ctx}/adminBorrowing/listBorrowingDetails" modelAttribute="borrower"  method="get">
     <font color="#33ccff"><strong>借款名称：</strong></font>
     <input type="text" name="bName" id="menuname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button  type="button"  id="btn1" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+    <%--<button  type="button"  id="btn1" class="btn btn-primary">查询</button>&nbsp;&nbsp;--%>
+    <button  type="submit"   class="btn btn-primary">查询</button>&nbsp;&nbsp;
 </f:form>
 <label id="UserError"></label>
 <table class="table table-bordered table-hover definewidth m10">
@@ -114,20 +113,30 @@
     </tr>
     </thead>
 
-    <%--<c:forEach var="b" items="${borrower}">--%>
-        <%--<tr>--%>
-            <%--<td>${b.bName}</td>--%>
-            <%--<td>${b.bUsername}</td>--%>
-            <%--<c:forEach var="c" items="${b.borrowerTypeList}">--%>
-                <%--<td>${c.bTypeName}</td>--%>
-            <%--</c:forEach>--%>
-            <%--<td>${b.bMoneyDeadline}</td>--%>
-            <%--<c:if test="${b.bStatus}==0">--%>
-                <%--<td>未处理</td>--%>
-            <%--</c:if>--%>
-            <%--<td><a href="">详情</a></td>--%>
-        <%--</tr>--%>
-    <%--</c:forEach>--%>
+    <c:forEach var="b" items="${borrowers}">
+        <tr>
+            <td>${b.bName}</td>
+            <td>${b.bUsername}</td>
+            <c:forEach var="c" items="${b.borrowerTypeList}">
+                <td>${c.bTypeName}</td>
+            </c:forEach>
+            <td>${b.bMoneyDeadline}</td>
+            <td>
+            <c:if test="${b.bStatus==0}">
+                未处理
+            </c:if>
+                <c:if test="${b.bStatus==1}">
+                    处理中
+
+                </c:if>
+                <c:if test="${b.bStatus==2}">
+                    处理中
+
+                </c:if>
+            </td>
+            <td><a href="">详情</a></td>
+        </tr>
+    </c:forEach>
 
 
 

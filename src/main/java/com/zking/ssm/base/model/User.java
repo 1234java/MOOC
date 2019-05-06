@@ -1,10 +1,12 @@
 package com.zking.ssm.base.model;
 
+import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 @Component
 @ToString
+@Data
 public class User {
     private Integer pUserid;
 
