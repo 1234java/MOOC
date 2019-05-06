@@ -23,6 +23,7 @@
     <script type="text/javascript" src="${ctx}/admin/js/bootstrap.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/ckform.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/common.js"></script>
+    <script type="text/javascript" src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
 
     <style type="text/css">
         body {
@@ -45,31 +46,89 @@
 
     </style>
 </head>
-<body>
-<form class="form-inline definewidth m20" action="#" method="get">
-    <font color="#33ccff"><strong>公告标题：</strong></font>
-    <input type="text" name="menuname" id="menuname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">添加公告</button>
-</form>
+<body onload="mya()">
+<script type="text/javascript">
+
+
+
+    $(function (){
+        alert("李江涛傻狗");
+     $("#btn1").click(function() {
+            var userIdcard = $("#menuname").val();
+            alert(userIdcard)
+            var li=document.getElementById("listStudent");
+            $.ajax({
+                url:"http://localhost:8080/MOOC/adminBorrowing/listBorrowingDetails",
+                type:"post",
+                data:{bName:userIdcard},
+                success:function (data) {
+                    alert("!!!")
+                    for(var o=0;o<data.length;o++){
+                        $("#list2").remove();
+                    }
+                    $.each(data,function (index,res) {
+                        alert(res.borrowerTypeList.length);
+
+                            for(var i=0;i<res.borrowerTypeList.length ;i++){
+                            var str="<tr id='list2'> <td>"+res.bName+"</td>"+
+                                "<td>"+res.bUsername+"</td>"
+                                +
+                                "<td>"+res.borrowerTypeList[i].bTypeName+"</td>"
+                                +
+                                "<td>"+res.bMoneyDeadline+"</td>"
+                                +
+                                "<td>投资中</td>"
+
+                                +"<td><a href=''>详情</a></td></tr>";
+                            }
+                            $("thead").append(str);
+
+                    })
+
+                },
+                error:function () {
+                    alert("错误！")
+                }
+            })
+
+       });
+    });
+
+
+</script>
+<f:form id="form1" cssClass="form-inline definewidth m20" action=""   method="get">
+    <font color="#33ccff"><strong>借款名称：</strong></font>
+    <input type="text" name="bName" id="menuname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <button  type="button"  id="btn1" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+</f:form>
+<label id="UserError"></label>
 <table class="table table-bordered table-hover definewidth m10">
-    <thead>
+    <thead >
     <tr>
-        <th>公告标题</th>
+        <th>借款名称</th>
+        <th>申请人</th>
+        <th>借款类型</th>
+        <th>借款期限</th>
+        <th>状态</th>
         <th>详情</th>
-        <th>发布时间</th>
-        <th>失效时间</th>
-        <th>修改</th>
-        <th>删除</th>
     </tr>
     </thead>
-    <tr>
-        <td>人生何处不青山</td>
-        <td><a href="#" id="xiangqing"  rel="popover"  data-original-title="公告标题"data-content="后来回头的时候，才发现那时候可能是最好的时光，再也回不去的时光，再也做不了的事，再也鼓不起的勇气，再也浪不起来的我们">详情</a></td>
-        <td>2016-4-4</td>
-        <td>2016-4-8</td>
-        <td><a href="placardEdit.html">修改</a></td>
-        <td><a href="#">删除</a></td>
-    </tr>
+
+    <%--<c:forEach var="b" items="${borrower}">--%>
+        <%--<tr>--%>
+            <%--<td>${b.bName}</td>--%>
+            <%--<td>${b.bUsername}</td>--%>
+            <%--<c:forEach var="c" items="${b.borrowerTypeList}">--%>
+                <%--<td>${c.bTypeName}</td>--%>
+            <%--</c:forEach>--%>
+            <%--<td>${b.bMoneyDeadline}</td>--%>
+            <%--<c:if test="${b.bStatus}==0">--%>
+                <%--<td>未处理</td>--%>
+            <%--</c:if>--%>
+            <%--<td><a href="">详情</a></td>--%>
+        <%--</tr>--%>
+    <%--</c:forEach>--%>
+
 
 
 </table>

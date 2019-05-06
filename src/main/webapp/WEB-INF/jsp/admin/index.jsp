@@ -27,6 +27,7 @@
                     });
             });
         function openurl(url) {
+            alert(url);
             var rframe = parent.document.getElementById("rightFrame");
             rframe.src = url;
         }
@@ -146,7 +147,10 @@ ${ctx}
                        onClick="openurl('afficheQuery.html');">发布新借贷</a></li>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('afficheAdd.html');">逾期的借款</a></li>
-                <li><a class="a" href="${ctx}/adminBorrowing/toBorrowingDetails">借款明细</a></li>
+                <li>
+                    <a class="a" href="javascript:void(0);" onClick="openurl('${ctx}/adminBorrowing/toBorrowingDetails');">借款明细</a>
+                    <%--<a class="a" href="${ctx}/adminBorrowing/toBorrowingDetails">借款明细</a>--%>
+                </li>
 
             </ul>
         </div>
