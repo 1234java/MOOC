@@ -2,38 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zking.ssm.base.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.User" >
-    <constructor >
-      <idArg column="p_userid" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="p_username" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="p_password" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="p_invite" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="p_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="p_vip" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="p_capital" jdbcType="DOUBLE" javaType="java.lang.Double" />
-      <arg column="p_usable" jdbcType="DOUBLE" javaType="java.lang.Double" />
-      <arg column="p_credit" jdbcType="DOUBLE" javaType="java.lang.Double" />
-    </constructor>
+  <constructor >
+    <idArg column="p_userid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    <arg column="p_username" jdbcType="VARCHAR" javaType="java.lang.String" />
+    <arg column="p_password" jdbcType="VARCHAR" javaType="java.lang.String" />
+    <arg column="p_invite" jdbcType="VARCHAR" javaType="java.lang.String" />
+    <arg column="p_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    <arg column="p_vip" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    <arg column="p_capital" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    <arg column="p_usable" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    <arg column="p_credit" jdbcType="DOUBLE" javaType="java.lang.Double" />
+  </constructor>
+</resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.User" >
+      <id column="p_userid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="p_username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="p_password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="p_invite" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="p_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="p_vip" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="p_capital" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <result column="p_usable" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <result column="p_credit" jdbcType="DOUBLE" javaType="java.lang.Double" />
   </resultMap>
   <sql id="Base_Column_List" >
     p_userid, p_username, p_password, p_invite, p_status, p_vip, p_capital, p_usable, 
     p_credit
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from p_user
-    where p_userid = #{pUserid,jdbcType=VARCHAR}
+    where p_userid = #{pUserid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <select id="list" resultMap="row1">
+    SELECT * FROM p_user WHERE 1=1;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from p_user
-    where p_userid = #{pUserid,jdbcType=VARCHAR}
+    where p_userid = #{pUserid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.User" >
-    insert into p_user (p_userid, p_username, p_password, 
+    insert into p_user (p_username, p_password,
       p_invite, p_status, p_vip, 
       p_capital, p_usable, p_credit
       )
-    values (#{pUserid,jdbcType=VARCHAR}, #{pUsername,jdbcType=VARCHAR}, #{pPassword,jdbcType=VARCHAR}, 
+    values (#{pUsername,jdbcType=VARCHAR}, #{pPassword,jdbcType=VARCHAR},
       #{pInvite,jdbcType=VARCHAR}, #{pStatus,jdbcType=INTEGER}, #{pVip,jdbcType=INTEGER}, 
       #{pCapital,jdbcType=DOUBLE}, #{pUsable,jdbcType=DOUBLE}, #{pCredit,jdbcType=DOUBLE}
       )
@@ -71,7 +86,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pUserid != null" >
-        #{pUserid,jdbcType=VARCHAR},
+        #{pUserid,jdbcType=INTEGER},
       </if>
       <if test="pUsername != null" >
         #{pUsername,jdbcType=VARCHAR},
@@ -127,7 +142,7 @@
         p_credit = #{pCredit,jdbcType=DOUBLE},
       </if>
     </set>
-    where p_userid = #{pUserid,jdbcType=VARCHAR}
+    where p_userid = #{pUserid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.User" >
     update p_user
@@ -139,6 +154,6 @@
       p_capital = #{pCapital,jdbcType=DOUBLE},
       p_usable = #{pUsable,jdbcType=DOUBLE},
       p_credit = #{pCredit,jdbcType=DOUBLE}
-    where p_userid = #{pUserid,jdbcType=VARCHAR}
+    where p_userid = #{pUserid,jdbcType=INTEGER}
   </update>
 </mapper>

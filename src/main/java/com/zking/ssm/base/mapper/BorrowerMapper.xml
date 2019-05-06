@@ -8,7 +8,7 @@
       <arg column="b_username" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="b_money" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="b_rate" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="b_money_deadline" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="b_money_deadline" jdbcType="TIMESTAMP" javaType="java.sql.Date" />
       <arg column="b_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="b_house" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="b_total_value" jdbcType="DOUBLE" javaType="java.lang.Double" />

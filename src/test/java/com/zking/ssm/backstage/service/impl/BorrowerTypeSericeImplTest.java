@@ -6,6 +6,8 @@ import com.zking.ssm.base.model.BorrowerType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class BorrowerTypeSericeImplTest extends BaseTestCase {
@@ -43,5 +45,18 @@ public class BorrowerTypeSericeImplTest extends BaseTestCase {
 
     @Test
     public void updateByPrimaryKey() {
+    }
+
+    @Test
+    public void list() {
+        borrowerType.setbTypeName("d");
+
+        pageBean.setRows(2);
+        List<BorrowerType> list = typeSerice.list(borrowerType, pageBean);
+        for (BorrowerType type : list) {
+            System.out.println(type);
+        }
+
+
     }
 }

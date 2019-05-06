@@ -9,7 +9,10 @@
     <!--1) 注解驱动 -->
     <context:annotation-config/>
     <!--2) 用注解方式注入bean，并指定查找范围：com.zking.oa及子子孙孙包-->
-    <context:component-scan base-package="com.zking.ssm"/>
+    <context:component-scan base-package="com.zking.ssm">
+        <context:exclude-filter  type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+
+    </context:component-scan>
 
     <!-- 已在spring.xml中配置，只能引入一次 -->
     <!--2. 引入外置jdbc配置文件 -->
