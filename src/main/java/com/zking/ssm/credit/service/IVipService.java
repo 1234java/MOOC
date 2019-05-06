@@ -1,12 +1,10 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.credit.service;
 
 import com.zking.ssm.base.model.Vip;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface VipMapper {
+public interface IVipService {
     int deleteByPrimaryKey(Integer vId);
 
     int insert(Vip record);

@@ -119,6 +119,27 @@ ${ctx}
         </div>
 
         <div class="div2">
+            <div class="gggl"></div>
+            会员授信管理
+        </div>
+        <div class="div3">
+
+            <ul>
+                <li>
+                    <a class="a" href="javascript:void(0);" onClick="openurl('${ctx}/credit/user/listUser');">会员信用管理</a>
+                </li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('deletecomment.html');">会员额度管理</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('useredit.html');">举报信息管理</a></li>
+                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('useredit.html');">会员借贷资料管理</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="div2">
             <div class="yhgl"></div>
             申请管理
         </div>

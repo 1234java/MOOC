@@ -14,6 +14,18 @@
       <arg column="p_credit" jdbcType="DOUBLE" javaType="java.lang.Double" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.User" >
+    <id column="p_userid" property="pUserid" javaType="java.lang.String" />
+    <result column="p_username" property="pUsername" javaType="java.lang.String" />
+    <result column="p_password" property="pPassword" javaType="java.lang.String" />
+    <result column="p_invite" property="pInvite" javaType="java.lang.String" />
+    <result column="p_status" property="pStatus" javaType="java.lang.Integer" />
+    <result column="p_vip" property="pVip" javaType="java.lang.Integer" />
+    <result column="p_capital" property="pCapital" javaType="java.lang.Double" />
+    <result column="p_usable" property="pUsable" javaType="java.lang.Double" />
+    <result column="p_credit" property="pCredit" javaType="java.lang.Double" />
+  </resultMap>
   <sql id="Base_Column_List" >
     p_userid, p_username, p_password, p_invite, p_status, p_vip, p_capital, p_usable, 
     p_credit
@@ -24,7 +36,15 @@
     from p_user
     where p_userid = #{pUserid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="listUser" resultMap="row1">
+      SELECT *
+      FROM p_user
+      WHERE 1=1
+      <if test="null!=pUsername and ''!=pUsername" >
+        AND p_username LIKE concat("%",#{pUsername,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from p_user
     where p_userid = #{pUserid,jdbcType=VARCHAR}
   </delete>
@@ -131,14 +151,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.User" >
     update p_user
-    set p_username = #{pUsername,jdbcType=VARCHAR},
-      p_password = #{pPassword,jdbcType=VARCHAR},
-      p_invite = #{pInvite,jdbcType=VARCHAR},
-      p_status = #{pStatus,jdbcType=INTEGER},
-      p_vip = #{pVip,jdbcType=INTEGER},
-      p_capital = #{pCapital,jdbcType=DOUBLE},
-      p_usable = #{pUsable,jdbcType=DOUBLE},
-      p_credit = #{pCredit,jdbcType=DOUBLE}
-    where p_userid = #{pUserid,jdbcType=VARCHAR}
+    set p_credit = #{pCredit,jdbcType=DOUBLE}
+     where p_userid = #{pUserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updatePstatus" parameterType="com.zking.ssm.base.model.User">
+    update p_user
+    set p_status = #{pStatus,jdbcType=INTEGER}
+     where p_userid = #{pUserid,jdbcType=VARCHAR}
   </update>
 </mapper>

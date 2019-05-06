@@ -11,6 +11,15 @@
       <arg column="v_enterprise_release" jdbcType="DOUBLE" javaType="java.lang.Double" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.Vip" >
+    <id column="v_id" property="vId" javaType="java.lang.Integer" />
+    <result column="v_vip" property="vVip" javaType="java.lang.Integer" />
+    <result column="v_money" property="vMoney" javaType="java.lang.Double" />
+    <result column="v_release" property="vRelease" javaType="java.lang.Double" />
+    <result column="v_enterprise_money" property="vEnterpriseMoney" javaType="java.lang.Double" />
+    <result column="v_enterprise_release" property="vEnterpriseRelease" javaType="java.lang.Double" />
+  </resultMap>
   <sql id="Base_Column_List" >
     v_id, v_vip, v_money, v_release, v_enterprise_money, v_enterprise_release
   </sql>
@@ -20,15 +29,20 @@
     from vip
     where v_id = #{vId,jdbcType=INTEGER}
   </select>
+  <select id="listVip" resultMap="row1">
+    SELECT *
+    FROM vip
+    WHERE 1=1
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from vip
     where v_id = #{vId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Vip" >
-    insert into vip (v_id, v_vip, v_money, 
+    insert into vip (v_vip, v_money,
       v_release, v_enterprise_money, v_enterprise_release
       )
-    values (#{vId,jdbcType=INTEGER}, #{vVip,jdbcType=INTEGER}, #{vMoney,jdbcType=DOUBLE}, 
+    values ( #{vVip,jdbcType=INTEGER}, #{vMoney,jdbcType=DOUBLE},
       #{vRelease,jdbcType=DOUBLE}, #{vEnterpriseMoney,jdbcType=DOUBLE}, #{vEnterpriseRelease,jdbcType=DOUBLE}
       )
   </insert>
