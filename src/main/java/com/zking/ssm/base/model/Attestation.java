@@ -25,8 +25,17 @@ public class Attestation  implements Serializable {
     private String aMessage;
 
     private String aState;
+    private  User user;
 
-    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState,User user) {
         this.aId = aId;
         this.pId = pId;
         this.aName = aName;
@@ -35,6 +44,7 @@ public class Attestation  implements Serializable {
         this.aFront = aFront;
         this.aMessage = aMessage;
         this.aState = aState;
+        this.user=user;
     }
 
     public Attestation() {

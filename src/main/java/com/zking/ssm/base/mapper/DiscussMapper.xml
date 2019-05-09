@@ -18,7 +18,36 @@
     from discuss
     where d_id = #{dId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <resultMap id="listmap" type="com.zking.ssm.base.model.Discuss" >
+      <id column="d_id" property="dId" javaType="java.lang.Integer" />
+      <result column="d_p_id" property="dPId" javaType="java.lang.String" />
+      <result column="d_time" property="dTime" javaType="java.util.Date" />
+      <result column="d_content" property="dContent" javaType="java.lang.String" />
+      <collection property="user" ofType="com.zking.ssm.base.model.User">
+        <id column="p_userid" property="pUserid" javaType="java.lang.String" />
+        <result column="p_username" property="pUsername" javaType="java.lang.String" />
+        <result column="p_password" property="pPassword" javaType="java.lang.String" />
+        <result column="p_invite" property="pInvite" javaType="java.lang.String" />
+        <result column="p_status" property="pStatus" javaType="java.lang.Integer" />
+        <result column="p_vip" property="pVip" javaType="java.lang.Integer" />
+        <result column="p_capital" property="pCapital" javaType="java.lang.Double" />
+        <result column="p_usable" property="pUsable" javaType="java.lang.Double" />
+        <result column="p_credit" property="pCredit" javaType="java.lang.Double" />
+
+      </collection>
+  </resultMap>
+
+    <select id="list" resultMap="listmap" parameterType="com.zking.ssm.base.model.Discuss">
+      SELECT * FROM discuss  a JOIN p_user b  WHERE 1=1
+       <if test="dContent !=null and dContent !=''">
+         and  a.d_content like concat('%',#{dContent,jdbcType=VARCHAR},'%')
+       </if>
+
+
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from discuss
     where d_id = #{dId,jdbcType=INTEGER}
   </delete>
