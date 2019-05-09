@@ -17,5 +17,6 @@ public interface IBorrowerTypeSerice {
     int updateByPrimaryKeySelective(BorrowerType borrowerType);
 
     int updateByPrimaryKey(BorrowerType borrowerType);
-    List<BorrowerType> list(BorrowerType borrowerType, PageBean pageBean);
+
+    List<BorrowerType> list(BorrowerType borrowerType,PageBean pageBean);
 }

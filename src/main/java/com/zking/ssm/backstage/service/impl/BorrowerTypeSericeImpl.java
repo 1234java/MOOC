@@ -27,6 +27,7 @@ public class BorrowerTypeSericeImpl implements IBorrowerTypeSerice {
 
     @Override
     public int insert(BorrowerType borrowerType) {
+
         return typeMapper.insert(borrowerType);
     }
 
@@ -49,6 +50,7 @@ public class BorrowerTypeSericeImpl implements IBorrowerTypeSerice {
     @Override
     public int updateByPrimaryKey(BorrowerType borrowerType)
     {
+
         return typeMapper.updateByPrimaryKey(borrowerType);
     }
 

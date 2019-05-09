@@ -70,11 +70,11 @@
                         </tr>
                         <tr>
                             <td><label>身份证正面照:</label> </td>
-                            <td><img src="../img/01.jpg"  style="width: 200px;height: 200px;"/></td>
+                            <td><img src="../img/01.jpg"  style="width: 400px;height: 200px;"/></td>
                         </tr>
                         <tr>
                             <td><label>身份证反面照:</label> </td>
-                            <td><img src="../img/01.jpg"  style="width: 200px;height: 200px;"/></td>
+                            <td><img src="../img/01.jpg"  style="width: 400px;height: 200px;"/></td>
                         </tr>
                         <tr>
                             <td>失败原因：</td>

@@ -3,6 +3,8 @@ package com.zking.ssm.base.mapper;
 import com.zking.ssm.base.model.InstitutionalType;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /*
 机构类型
  */
@@ -19,4 +21,7 @@ public interface InstitutionalTypeMapper {
     int updateByPrimaryKeySelective(InstitutionalType record);
 
     int updateByPrimaryKey(InstitutionalType record);
+
+
+    List<InstitutionalType> list(InstitutionalType institutionalType);
 }

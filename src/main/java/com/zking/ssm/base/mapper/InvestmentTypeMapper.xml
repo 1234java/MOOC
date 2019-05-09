@@ -16,7 +16,27 @@
     from investment_type
     where i_typeid = #{iTypeid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <resultMap id="list" type="com.zking.ssm.base.model.InvestmentType" >
+      <id column="i_typeid" property="iTypeid" javaType="java.lang.Integer" />
+      <result column="i_typename" property="iTypename" javaType="java.lang.String" />
+  </resultMap>
+
+
+    <select id="list" resultMap="list" parameterType="com.zking.ssm.base.model.InvestmentType">
+      SELECT * FROM  investment_type WHERE 1=1
+      <if test="iTypename != null and iTypename!= ''">
+
+        and i_typename LIKE concat('%',#{iTypename,jdbcType=VARCHAR},'%')
+
+      </if>
+
+
+
+
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from investment_type
     where i_typeid = #{iTypeid,jdbcType=INTEGER}
   </delete>
