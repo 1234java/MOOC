@@ -56,6 +56,7 @@
     <ehcache.version>2.10.0</ehcache.version>
 
 
+    <jackson.version>2.9.3</jackson.version>
 
     <!--hibernate-validator-->
     <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
@@ -411,7 +412,21 @@ JDBC驱动 ********************** -->
       <version>${hibernate-validator.version}</version>
     </dependency>
 
-
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
