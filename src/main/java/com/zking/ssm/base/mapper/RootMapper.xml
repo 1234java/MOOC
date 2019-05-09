@@ -8,10 +8,22 @@
       <arg column="r_password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="r_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="salt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="credentials" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.Root" >
+      <id column="r_id" property="rId" javaType="java.lang.Integer" />
+      <result column="r_name" property="rName" javaType="java.lang.String" />
+      <result column="r_password" property="rPassword" javaType="java.lang.String" />
+      <result column="r_status" property="rStatus" javaType="java.lang.Integer" />
+      <result column="salt" property="salt" javaType="java.lang.String" />
+    <result column="credentials" property="credentials" javaType="java.lang.String" />
+  </resultMap>
+
+
   <sql id="Base_Column_List" >
-    r_id, r_name, r_password, r_status, salt
+    r_id, r_name, r_password, r_status, salt,credentials
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,15 +31,30 @@
     from root
     where r_id = #{rId,jdbcType=INTEGER}
   </select>
+  <select id="selectByRName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select *
+    from root
+    where r_name =#{rName,jdbcType=VARCHAR}
+
+  </select>
+  <select id="list" resultMap="row1" parameterType="com.zking.ssm.base.model.Root" >
+  SELECT *
+  FROM root
+  WHERE 1=1
+    <if test="null!=rName and ''!=rName">
+      AND r_name LIKE concat("%",#{rName,jdbcType=VARCHAR},"%")
+
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from root
     where r_id = #{rId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Root" >
     insert into root (r_id, r_name, r_password, 
-      r_status, salt)
+      r_status, salt,credentials)
     values (#{rId,jdbcType=INTEGER}, #{rName,jdbcType=VARCHAR}, #{rPassword,jdbcType=VARCHAR}, 
-      #{rStatus,jdbcType=INTEGER}, #{salt,jdbcType=VARCHAR})
+      #{rStatus,jdbcType=INTEGER}, #{salt,jdbcType=VARCHAR},#{credentials,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.ssm.base.model.Root" >
     insert into root
@@ -47,6 +74,9 @@
       <if test="salt != null" >
         salt,
       </if>
+      <if test="credentials != null" >
+        credentials,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="rId != null" >
@@ -63,6 +93,9 @@
       </if>
       <if test="salt != null" >
         #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="credentials != null" >
+        #{credentials,jdbcType=VARCHAR}),
       </if>
     </trim>
   </insert>
@@ -81,6 +114,9 @@
       <if test="salt != null" >
         salt = #{salt,jdbcType=VARCHAR},
       </if>
+      <if test="credentials != null" >
+        credentials = #{credentials,jdbcType=VARCHAR},
+      </if>
     </set>
     where r_id = #{rId,jdbcType=INTEGER}
   </update>
@@ -90,6 +126,7 @@
       r_password = #{rPassword,jdbcType=VARCHAR},
       r_status = #{rStatus,jdbcType=INTEGER},
       salt = #{salt,jdbcType=VARCHAR}
+      credentials=#{credentials,jdbcType=VARCHAR}
     where r_id = #{rId,jdbcType=INTEGER}
   </update>
 </mapper>

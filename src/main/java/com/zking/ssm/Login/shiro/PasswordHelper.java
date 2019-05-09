@@ -72,7 +72,7 @@ public class PasswordHelper {
         String credentials = createCredentials("888888", salt);
         System.out.println(credentials);
         System.out.println(credentials.length());
-        boolean b = checkCredentials("999999", salt, credentials);
+        boolean b = checkCredentials("888888", salt, credentials);
         System.out.println(b);
     }
 }

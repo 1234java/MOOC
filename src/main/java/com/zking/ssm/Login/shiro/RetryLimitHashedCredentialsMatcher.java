@@ -39,6 +39,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         String username = (String) token.getPrincipal();
+      //从缓存里得到用户名相关的信息
         AtomicInteger retryCount = passwordRetryCache.get(username);
         if (retryCount == null) {
             retryCount = new AtomicInteger(0);
