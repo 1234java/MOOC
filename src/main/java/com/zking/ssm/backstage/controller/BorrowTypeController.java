@@ -1,10 +1,17 @@
 package com.zking.ssm.backstage.controller;
 
+import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.zking.ssm.backstage.service.IBorrowerTypeSerice;
 import com.zking.ssm.base.model.BorrowerType;
 import com.zking.ssm.base.utils.PageBean;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,7 +31,7 @@ public class BorrowTypeController {
     private IBorrowerTypeSerice typeServiec;
 
 
-    @RequestMapping("/borrowertypelist")
+    @RequestMapping(value = "/borrowertypelist")
     @ResponseBody
     public   String list(BorrowerType borrowerType, HttpServletRequest req, HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
@@ -33,11 +40,43 @@ public class BorrowTypeController {
         pageBean.setRows(2);
         pageBean.setRequest(req);
         List<BorrowerType> list = typeServiec.list(borrowerType, pageBean);
+        for (BorrowerType type : list) {
+            System.out.println(type);
+        }
+        ObjectMapper mapper = new ObjectMapper();
 
 
-        out.print(list);
+
+        JsonGenerator generator = mapper.getJsonFactory().createJsonGenerator(System.out,JsonEncoding.UTF8);
+
+        String s = mapper.writeValueAsString(list);
+
+        //out.print(list);
+        out.print(s);
+
         return  null;
     }
+
+
+
+
+    @RequestMapping("/add")
+    public String add(BorrowerType borrowerType, Model model){
+        System.out.println(borrowerType);
+        typeServiec.insert(borrowerType);
+        return  "redirect:/admin/toborrowtype";
+
+    }
+
+    @RequestMapping("/del")
+    public String delborrowertype(BorrowerType borrowerType, Model model){
+        System.out.println(borrowerType);
+        typeServiec.deleteByPrimaryKey(borrowerType);
+        return  "redirect:/admin/toborrowtype";
+                //"";
+
+    }
+
 
 
 }

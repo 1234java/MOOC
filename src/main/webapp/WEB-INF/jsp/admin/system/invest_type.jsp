@@ -24,21 +24,61 @@
 <div class="form-group" style="width: 100%;text-align: center;margin-top: 10px;">
     <form class="form-inline" style="margin: 0px;display: inline;">
         <label for="exampleInputEmail1">类别:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="类别名">
-        <button type="submit" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></button>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="类别名">
+        <button type="button" class="btn btn-default" onclick="show()" title="搜索"><span class="glyphicon glyphicon-search"></button>
     </form>
     <button  class="btn btn-default" title="添加类别" data-dismiss="modal" data-toggle="modal" data-target="#drdc"><span class="glyphicon glyphicon-plus"></span></button>
 </div>
+<script type="text/javascript">
 
+     $(function(){
+
+         show();
+     })
+
+    function show(){
+        var url ="${ctx}/system/investment/list";
+       // alert(url);
+        var h ={'iTypename':$("#exampleInputEmail1").val()}
+        $.ajax({
+            url:url,
+            type:"post",
+            data:h,
+            dataType:"json",
+            async: false,
+            success: function(msg) {
+               // alert(msg)
+                var t="";
+                for (var i =0; i<= msg.length;i++){
+                    //alert(msg[i].iTypeid)
+                    t+="<tr >";
+                    t+="<td>"+msg[i].iTypeid+"</td>";
+                    t+="<td>"+msg[i].iTypename+"</td>";
+                    t+="<td width='150px'>";
+                    t+="<a href='${ctx}/system/investment/del?iTypeid="+msg[i].iTypeid+"' onclick='s()' style='margin-right: 10px;' title='删除'>";
+                    t+="<span class='glyphicon glyphicon-trash'></span>";
+                    t+="</a>";
+                    t+="</td>";
+                    t+="</tr >";
+                    //alert(t);
+                    $("#tbody").html(t)
+                }
+            }
+
+        })
+
+    }
+
+</script>
 
 <div class="modal fade" data-backdrop="false" id="drdc" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">类型</div>
             <div class="modal-body">
-                <form class="form-group">
+                <form class="form-group" action="${ctx}/system/investment/add">
                     <label>类型名</label>
-                    <input class="form-control"  />
+                    <input class="form-control"  name="iTypename" />
 
                     <div class="modal-footer">
                         <button class="btn btn-success" type="submit">确定</button>
@@ -60,13 +100,12 @@
         <th>类型名称</th>
         <th>操作</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td width="150px">
-            <a href="#" style="margin-right: 10px;" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
-        </td>
-    </tr>
+
+    <tbody id="tbody">
+
+
+    </tbody>
+
 </table>
 
 
