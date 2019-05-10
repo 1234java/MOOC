@@ -51,8 +51,7 @@
       <result column="a_front" property="aFront" javaType="java.lang.String" />
       <result column="a_message" property="aMessage" javaType="java.lang.String" />
       <result column="a_state" property="aState" javaType="java.lang.String" />
-     <collection property="user" ofType="com.zking.ssm.base.model.User">
-
+     <association property="user"  javaType="com.zking.ssm.base.model.User">
        <id column="p_userid" property="pUserid" javaType="java.lang.String" />
       <result column="p_username" property="pUsername" javaType="java.lang.String" />
       <result column="p_password" property="pPassword" javaType="java.lang.String" />
@@ -63,18 +62,19 @@
       <result column="p_usable" property="pUsable" javaType="java.lang.Double" />
       <result column="p_credit" property="pCredit" javaType="java.lang.Double" />
 
-    </collection>
+    </association>
   </resultMap>
 
     <select id="list"  resultMap="listatt" parameterType="com.zking.ssm.base.model.Attestation">
-    SELECT * FROM p_attestation b   join  p_user  a where 1=1
-    <if test="aName != null">
-        <if test="aName != ''">
-            AND b.a_name LIKE concat('%',#{aName,jdbcType=VARCHAR},'%')
+
+
+        SELECT * FROM p_attestation b   join  p_user  a on b.p_id =a.p_userid where 1=1
+        <if test="aName != null">
+            <if test="aName != ''">
+                AND b.a_name LIKE concat('%',#{aName,jdbcType=VARCHAR},'%')
+            </if>
+
         </if>
-
-    </if>
-
 
 
 
@@ -186,6 +186,8 @@
       a_state = #{aState,jdbcType=VARCHAR}
     where a_id = #{aId,jdbcType=INTEGER}
   </update>
+
+
   <update id="updateatt" parameterType="com.zking.ssm.base.model.Attestation">
 
     UPDATE p_attestation

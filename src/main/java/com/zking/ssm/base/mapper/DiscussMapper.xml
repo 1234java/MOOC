@@ -38,7 +38,7 @@
   </resultMap>
 
     <select id="list" resultMap="listmap" parameterType="com.zking.ssm.base.model.Discuss">
-      SELECT * FROM discuss  a JOIN p_user b  WHERE 1=1
+      SELECT * FROM discuss  a JOIN p_user b  on a.d_p_id=b.p_userid WHERE 1=1
        <if test="dContent !=null and dContent !=''">
          and  a.d_content like concat('%',#{dContent,jdbcType=VARCHAR},'%')
        </if>

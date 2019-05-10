@@ -35,6 +35,9 @@ public class AttestationController {
 
 
 
+
+
+
     @RequestMapping("/lod")
     @ResponseBody
     public Attestation load(Attestation attestation, HttpServletRequest req, Model model){
@@ -46,14 +49,23 @@ public class AttestationController {
 
 
     @RequestMapping("/update")
-    public Attestation update(Attestation attestation, HttpServletRequest req, Model model){
+    public String update(Attestation attestation, HttpServletRequest req, Model model){
         System.out.println(attestation);
 
         int updateatt = service.updateatt(attestation);
 
 
-        return  null;
+        return  "redirect:/admin/attestation";
     }
 
+    @RequestMapping("/del")
+    public String del(Attestation attestation, HttpServletRequest req, Model model){
+        System.out.println(attestation);
+
+        int updateatt = service.deleteByPrimaryKey(attestation);
+
+
+        return  "redirect:/admin/attestation";
+    }
 
 }

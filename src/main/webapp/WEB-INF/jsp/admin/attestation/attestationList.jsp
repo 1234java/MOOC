@@ -25,12 +25,20 @@
 
     function df(inde) {
         if(inde == '0'){
+            $("#stat").removeAttr("disabled");
+            $("#sta").removeAttr("disabled");
+            $("#aMessage").removeAttr("disabled");
             return "未认证";
-        }else if(inde == '1'){
 
+        }else if(inde == '1'){
+            $("#stat").attr({"disabled":"disabled"});
+            $("#sta").attr({"disabled":"disabled"});
+            $("#aMessage").attr({"disabled":"disabled"});
             return "认证成功";
         }else if(inde == '2'){
-
+            $("#stat").removeAttr("disabled");
+            $("#sta").removeAttr("disabled");
+            $("#aMessage").removeAttr("disabled");
             return "认证失败";
         }
     }
@@ -38,25 +46,25 @@
     function show(){
         var url ="${ctx}/attestaion/list";
         // alert(url);
-       // var h ={'iTypename':$("#exampleInputEmail1").val()}
+        var json ={'aName':$("#exampleInputEmail1").val()}
         $.ajax({
             url:url,
             type:"post",
-            data:"json",
+            data:json,
             dataType:"json",
             async: false,
             success: function(msg) {
                  //alert(msg)
                 var t="";
                 for (var i =0; i<= msg.length;i++){
-                    //alert(msg[i].iTypeid)
+                    //alert(msg[i].user.pUsername)
                     t+="<tr >";
                     t+="<td>"+msg[i].aId+"</td>";
                     t+="<td>"+msg[i].user.pUsername+"</td>";
                     t+="<td>"+msg[i].aName+"</td>";
                     t+="<td>"+df(msg[i].aState)+"</td>";
                     t+="<td width='150px'>";
-                    t+="<a href='/system/investment/del?iTypeid="+msg[i].iTypeid+"' style='margin-right: 10px;' title='删除'>";
+                    t+="<a href='${ctx}/attestaion/del?aId="+msg[i].aId+"' style='margin-right: 10px;' title='删除'>";
                     t+="<span class='glyphicon glyphicon-trash'></span>";
                     t+="</a>";
                     t+="<a href='javascript:sho('+msg[i].aId+');' onclick='sho("+msg[i].aId+")' style='margin-right: 10px;' title='认证' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
@@ -86,7 +94,7 @@
             async: false,
             success: function(msg) {
 
-                alert(msg.aId)
+               // alert(msg.aId)
              //   alert(msg.aName)
            // $("#user").html(msg.user.pUsername);
                 $("#aId").val(msg.aId);
@@ -114,9 +122,9 @@
 <body>
 <div class="form-group" style="width: 100%;text-align: center;margin-top: 10px;">
     <form class="form-inline" style="margin: 0px;display: inline;">
-        <label for="exampleInputEmail1">用户账号:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户账号">
-        <button type="submit" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></span> </button>
+        <label for="exampleInputEmail1">真实姓名:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="真实姓名">
+        <button type="button" onclick="show()" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></span> </button>
     </form>
 </div>
 
@@ -185,7 +193,7 @@
 
                     <div class="modal-footer">
                         <button class="btn btn-success" type="submit" name="aState" id="stat" value="1">审核成功</button>
-                        <button class="btn btn-success" type="submit" name="aState" value="2">审核失败</button>
+                        <button class="btn btn-success" type="submit" name="aState"  id="sta" value="2">审核失败</button>
                         <button class="btn btn-success" data-dismiss="modal">取消</button>
                     </div>
 

@@ -23,7 +23,7 @@
     <form class="form-inline" style="margin: 0px;display: inline;">
         <label for="exampleInputEmail1">管理员:</label>
         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="管理员">
-        <button type="submit" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></button>
+        <button type="button" onclick="show()" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></button>
     </form>
     <button  class="btn btn-default" title="注册管理员" data-dismiss="modal" data-toggle="modal" data-target="#drdc"><span class="glyphicon glyphicon-plus"></span></button>
 </div>
@@ -33,13 +33,13 @@
         <div class="modal-content">
             <div class="modal-header">管理员</div>
             <div class="modal-body">
-                <form class="form-group">
+                <form class="form-group" action="${ctx}/system/root/add">
                     <label>管理员账号</label>
-                    <input class="form-control" placeholder="输入管理员账号可邮箱/手机号"  />
+                    <input class="form-control" name="rName" placeholder="输入管理员账号可邮箱/手机号"  />
                     <label>密码</label>
-                    <input class="form-control" placeholder="密码" />
+                    <input class="form-control" type="password" name="rPassword" placeholder="密码" />
                     <label>确认密码</label>
-                    <input class="form-control" placeholder="确认密码" />
+                    <input class="form-control"   placeholder="确认密码" />
 
                     <div class="modal-footer">
                         <button class="btn btn-success" type="submit">确定</button>
@@ -56,7 +56,105 @@
 
 
 
+<script type="text/javascript">
+    $(function () {
+        show();
+    })
 
+    function  sh(index) {
+        if(index=='0'){
+            return "可用"
+        }else if(index == '1'){
+            return "不可用"
+        }
+    }
+
+    function  load(index) {
+        var url ="${ctx}/system/root/load";
+       // alert(url)
+        var json ={'rId':index}
+        $.ajax({
+            url:url,
+            type:"post",
+            data:json,
+            dataType:"json",
+            async: false,
+            success: function(msg) {
+                 //alert(msg);
+                // alert(msg.length);
+            $("#rName").html(msg.rName);
+            // language=JQuery-CSS
+                $("#rId").val(msg.rId)
+                if(msg.rStatus ==0){
+                $("input[type=radio][name=rStatus][value='0']").attr("checked",'checked');
+                }else if(msg.rStatus ==1){
+                    $("input[type=radio][name=rStatus][value='1']").attr("checked",'checked');
+                }
+
+            }
+        })
+    }
+
+    function  su() {
+        var url ="${ctx}/system/root/update";
+        //alert(url)
+        var json ={'rId':$("#rId").val(),'rStatus':$("input:radio:checked").val()}
+        //alert(json)
+       // alert($("#rId").val())
+       // alert($("input:radio:checked").val())
+    $.ajax({
+            url:url,
+            type:"post",
+            data:json,
+            dataType:"json",
+            async: false,
+            success: function(msg) {
+               // alert(msg);
+           // window.location.reload();
+        if(msg==1){
+            window.location.reload();
+
+        }
+            }
+        })
+
+    }
+    function show() {
+        var url ="${ctx}/system/root/list";
+       // alert(url);
+        var json ={'rName':$("#exampleInputEmail1").val()}
+        $.ajax({
+            url:url,
+            type:"post",
+            data:json,
+            dataType:"json",
+            async: false,
+            success: function(msg) {
+           // alert(msg);
+               // alert(msg.length);
+                var t ="";
+                for (var i = 0; i <msg.length ; i++) {
+                  //  alert(msg[i].rName);
+                    t +="<tr>";
+                    t +="<td>"+(i+1)+"</td>";
+                    t +="<td>"+msg[i].rName+"</td>";
+                    t +="<td>"+sh(msg[i].rStatus)+"</td>";
+                    t +=" <td width='150px'>";
+                    t +="  <a href='${ctx}/system/root/del?rId="+msg[i].rId+"' style='margin-right: 10px;'  title='删除'>";
+                    t +="<span class='glyphicon glyphicon-trash'></span>";
+                    t +="</a>";
+                    t +=" <a href='javascript:void(0);' style='margin-right: 10px;'  onclick='load("+msg[i].rId+")' title='更改状态' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
+                    t +="<span class='glyphicon glyphicon-cog'></span>";
+                    t +="</a>";
+                    t +="</td>";
+                    t +="</tr>";
+                 // alert(t)
+                    $("#tbody").html(t);
+                }
+            }
+        })
+    }
+</script>
 
 <table class="table table-bordered table-hover table-responsive">
     <tr>
@@ -65,15 +163,9 @@
         <th>状态</th>
         <th>操作</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>不可用</td>
-        <td width="150px">
-            <a href="#" style="margin-right: 10px;" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
-            <a href="#" style="margin-right: 10px;" title="更改状态" data-dismiss="modal" data-toggle="modal" data-target="#drd"><span class="glyphicon glyphicon-cog"></span></a>
-        </td>
-    </tr>
+    <tbody id="tbody"></tbody>
+
+
 </table>
 
 
@@ -84,13 +176,14 @@
             <div class="modal-body">
                 <form class="form-group">
                     <label>管理员账号:&nbsp;</label>
-                    <span>sssss</span>
+                    <span id="rName">sssss</span>
                     <div>
-                        <form>
-                            <input type="radio"  name="str"  value="0"/>启动
-                            <input type="radio" name="str" value="1"/>不可用
+                        <form >
+                            <input type="radio"  name="rStatus"  value="0"/>启动
+                            <input type="radio" name="rStatus" value="1"/>不可用
                             <div class="modal-footer">
-                                <button class="btn btn-success" type="submit">确定</button>
+                                <input type="hidden"  id="rId" name="rId"  value="0"/>
+                                <button class="btn btn-success" type="button" onclick="su()">确定</button>
                                 <button class="btn btn-success" data-dismiss="modal">取消</button>
                             </div>
                         </form>

@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Component
 @Data
@@ -25,7 +26,7 @@ public class Attestation  implements Serializable {
     private String aMessage;
 
     private String aState;
-    private  User user;
+    private   User user;
 
     public User getUser() {
         return user;
@@ -34,8 +35,17 @@ public class Attestation  implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+   private List<User> users;
 
-    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState,User user) {
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState, User user) {
         this.aId = aId;
         this.pId = pId;
         this.aName = aName;
