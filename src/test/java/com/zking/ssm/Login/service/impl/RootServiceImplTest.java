@@ -1,64 +1,79 @@
 package com.zking.ssm.Login.service.impl;
 
 import com.zking.ssm.Login.service.IRootService;
+import com.zking.ssm.Login.shiro.PasswordHelper;
 import com.zking.ssm.base.model.Root;
+import com.zking.ssm.base.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.print.Book;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
-public class RootServiceImplTest extends BaseTestCase {
+public class RootServiceImplTest extends BaseTestCase{
+
     @Autowired
     private IRootService rootService;
+
     private Root root;
 
     @Override
-    public void before() {
-        super.before();
+    public void setUp() throws Exception {
+        super.setUp();
         root = new Root();
     }
 
+
     @Test
-    public void deleteByPrimaryKey() {
+    public void doLogin() throws Exception{
+        root.setrName("uuu");
+        root.setrPassword("1234");
+        String s = rootService.doLogin(root);
+
+        System.out.println(s);
+    }
+
+
+
+
+    @Test
+    public void updatePassword() throws Exception{
+        root.setrId(4);
+        root.setrName("uu");
+        root.setrPassword("666");
+        int i = rootService.updatePassword(root);
+        System.out.println(i);
     }
 
     @Test
-    public void insert() {
-        root.setrName("add");
-        root.setrPassword("123");
-        root.setrStatus(0);
-        rootService.insert(root);
+    public void doResetPassword() throws Exception{
+        root.setrName("admin");
+        root.setrPassword("888888");
+
+        int i = rootService.doResetPassword(root);
+        System.out.println(i);
     }
 
     @Test
-    public void insertSelective() {
+    public void loadByRName() throws Exception{
+        root.setrName("uu");
+        Root root = rootService.loadByRName(this.root);
+        System.out.println(root);
     }
 
     @Test
-    public void selectByPrimaryKey() {
+    public void insert() throws Exception{
+      root.setrName("uuu");
+      root.setrPassword("123");
+      root.setrStatus(1);
+        String salt = PasswordHelper.createSalt();
+      root.setSalt(salt);
+      String credentials = PasswordHelper.createCredentials(root.getrPassword(), root.getSalt());
+      root.setCredentials(credentials);
+      rootService.insert(root);
+
+        System.out.println();
+
     }
 
-    @Test
-    public void updateByPrimaryKeySelective() {
-    }
 
-    @Test
-    public void updateByPrimaryKey() {
-        root.setrId(2);
-        root.setrName("ppp");
-        root.setrPassword("111");
-        root.setrStatus(0);
-        rootService.updateByPrimaryKey(root);
-    }
-
-    @Test
-    public void list() {
-        List<Root> rootList = rootService.list(root);
-        for (Root r : rootList) {
-            System.out.println(r);
-        }
-    }
 }

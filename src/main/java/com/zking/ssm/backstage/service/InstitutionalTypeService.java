@@ -3,6 +3,10 @@ package com.zking.ssm.backstage.service;
 import com.zking.ssm.base.model.InstitutionalType;
 
 import java.util.List;
+import com.zking.ssm.base.utils.PageBean;
+import org.springframework.stereotype.Repository;
+
+
 
 /*
 机构类型

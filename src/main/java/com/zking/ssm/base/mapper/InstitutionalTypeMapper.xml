@@ -30,8 +30,8 @@
     where i_typeid = #{iTypeid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.InstitutionalType" >
-    insert into institutional_type ( i_typename)
-    values ( #{iTypename,jdbcType=VARCHAR})
+    insert into institutional_type (i_typeid, i_typename)
+    values (#{iTypeid,jdbcType=INTEGER}, #{iTypename,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.ssm.base.model.InstitutionalType" >
     insert into institutional_type

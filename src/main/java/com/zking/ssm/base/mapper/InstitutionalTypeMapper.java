@@ -22,6 +22,8 @@ public interface InstitutionalTypeMapper {
 
     int updateByPrimaryKey(InstitutionalType record);
 
+
+
     //查询所有
     List<InstitutionalType>  listInstitutionalType(InstitutionalType institutionalType);
 }

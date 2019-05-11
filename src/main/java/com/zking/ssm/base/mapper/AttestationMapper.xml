@@ -16,21 +16,80 @@
   <sql id="Base_Column_List" >
     a_id, p_id, a_name, a_sfz, a_reverse, a_front, a_message, a_state
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from p_attestation
-    where a_id = #{aId,jdbcType=INTEGER}
+    <resultMap id="listdd" type="com.zking.ssm.base.model.Attestation" >
+        <id column="a_id" property="aId" javaType="java.lang.Integer" />
+        <result column="p_id" property="pId" javaType="java.lang.String" />
+        <result column="a_name" property="aName" javaType="java.lang.String" />
+        <result column="a_sfz" property="aSfz" javaType="java.lang.String" />
+        <result column="a_reverse" property="aReverse" javaType="java.lang.String" />
+        <result column="a_front" property="aFront" javaType="java.lang.String" />
+        <result column="a_message" property="aMessage" javaType="java.lang.String" />
+        <result column="a_state" property="aState" javaType="java.lang.String" />
+        <collection property="user" ofType="com.zking.ssm.base.model.User">
+        <id column="p_userid" property="pUserid" javaType="java.lang.String" />
+        <result column="p_username" property="pUsername" javaType="java.lang.String" />
+        <result column="p_password" property="pPassword" javaType="java.lang.String" />
+        <result column="p_invite" property="pInvite" javaType="java.lang.String" />
+        <result column="p_status" property="pStatus" javaType="java.lang.Integer" />
+        <result column="p_vip" property="pVip" javaType="java.lang.Integer" />
+        <result column="p_capital" property="pCapital" javaType="java.lang.Double" />
+        <result column="p_usable" property="pUsable" javaType="java.lang.Double" />
+        <result column="p_credit" property="pCredit" javaType="java.lang.Double" />
+        </collection>
+    </resultMap>
+
+
+  <select id="selectByPrimaryKey"  resultMap="listdd" parameterType="java.lang.Integer" >
+      SELECT * FROM  p_attestation b join    p_user  a  where b.a_id = #{aId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <resultMap id="listatt" type="com.zking.ssm.base.model.Attestation" >
+      <id column="a_id" property="aId" javaType="java.lang.Integer" />
+      <result column="p_id" property="pId" javaType="java.lang.String" />
+      <result column="a_name" property="aName" javaType="java.lang.String" />
+      <result column="a_sfz" property="aSfz" javaType="java.lang.String" />
+      <result column="a_reverse" property="aReverse" javaType="java.lang.String" />
+      <result column="a_front" property="aFront" javaType="java.lang.String" />
+      <result column="a_message" property="aMessage" javaType="java.lang.String" />
+      <result column="a_state" property="aState" javaType="java.lang.String" />
+     <association property="user"  javaType="com.zking.ssm.base.model.User">
+       <id column="p_userid" property="pUserid" javaType="java.lang.String" />
+      <result column="p_username" property="pUsername" javaType="java.lang.String" />
+      <result column="p_password" property="pPassword" javaType="java.lang.String" />
+      <result column="p_invite" property="pInvite" javaType="java.lang.String" />
+      <result column="p_status" property="pStatus" javaType="java.lang.Integer" />
+      <result column="p_vip" property="pVip" javaType="java.lang.Integer" />
+      <result column="p_capital" property="pCapital" javaType="java.lang.Double" />
+      <result column="p_usable" property="pUsable" javaType="java.lang.Double" />
+      <result column="p_credit" property="pCredit" javaType="java.lang.Double" />
+
+    </association>
+  </resultMap>
+
+    <select id="list"  resultMap="listatt" parameterType="com.zking.ssm.base.model.Attestation">
+
+
+        SELECT * FROM p_attestation b   join  p_user  a on b.p_id =a.p_userid where 1=1
+        <if test="aName != null">
+            <if test="aName != ''">
+                AND b.a_name LIKE concat('%',#{aName,jdbcType=VARCHAR},'%')
+            </if>
+
+        </if>
+
+
+
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from p_attestation
     where a_id = #{aId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Attestation" >
-    insert into p_attestation (a_id, p_id, a_name, 
+    insert into p_attestation ( p_id, a_name,
       a_sfz, a_reverse, a_front, 
       a_message, a_state)
-    values (#{aId,jdbcType=INTEGER}, #{pId,jdbcType=VARCHAR}, #{aName,jdbcType=VARCHAR}, 
+    values (#{pId,jdbcType=VARCHAR}, #{aName,jdbcType=VARCHAR},
       #{aSfz,jdbcType=VARCHAR}, #{aReverse,jdbcType=VARCHAR}, #{aFront,jdbcType=VARCHAR}, 
       #{aMessage,jdbcType=VARCHAR}, #{aState,jdbcType=VARCHAR})
   </insert>
@@ -126,5 +185,21 @@
       a_message = #{aMessage,jdbcType=VARCHAR},
       a_state = #{aState,jdbcType=VARCHAR}
     where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateatt" parameterType="com.zking.ssm.base.model.Attestation">
+
+    UPDATE p_attestation
+      <set >
+          <if test="aMessage != null" >
+              a_message = #{aMessage,jdbcType=VARCHAR},
+          </if>
+          <if test="aState != null" >
+              a_state = #{aState,jdbcType=VARCHAR},
+          </if>
+      </set>
+     WHERE a_id=#{aId,jdbcType=INTEGER}
+
   </update>
 </mapper>
