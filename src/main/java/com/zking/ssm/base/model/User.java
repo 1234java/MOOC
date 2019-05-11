@@ -2,10 +2,11 @@ package com.zking.ssm.base.model;
 
 import lombok.ToString;
 import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
 @Component
 @ToString
-public class User {
+public class User implements Serializable{
     private String pUserid;
 
     private String pUsername;
@@ -23,6 +24,8 @@ public class User {
     private Double pUsable;
 
     private Double pCredit;
+
+
 
     public User(String pUserid, String pUsername, String pPassword, String pInvite, Integer pStatus, Integer pVip, Double pCapital, Double pUsable, Double pCredit) {
         this.pUserid = pUserid;

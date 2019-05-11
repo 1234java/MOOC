@@ -60,7 +60,7 @@ public class UserServiceImplTest extends BaseTestCase {
     public void updatePstatus() {
         user.setpUserid("1");
         user.setpStatus(0);
-        userService.updatePstatus(user);
+//        userService.updatePstatus(user);
     }
 
     @Test

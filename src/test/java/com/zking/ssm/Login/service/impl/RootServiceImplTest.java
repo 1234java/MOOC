@@ -1,7 +1,6 @@
 package com.zking.ssm.Login.service.impl;
 
 import com.zking.ssm.Login.service.IRootService;
-import com.zking.ssm.Login.shiro.PasswordHelper;
 import com.zking.ssm.base.model.Root;
 import com.zking.ssm.base.model.User;
 import org.junit.Test;
@@ -62,14 +61,14 @@ public class RootServiceImplTest extends BaseTestCase{
 
     @Test
     public void insert() throws Exception{
-      root.setrName("uuu");
-      root.setrPassword("123");
-      root.setrStatus(1);
-        String salt = PasswordHelper.createSalt();
-      root.setSalt(salt);
-      String credentials = PasswordHelper.createCredentials(root.getrPassword(), root.getSalt());
-      root.setCredentials(credentials);
-      rootService.insert(root);
+//      root.setrName("uuu");
+//      root.setrPassword("123");
+//      root.setrStatus(1);
+//        String salt = PasswordHelper.createSalt();
+//      root.setSalt(salt);
+//      String credentials = PasswordHelper.createCredentials(root.getrPassword(), root.getSalt());
+//      root.setCredentials(credentials);
+//      rootService.insert(root);
 
         System.out.println();
 

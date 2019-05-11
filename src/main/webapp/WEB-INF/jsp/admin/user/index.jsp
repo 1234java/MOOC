@@ -32,7 +32,7 @@
 </script>
 <ul class=" nav nav-tabs  nav-justified" >
     <li class="active" ><a href="javascript:void(0);"
-                           onClick="openurl('${ctx}/admin/userlist');">个人列表</a></li>
+                           onClick="openurl('${ctx}/admin/user/listUser');">个人列表</a></li>
     <li  ><a href="javascript:void(0);"
              onClick="openurl('${ctx}/admin/userenterpise');">企业列表</a></li>
 

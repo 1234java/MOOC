@@ -64,9 +64,9 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
         List<Borrower> b = borrowerServiec.listBorrower(borrower, pageBean);
         for (Borrower br : b) {
             System.out.println();
-            for (BorrowerType bt : br.getBorrowerTypeList()) {
-                System.out.println(bt.getbTypeName());
-            }
+//            for (BorrowerType bt : br.getBorrowerTypeList()) {
+//                System.out.println(bt.getbTypeName());
+//            }
         }
     }
 

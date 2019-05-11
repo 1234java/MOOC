@@ -79,7 +79,7 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('documentQuery.html');">账号管理</a></li>
+                       onClick="openurl('${ctx}/admin/userindex');">账号管理</a></li>
                <%-- <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('userdocumentQuery.html');">用户文档列表</a></li>--%>
 
