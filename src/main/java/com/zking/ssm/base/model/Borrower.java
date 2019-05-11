@@ -1,5 +1,7 @@
 package com.zking.ssm.base.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -9,9 +11,11 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Component
 @ToString
+@Data
 public class Borrower implements Serializable {
 
     public static interface ValidateGroups{
@@ -28,6 +32,11 @@ public class Borrower implements Serializable {
         }
 
     }
+    private List<BorrowerType> borrowerTypeList;
+
+    private List<ConditionType> conditionTypeList;
+
+
     @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})
     private Integer bId;
 
@@ -42,6 +51,7 @@ public class Borrower implements Serializable {
 
     private Integer bRate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date bMoneyDeadline;
 
 

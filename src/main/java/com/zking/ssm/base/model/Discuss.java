@@ -20,11 +20,22 @@ public class Discuss implements Serializable{
 
     private String dContent;
 
-    public Discuss(Integer dId, String dPId, Date dTime, String dContent) {
+    private  User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Discuss(Integer dId, String dPId, Date dTime, String dContent,User user) {
         this.dId = dId;
         this.dPId = dPId;
         this.dTime = dTime;
         this.dContent = dContent;
+        this.user=user;
     }
 
     public Discuss() {

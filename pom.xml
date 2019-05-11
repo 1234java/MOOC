@@ -70,6 +70,8 @@
 
 
     <jackson.version>2.9.3</jackson.version>
+
+    <tomcat-jsp-api.version>8.0.29</tomcat-jsp-api.version>
   </properties>
 
   <dependencies>
@@ -427,6 +429,14 @@ JDBC驱动 ********************** -->
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
     </dependency>
+
+    <!-- 7 jsp自定义标签依赖(必须与tomcat的版本一致) -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <version>${tomcat-jsp-api.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>

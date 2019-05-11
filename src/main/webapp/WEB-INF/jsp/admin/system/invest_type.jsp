@@ -50,7 +50,7 @@
                // alert(msg)
                 var t="";
                 for (var i =0; i<= msg.length;i++){
-                    //alert(msg[i].iTypeid)
+                    alert(msg[i].iTypename)
                     t+="<tr >";
                     t+="<td>"+msg[i].iTypeid+"</td>";
                     t+="<td>"+msg[i].iTypename+"</td>";

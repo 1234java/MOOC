@@ -3,12 +3,9 @@ package com.zking.ssm.backstage.controller;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
-import com.zking.ssm.backstage.service.IBorrowerTypeSerice;
+import com.zking.ssm.backstage.service.IBorrowerTypeService;
 import com.zking.ssm.base.model.BorrowerType;
 import com.zking.ssm.base.utils.PageBean;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
-import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -28,7 +24,7 @@ import java.util.List;
 public class BorrowTypeController {
 
     @Autowired
-    private IBorrowerTypeSerice typeServiec;
+    private IBorrowerTypeService typeServiec;
 
 
     @RequestMapping(value = "/borrowertypelist")

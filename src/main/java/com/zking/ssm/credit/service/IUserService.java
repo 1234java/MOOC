@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUserService {
     int deleteByPrimaryKey(String pUserid);
 
-    int insert(User record);
+    void insert(User record);
 
     int insertSelective(User record);
 
@@ -16,6 +16,8 @@ public interface IUserService {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int updatePstatus (User record);
 
     List<User> listUser(User user);
 }

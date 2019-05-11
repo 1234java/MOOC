@@ -38,8 +38,8 @@ public class IBorrowerServiecImpl implements IBorrowerServiec {
     }
 
     @Override
-    public Borrower selectByPrimaryKey(Integer bId) {
-        return borrowerMapper.selectByPrimaryKey(bId);
+    public Borrower selectByPrimaryKey(Borrower borrower) {
+        return borrowerMapper.selectByPrimaryKey(borrower);
     }
 
     @Override
@@ -54,6 +54,11 @@ public class IBorrowerServiecImpl implements IBorrowerServiec {
 
     @Override
     public List<Borrower> listBorrower(Borrower borrower, PageBean pageBean) {
-        return null;
+        return borrowerMapper.listBorrower(borrower);
+    }
+
+    @Override
+    public List<Borrower> listBorrowerStatus(Borrower borrower, PageBean pageBean) {
+        return borrowerMapper.listBorrowerStatus(borrower);
     }
 }

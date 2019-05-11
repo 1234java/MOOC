@@ -1,17 +1,17 @@
 package com.zking.ssm.backstage.service.impl;
 
 import com.zking.ssm.Borrowing.serviec.impl.BaseTestCase;
-import com.zking.ssm.backstage.service.InstitutionalTypeSerice;
+import com.zking.ssm.backstage.service.InstitutionalTypeService;
 import com.zking.ssm.base.model.InstitutionalType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 public class InstitutionalTypeServiceImplTest extends BaseTestCase {
 
     @Autowired
-    private InstitutionalTypeSerice typeSerice;
+    private InstitutionalTypeService typeSerice;
     private InstitutionalType institutionalType;
 
     @Override
@@ -32,9 +32,20 @@ public class InstitutionalTypeServiceImplTest extends BaseTestCase {
 
     @Test
     public void selectByPrimaryKey() {
+        institutionalType.setiTypeid(1);
+        InstitutionalType ins = typeSerice.selectByPrimaryKey(this.institutionalType);
+        System.out.println(ins);
     }
 
     @Test
     public void updateByPrimaryKeySelective() {
+    }
+
+    @Test
+    public void listInstitutionalType() {
+        List<InstitutionalType> is = typeSerice.listInstitutionalType(institutionalType);
+        for (InstitutionalType i : is) {
+            System.out.println(i);
+        }
     }
 }

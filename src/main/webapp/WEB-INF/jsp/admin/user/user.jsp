@@ -11,10 +11,12 @@
 <html>
 <head>
     <title>用户管理</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />
-    <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">    <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
+    <script class="resources library" src="${ctx}/js/area.js" type="text/javascript"></script>
+
+
     <link href="${ctx}/fonts/**" >
 </head>
 <body>

@@ -1,10 +1,8 @@
 package com.zking.ssm.backstage.service.impl;
 
-import com.zking.ssm.backstage.service.InstitutionalTypeSerice;
+import com.zking.ssm.backstage.service.InstitutionalTypeService;
 import com.zking.ssm.base.mapper.InstitutionalTypeMapper;
-import com.zking.ssm.base.model.BorrowerType;
 import com.zking.ssm.base.model.InstitutionalType;
-import com.zking.ssm.base.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class InstitutionalTypeServiceImpl implements InstitutionalTypeSerice {
+public class InstitutionalTypeServiceImpl implements InstitutionalTypeService {
     @Autowired
     private InstitutionalTypeMapper typeMapper;
     @Override
@@ -48,8 +46,8 @@ public class InstitutionalTypeServiceImpl implements InstitutionalTypeSerice {
         return typeMapper.updateByPrimaryKey(institutionalType);
     }
 
-    public List<InstitutionalType> list(InstitutionalType institutionalType, PageBean pageBean){
-
-        return  typeMapper.list(institutionalType);
+    @Override
+    public List<InstitutionalType> listInstitutionalType(InstitutionalType institutionalType) {
+        return typeMapper.listInstitutionalType(institutionalType);
     }
 }

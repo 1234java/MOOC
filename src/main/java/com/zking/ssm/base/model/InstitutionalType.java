@@ -5,11 +5,15 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Component
 @Data
 @ToString
 public class InstitutionalType  implements Serializable{
+
+    private List<Organization> organizationList;
+
     private Integer iTypeid;
 
     private String iTypename;
