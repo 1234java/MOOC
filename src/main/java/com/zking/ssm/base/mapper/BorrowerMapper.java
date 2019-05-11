@@ -13,10 +13,11 @@ public interface BorrowerMapper {
 
     int insertSelective(Borrower record);
 
-    Borrower selectByPrimaryKey(Integer bId);
+    Borrower selectByPrimaryKey(Borrower record);
 
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
     List<Borrower> listBorrower(Borrower borrower);
+    List<Borrower> listBorrowerStatus(Borrower borrower);
 }

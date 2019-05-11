@@ -12,10 +12,8 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />
-    <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
-    <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
-    <script src="${ctx}/admin/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link href="${ctx}/fonts/**" >
 </head>
 <body>
@@ -34,7 +32,7 @@
     <li class="active" ><a href="javascript:void(0);"
                            onClick="openurl('${ctx}/admin/userlist');">个人列表</a></li>
     <li  ><a href="javascript:void(0);"
-             onClick="openurl('${ctx}/admin/userenterpise');">企业列表</a></li>
+             onClick="openurl('${ctx}/admin/listorganization');">企业列表</a></li>
 
 </ul>
 <div class="right">
@@ -45,4 +43,7 @@
 
 </body>
 </html>
+<script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
+<script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
+<script src="${ctx}/admin/js/bootstrap.min.js"></script>
 

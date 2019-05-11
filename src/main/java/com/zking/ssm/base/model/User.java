@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @ToString
 @Data
 public class User {
+
     private String pUserid;
 
     private String pUsername;

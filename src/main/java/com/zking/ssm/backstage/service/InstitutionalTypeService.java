@@ -1,13 +1,14 @@
 package com.zking.ssm.backstage.service;
 
 import com.zking.ssm.base.model.InstitutionalType;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /*
 机构类型
  */
 
-public interface InstitutionalTypeSerice {
+public interface InstitutionalTypeService {
     int deleteByPrimaryKey(InstitutionalType institutionalType);
 
     int insert(InstitutionalType institutionalType);
@@ -19,4 +20,6 @@ public interface InstitutionalTypeSerice {
     int updateByPrimaryKeySelective(InstitutionalType institutionalType);
 
     int updateByPrimaryKey(InstitutionalType institutionalType);
+    List<InstitutionalType> listInstitutionalType(InstitutionalType institutionalType);
+
 }
