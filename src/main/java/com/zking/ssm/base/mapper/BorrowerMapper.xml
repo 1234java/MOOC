@@ -41,26 +41,57 @@
         <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
         <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
       </collection>
+      <collection property="conditionTypeList" ofType="com.zking.ssm.base.model.ConditionType">
+          <id column="condition_type_id" property="conditionTypeId" javaType="java.lang.Integer"></id>
+          <result column="condition_type_name" property="conditionTypeName" javaType="java.lang.String"></result>
+      </collection>
     
   </resultMap>
+
+
   <sql id="Base_Column_List" >
     b_id, b_name, b_username, b_money, b_rate, b_money_deadline, b_phone, b_house, b_total_value, 
     b_use, b_describe, b_condition, b_borrower_type, b_bidCount, b_status
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from borrower
-    where b_id = #{bId,jdbcType=INTEGER}
+  <select id="selectByPrimaryKey" resultMap="row1" parameterType="com.zking.ssm.base.model.Borrower" >
+     select b.*,ct.condition_type_name,bt.b_type_name from borrower b left outer join borrower_type bt on b.b_borrower_type=bt.b_type_id
+      left outer join condition_type ct on b.b_condition=ct.condition_type_id
+
+      where 1=1
+    <if test="bId != null" >
+      and b_id = #{bId,jdbcType=INTEGER}
+    </if>
+
   </select>
+
+
+
   <select id="listBorrower" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
+    select b.*,ct.condition_type_name,bt.b_type_name from borrower b left outer join borrower_type bt on b.b_borrower_type=bt.b_type_id
+      left outer join condition_type ct on b.b_condition=ct.condition_type_id
+    where 1=1
+    <if test="null !=bName and '' !=null">
+      and b_name like concat("%",#{bName,jdbcType=VARCHAR},"%")
+    </if>
+    <if test="bStatus != null" >
+      and b_status= #{bStatus,jdbcType=INTEGER}
+    </if>
+    <!--<if test="null !=bUsername and '' !=null">-->
+      <!--and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")-->
+    <!--</if>-->
+
+  </select>
+  <select id="listBorrowerStatus" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
     select b.*,bt.b_type_name from borrower b left outer join borrower_type bt on b.b_borrower_type=bt.b_type_id
     where 1=1
     <if test="null !=bName and '' !=null">
       and b_name like concat("%",#{bName,jdbcType=VARCHAR},"%")
     </if>
+    <if test="bStatus != null" >
+      and b_status= #{bStatus,jdbcType=INTEGER}
+    </if>
     <!--<if test="null !=bUsername and '' !=null">-->
-      <!--and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")-->
+    <!--and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")-->
     <!--</if>-->
 
   </select>

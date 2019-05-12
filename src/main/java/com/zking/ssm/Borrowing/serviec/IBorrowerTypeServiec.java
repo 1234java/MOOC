@@ -19,4 +19,5 @@ public interface IBorrowerTypeServiec {
     int updateByPrimaryKeySelective(BorrowerType record);
 
     int updateByPrimaryKey(BorrowerType record);
+
 }

@@ -1,7 +1,6 @@
 package com.zking.ssm.Login.service.impl;
 
 import com.zking.ssm.Login.service.IRootService;
-import com.zking.ssm.Login.shiro.PasswordHelper;
 import com.zking.ssm.base.mapper.RootMapper;
 import com.zking.ssm.base.model.Root;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,12 @@ public class RootServiceImpl implements IRootService {
         Root r = rootMapper.selectByRName(root.getrName());
 
 
-        boolean b = PasswordHelper.checkCredentials(root.getrPassword(),  r.getSalt(), r.getCredentials());
-        System.out.println(b);
-        if(!b){
-            message = "账号或密码错误";
-
-        }
+//        boolean b = PasswordHelper.checkCredentials(root.getrPassword(),  r.getSalt(), r.getCredentials());
+//        System.out.println(b);
+//        if(!b){
+//            message = "账号或密码错误";
+//
+//        }
 
 
 
@@ -33,34 +32,34 @@ public class RootServiceImpl implements IRootService {
         return message;
     }
 
-    @Override
+  @Override
     public int updatePassword(Root root) {
-        //md5+盐
-        String salt = PasswordHelper.createSalt();
-        String credentials = PasswordHelper.createCredentials(root.getrPassword(),salt);
-
-        Root r = new Root();
-        r.setrName(root.getrName());
-        r.setrPassword(credentials);
-        r.setSalt(salt);
-
+//        //md5+盐
+//        String salt = PasswordHelper.createSalt();
+//        String credentials = PasswordHelper.createCredentials(root.getrPassword(),salt);
+//
+          Root r = new Root();
+//        r.setrName(root.getrName());
+//        r.setrPassword(credentials);
+//        r.setSalt(salt);
+//
         return rootMapper.updateByPrimaryKeySelective(r);
     }
 
     @Override
     public int doResetPassword(Root root) {
-        //md5+盐
-        String salt = PasswordHelper.createSalt();
-        //DEFAULT_PASSWORD 默认password
-        String credentials = PasswordHelper.createCredentials(Root.DEFAULT_PASSWORD, salt);
-
-        Root r = new Root();
-        r.setrName(root.getrName());
-        r.setrPassword(credentials);
-        r.setSalt(salt);
-
-        return rootMapper.updateByPrimaryKeySelective(r);
-    }
+//        //md5+盐
+//        String salt = PasswordHelper.createSalt();
+//        //DEFAULT_PASSWORD 默认password
+//        String credentials = PasswordHelper.createCredentials(Root.DEFAULT_PASSWORD, salt);
+//
+       Root r = new Root();
+//        r.setrName(root.getrName());
+//        r.setrPassword(credentials);
+//        r.setSalt(salt);
+//
+      return rootMapper.updateByPrimaryKeySelective(r);
+  }
 
     @Override
     public Root loadByRName(Root root) {

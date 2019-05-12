@@ -6,8 +6,8 @@
     <properties resource="jdbc.properties"/>
 
     <!--指定数据库jdbc驱动jar包的位置-->
-    <classPathEntry location="D:\\tools\\temp\\mvn-repository\\mysql\\mysql-connector-java\\5.1.44\\mysql-connector-java-5.1.44.jar"/>
-
+    <!--<classPathEntry location="D:\\tools\\temp\\mvn-repository\\mysql\\mysql-connector-java\\5.1.44\\mysql-connector-java-5.1.44.jar"/>-->
+    <classPathEntry location="E:\temp\mvn-repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
     <!-- 一个数据库一个context -->
     <context id="infoGuardian">
         <!-- 注释 -->

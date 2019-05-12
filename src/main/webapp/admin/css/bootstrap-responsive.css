@@ -83,6 +83,7 @@
 @media (max-width: 767px) {
   .hidden-desktop {
     display: inherit !important;
+    text-align: center;
   }
   .visible-desktop {
     display: none !important;

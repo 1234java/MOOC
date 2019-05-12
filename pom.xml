@@ -427,11 +427,6 @@ JDBC驱动 ********************** -->
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jsp-api</artifactId>
-      <version>8.0.29</version>
-    </dependency>
   </dependencies>
 
   <build>

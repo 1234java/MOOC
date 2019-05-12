@@ -19,7 +19,7 @@ import java.util.List;
 @Aspect
 public class PageBeanAspect {
 
-    @Around(value = "execution(* *..*Service.list*(..))")
+    @Around(value = "execution(* *..*Serviec.list*(..))")
     public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
         // 取出PageBean
         Object[] args = joinPoint.getArgs();

@@ -3,6 +3,7 @@ package com.zking.ssm.Borrowing.serviec.impl;
 import com.zking.ssm.Borrowing.serviec.IBorrowerServiec;
 import com.zking.ssm.base.model.Borrower;
 import com.zking.ssm.base.model.BorrowerType;
+import com.zking.ssm.base.model.ConditionType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,7 +51,11 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
     @Test
     public void selectByPrimaryKey() {
         borrower.setbId(1);
-        Borrower b = borrowerServiec.selectByPrimaryKey(borrower.getbId());
+//        borrower.setbStatus(0);
+        Borrower b = borrowerServiec.selectByPrimaryKey(borrower);
+        for (ConditionType conditionType : b.getConditionTypeList()) {
+            System.out.println(conditionType.getConditionTypeName());
+        }
         System.out.println(b);
     }
 
@@ -64,10 +69,22 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
         List<Borrower> b = borrowerServiec.listBorrower(borrower, pageBean);
         for (Borrower br : b) {
             System.out.println();
-            for (BorrowerType bt : br.getBorrowerTypeList()) {
-                System.out.println(bt.getbTypeName());
-            }
+//            for (BorrowerType bt : br.getBorrowerTypeList()) {
+//                System.out.println(bt.getbTypeName());
+//            }
         }
+    }
+
+    @Test
+    public void listBorrowerStatus() {
+//        pageBean.setPage(2);
+//        pageBean.setRows(2);
+        List<Borrower> b = borrowerServiec.listBorrowerStatus(borrower, pageBean);
+        for (Borrower br : b) {
+            System.out.println(br);
+
+        }
+        System.out.println(pageBean.getTotal());
     }
 
 
