@@ -2,18 +2,16 @@ package com.zking.ssm.credit.service.impl;
 
 import com.zking.ssm.Borrowing.serviec.impl.BaseTestCase;
 import com.zking.ssm.base.model.User;
-import com.zking.ssm.credit.service.IUserService;
+import com.zking.ssm.credit.service.IuserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class UserServiceImplTest extends BaseTestCase {
 
     @Autowired
-    private IUserService userService;
+    private IuserService userService;
     private User user;
 
     @Override

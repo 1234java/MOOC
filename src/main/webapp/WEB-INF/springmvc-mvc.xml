@@ -26,8 +26,7 @@
     <!--3) ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- viewClass需要在pom中引入两个包：standard.jar and jstl.jar -->
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
@@ -51,7 +50,7 @@
             <!--</list>-->
         <!--</property>-->
     <!--</bean>-->
-
+    <mvc:default-servlet-handler/>
     <!--2) 指定语言区域解析器，由它来确定使用哪个语言 -->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
 

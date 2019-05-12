@@ -3,6 +3,7 @@ package com.zking.ssm.backstage.service.impl;
 import com.zking.ssm.backstage.service.InstitutionalTypeService;
 import com.zking.ssm.base.mapper.InstitutionalTypeMapper;
 import com.zking.ssm.base.model.InstitutionalType;
+import com.zking.ssm.base.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,5 +50,10 @@ public class InstitutionalTypeServiceImpl implements InstitutionalTypeService {
     @Override
     public List<InstitutionalType> listInstitutionalType(InstitutionalType institutionalType) {
         return typeMapper.listInstitutionalType(institutionalType);
+    }
+
+    @Override
+    public List<InstitutionalType> list(InstitutionalType institutionalType, PageBean pageBean) {
+        return typeMapper.list(institutionalType);
     }
 }

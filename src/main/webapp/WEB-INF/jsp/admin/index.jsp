@@ -111,8 +111,8 @@ ${ctx}
                        onClick="openurl('deletecomment.html');">用户信用管理</a></li>
                <%-- <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('useredit.html');">用户额度管理</a></li>--%>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">举报信息管理</a></li>
+               <%-- <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('useredit.html');">举报信息管理</a></li>--%>
 
             </ul>
 

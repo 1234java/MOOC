@@ -3,7 +3,7 @@ package com.zking.ssm.Borrowing.serviec.impl;
 import com.zking.ssm.Borrowing.serviec.IBorrowerServiec;
 import com.zking.ssm.base.model.Borrower;
 import com.zking.ssm.base.model.BorrowerType;
-import com.zking.ssm.base.model.ConditionType;
+/*import com.zking.ssm.base.model.ConditionType;*/
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -53,9 +53,9 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
         borrower.setbId(1);
 //        borrower.setbStatus(0);
         Borrower b = borrowerServiec.selectByPrimaryKey(borrower);
-        for (ConditionType conditionType : b.getConditionTypeList()) {
+       /* for (ConditionType conditionType : b.getConditionTypeList()) {
             System.out.println(conditionType.getConditionTypeName());
-        }
+        }*/
         System.out.println(b);
     }
 

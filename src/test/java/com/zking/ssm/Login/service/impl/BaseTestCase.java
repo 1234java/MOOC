@@ -22,7 +22,7 @@ public class BaseTestCase {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void before() throws Exception {
         pageBean = new PageBean();
     }
 

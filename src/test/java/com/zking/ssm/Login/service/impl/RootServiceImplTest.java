@@ -16,8 +16,8 @@ public class RootServiceImplTest extends BaseTestCase{
     private Root root;
 
     @Override
-    public void setUp() throws Exception {
-        super.setUp();
+    public void before() throws Exception {
+
         root = new Root();
     }
 

@@ -25,5 +25,5 @@ public interface InstitutionalTypeService {
 
     int updateByPrimaryKey(InstitutionalType institutionalType);
     List<InstitutionalType> listInstitutionalType(InstitutionalType institutionalType);
-
+    List<InstitutionalType> list(InstitutionalType institutionalType,PageBean pageBean);
 }

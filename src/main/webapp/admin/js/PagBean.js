@@ -2,7 +2,7 @@ function ew(obj,index){
     //  alert("-----"+obj.page);
     var htmls="<ul class='pagination'>";
     htmls +="<li  class='"+(obj.page=== 1?"disabled" : "")+"'><a onclick='show("+(obj.page-1)+")'>&laquo;</a></li>";
-    var pageTotal=obj.rows>=6?obj.rows:6;
+    var pageTotal=obj.row>=6?obj.row:6;
     if(obj.page < 6){
         for (var i = 1; i <= pageTotal ; i++) {
             htmls +="<li  class='"+(obj.page===i?"disabled" : "")+"'><a name='page'  id='page'  onclick='show("+i+")' value='"+i+"'>"+i+"</a></li>";

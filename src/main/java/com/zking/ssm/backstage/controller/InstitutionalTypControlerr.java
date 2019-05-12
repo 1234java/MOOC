@@ -3,7 +3,7 @@ package com.zking.ssm.backstage.controller;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zking.ssm.backstage.service.InstitutionalTypeSerice;
+import com.zking.ssm.backstage.service.InstitutionalTypeService;
 import com.zking.ssm.backstage.service.InvestmentTypeSerive;
 import com.zking.ssm.backstage.service.impl.InstitutionalTypeServiceImpl;
 import com.zking.ssm.base.model.BorrowerType;
@@ -29,7 +29,7 @@ import java.util.Map;
 public class InstitutionalTypControlerr {
 
     @Autowired
-    private InstitutionalTypeSerice typeSerice;
+    private InstitutionalTypeService typeSerice;
 
     @RequestMapping(value = "/institutionaltylelist")
     @ResponseBody

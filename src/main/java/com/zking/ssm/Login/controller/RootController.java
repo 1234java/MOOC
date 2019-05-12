@@ -2,7 +2,10 @@ package com.zking.ssm.Login.controller;
 
 import com.zking.ssm.Login.service.IRootService;
 import com.zking.ssm.base.model.Root;
-
+/*import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +58,7 @@ public class RootController{
 //            return "Login/login";
 //        }
  //   }
+
     }
 
 
