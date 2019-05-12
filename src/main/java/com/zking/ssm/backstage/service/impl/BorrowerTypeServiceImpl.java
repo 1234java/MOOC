@@ -1,6 +1,6 @@
 package com.zking.ssm.backstage.service.impl;
 
-import com.zking.ssm.backstage.service.IBorrowerTypeSerice;
+import com.zking.ssm.backstage.service.IBorrowerTypeService;
 import com.zking.ssm.base.mapper.BorrowerTypeMapper;
 import com.zking.ssm.base.model.BorrowerType;
 import com.zking.ssm.base.utils.PageBean;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BorrowerTypeSericeImpl implements IBorrowerTypeSerice {
+public class BorrowerTypeServiceImpl implements IBorrowerTypeService {
 
     @Autowired
     private BorrowerTypeMapper typeMapper;
