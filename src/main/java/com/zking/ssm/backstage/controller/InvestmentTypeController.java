@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/system/investment")
 public class InvestmentTypeController {
@@ -22,8 +25,14 @@ public class InvestmentTypeController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public List<InvestmentType> list(InvestmentType investmentType, HttpServletRequest req, HttpServletResponse response) throws Exception {
+    public Map<String,Object> list(InvestmentType investmentType, HttpServletRequest req, HttpServletResponse response,String  page) throws Exception {
+        Map<String,Object> map=new HashMap<String,Object>();
         PageBean pageBean =new PageBean();
+        if(page ==null){
+            pageBean.setPage(1);
+        }else {
+            pageBean.setPage(page);
+        }
         pageBean.setRequest(req);
         System.out.println(investmentType);
         List<InvestmentType> list = typeSerive.list(investmentType, pageBean);
@@ -31,7 +40,10 @@ public class InvestmentTypeController {
         for (InvestmentType type : list) {
             System.out.println(type);
         }
-        return  list;
+
+        map.put("list",list);
+        map.put("pageBean",pageBean);
+        return  map;
     }
 
 

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/system/root")
@@ -21,15 +23,23 @@ public class RoottController {
     private IRoottService ice;
     @RequestMapping("/list")
     @ResponseBody
-    public List<Root> list(Root root, Model model, HttpServletRequest req){
+    public Map<String,Object> list(Root root, Model model, HttpServletRequest req,String  page){
+        Map<String,Object> map=new HashMap<String,Object>();
         System.out.println(root);
         PageBean pageBean =new PageBean();
+        if(page ==null){
+            pageBean.setPage(1);
+        }else {
+            pageBean.setPage(page);
+        }
         pageBean.setRequest(req);
         List<Root> list = ice.list(root, pageBean);
         for (Root root1 : list) {
             System.out.println(root1);
         }
-        return  list;
+        map.put("list",list);
+        map.put("pageBean",pageBean);
+        return  map;
     }
 
 

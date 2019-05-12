@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/comment")
@@ -21,15 +23,22 @@ public class CommentControler {
     private IDiscussService service;
     @RequestMapping("/list")
     @ResponseBody
-    public List<Discuss> list(Discuss discuss, HttpServletRequest req, Model model){
+    public Map<String,Object> list(Discuss discuss, HttpServletRequest req, Model model,String  page){
+        Map<String,Object> map=new HashMap<String,Object>();
         PageBean pageBean =new PageBean();
+        if(page ==null){
+            pageBean.setPage(1);
+        }else {
+            pageBean.setPage(page);
+        }
         pageBean.setRequest(req);
         List<Discuss> list = service.list(discuss,pageBean);
         for (Discuss discuss1 : list) {
             System.out.println(discuss1);
         }
-
-        return  list;
+        map.put("list",list);
+        map.put("pageBean",pageBean);
+        return  map;
     }
 
 

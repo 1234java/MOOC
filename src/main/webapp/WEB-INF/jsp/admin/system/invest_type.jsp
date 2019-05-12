@@ -18,6 +18,7 @@
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
     <link href="${ctx}/fonts/**" >
+    <script src="${ctx}/admin/js/PagBean.js"></script>
 </head>
 
 <body>
@@ -36,10 +37,10 @@
          show();
      })
 
-    function show(){
+    function show(obj){
         var url ="${ctx}/system/investment/list";
        // alert(url);
-        var h ={'iTypename':$("#exampleInputEmail1").val()}
+        var h ={'iTypename':$("#exampleInputEmail1").val(),"page":obj}
         $.ajax({
             url:url,
             type:"post",
@@ -48,14 +49,15 @@
             async: false,
             success: function(msg) {
                // alert(msg)
+                ew(msg["pageBean"],'uu')
                 var t="";
-                for (var i =0; i<= msg.length;i++){
-                    alert(msg[i].iTypename)
+                for (var i =0; i<= msg["list"].length;i++){
+                  //  alert(msg[i].iTypename)
                     t+="<tr >";
-                    t+="<td>"+msg[i].iTypeid+"</td>";
-                    t+="<td>"+msg[i].iTypename+"</td>";
+                    t+="<td>"+msg["list"][i].iTypeid+"</td>";
+                    t+="<td>"+msg["list"][i].iTypename+"</td>";
                     t+="<td width='150px'>";
-                    t+="<a href='${ctx}/system/investment/del?iTypeid="+msg[i].iTypeid+"' onclick='s()' style='margin-right: 10px;' title='删除'>";
+                    t+="<a href='${ctx}/system/investment/del?iTypeid="+msg["list"][i].iTypeid+"' onclick='s()' style='margin-right: 10px;' title='删除'>";
                     t+="<span class='glyphicon glyphicon-trash'></span>";
                     t+="</a>";
                     t+="</td>";
@@ -107,7 +109,7 @@
     </tbody>
 
 </table>
-
+<div id="uu" align="center"></div>
 
 
 

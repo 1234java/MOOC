@@ -15,6 +15,7 @@
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
     <link href="${ctx}/fonts/**" >
+    <script src="${ctx}/admin/js/PagBean.js"></script>
 </head>
 <script type="text/javascript">
 
@@ -43,10 +44,10 @@
         }
     }
 
-    function show(){
+    function show(obj){
         var url ="${ctx}/attestaion/list";
         // alert(url);
-        var json ={'aName':$("#exampleInputEmail1").val()}
+        var json ={'aName':$("#exampleInputEmail1").val(),"page":obj}
         $.ajax({
             url:url,
             type:"post",
@@ -55,19 +56,20 @@
             async: false,
             success: function(msg) {
                  //alert(msg)
+                ew(msg["pageBean"],'uu')
                 var t="";
-                for (var i =0; i<= msg.length;i++){
+                for (var i =0; i<= msg["list"].length;i++){
                     //alert(msg[i].user.pUsername)
                     t+="<tr >";
-                    t+="<td>"+msg[i].aId+"</td>";
-                    t+="<td>"+msg[i].user.pUsername+"</td>";
-                    t+="<td>"+msg[i].aName+"</td>";
-                    t+="<td>"+df(msg[i].aState)+"</td>";
+                    t+="<td>"+(i+1)+"</td>";
+                    t+="<td>"+msg["list"][i].user.pUsername+"</td>";
+                    t+="<td>"+msg["list"][i].aName+"</td>";
+                    t+="<td>"+df(msg["list"][i].aState)+"</td>";
                     t+="<td width='150px'>";
-                    t+="<a href='${ctx}/attestaion/del?aId="+msg[i].aId+"' style='margin-right: 10px;' title='删除'>";
+                    t+="<a href='${ctx}/attestaion/del?aId="+msg["list"][i].aId+"' style='margin-right: 10px;' title='删除'>";
                     t+="<span class='glyphicon glyphicon-trash'></span>";
                     t+="</a>";
-                    t+="<a href='javascript:sho('+msg[i].aId+');' onclick='sho("+msg[i].aId+")' style='margin-right: 10px;' title='认证' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
+                    t+="<a href='javascript:void(0);' onclick='sho("+msg["list"][i].aId+")' style='margin-right: 10px;' title='认证' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
                     t+="<span class='glyphicon glyphicon-cog'></span>";
                     t+="</a>";
                     t+="</td>";
@@ -141,8 +143,9 @@
     </tr>
 
     <tbody id="tbody"></tbody>
-</table>
 
+</table>
+<div id="uu" align="center"></div>
 
 <div class="modal fade" data-backdrop="false" id="drd" tabindex="-1">
     <div class="modal-dialog">

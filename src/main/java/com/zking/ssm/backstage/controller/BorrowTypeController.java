@@ -1,8 +1,5 @@
 package com.zking.ssm.backstage.controller;
 
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zking.ssm.backstage.service.IBorrowerTypeService;
 import com.zking.ssm.base.model.BorrowerType;
 import com.zking.ssm.base.utils.PageBean;
@@ -13,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 
@@ -29,28 +26,28 @@ public class BorrowTypeController {
 
     @RequestMapping(value = "/borrowertypelist")
     @ResponseBody
-    public   String list(BorrowerType borrowerType, HttpServletRequest req, HttpServletResponse response) throws Exception {
-        PrintWriter out = response.getWriter();
+    public Map<String,Object> list(BorrowerType borrowerType, HttpServletRequest req, String  page) throws Exception {
+        Map<String,Object> map=new HashMap<String,Object>();
         System.out.println("---");
+        System.out.println(page);
         PageBean pageBean =new PageBean();
-        pageBean.setRows(2);
         pageBean.setRequest(req);
+
+        pageBean.setRows(7);
+        if(page ==null){
+            pageBean.setPage(1);
+        }else {
+            pageBean.setPage(page);
+        }
         List<BorrowerType> list = typeServiec.list(borrowerType, pageBean);
         for (BorrowerType type : list) {
             System.out.println(type);
         }
-        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(pageBean);
+        map.put("list",list);
+        map.put("pageBean",pageBean);
 
-
-
-        JsonGenerator generator = mapper.getJsonFactory().createJsonGenerator(System.out,JsonEncoding.UTF8);
-
-        String s = mapper.writeValueAsString(list);
-
-        //out.print(list);
-        out.print(s);
-
-        return  null;
+        return  map;
     }
 
 

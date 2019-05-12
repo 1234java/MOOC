@@ -17,6 +17,7 @@
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
     <link href="${ctx}/fonts/**" >
+    <script src="${ctx}/admin/js/PagBean.js"></script>
 </head>
 <script type="text/javascript">
 
@@ -37,10 +38,10 @@
          var newTime=year+'-'+month+'-'+day+'-'+hour+':'+min+':'+sec;
          return newTime;
     }
-    function show(){
+    function show(obj{
         var url ="${ctx}/comment/list";
         //alert(url);
-        var h ={'dContent':$("#exampleInputEmail1").val()}
+        var h ={'dContent':$("#exampleInputEmail1").val(),"page":obj}
         //alert(h.iTypename);
         //alert(h);
         $.ajax({
@@ -50,17 +51,18 @@
             dataType:"json",
             async: false,
             success: function(msg) {
-                //alert(msg);
+                ew(msg["pageBean"],'uu')
+               // alert(msg);
                 var t="";
-                for (var i =0; i<= msg.length;i++){
+                for (var i =0; i<= msg["list"].length;i++){
                     //alert(msg[i].iTypeid)
                     t+="<tr >";
-                    t+="<td>"+msg[i].dId+"</td>";
-                    t+="<td>"+msg[i].user.pUsername+"</td>";
-                    t+="<td>"+msg[i].dContent+"</td>";
-                    t+="<td>"+s(msg[i].dTime)+"</td>";
+                    t+="<td>"+(i+1)+"</td>";
+                    t+="<td>"+msg["list"][i].user.pUsername+"</td>";
+                    t+="<td>"+msg["list"][i].dContent+"</td>";
+                    t+="<td>"+s(msg["list"][i].dTime)+"</td>";
                     t+="<td width='150px'>";
-                    t+="<a href='${ctx}/comment/del?dId="+msg[i].dId+"'  style='margin-right: 10px;' title='删除'>";
+                    t+="<a href='${ctx}/comment/del?dId="+msg["list"][i].dId+"'  style='margin-right: 10px;' title='删除'>";
                     t+="<span class='glyphicon glyphicon-trash'></span>";
                     t+="</a>";
                     t+="</td>";
@@ -108,6 +110,7 @@
     </tbody>
 
 </table>
+<div id="uu" align="center"></div>
 
 <div class="modal fade" data-backdrop="false" id="drd" tabindex="-1">
     <div class="modal-dialog">

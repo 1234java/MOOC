@@ -17,6 +17,7 @@
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
     <link href="${ctx}/fonts/**" >
+    <script src="${ctx}/admin/js/PagBean.js"></script>
 </head>
 <body>
 <div class="form-group" style="width: 100%;text-align: center;margin-top: 10px;">
@@ -119,10 +120,10 @@
         })
 
     }
-    function show() {
+    function show(obj) {
         var url ="${ctx}/system/root/list";
        // alert(url);
-        var json ={'rName':$("#exampleInputEmail1").val()}
+        var json ={'rName':$("#exampleInputEmail1").val(),"page":obj}
         $.ajax({
             url:url,
             type:"post",
@@ -131,19 +132,20 @@
             async: false,
             success: function(msg) {
            // alert(msg);
+                ew(msg["pageBean"],'uu')
                // alert(msg.length);
                 var t ="";
-                for (var i = 0; i <msg.length ; i++) {
+                for (var i = 0; i <= msg["list"].length ; i++) {
                   //  alert(msg[i].rName);
                     t +="<tr>";
                     t +="<td>"+(i+1)+"</td>";
-                    t +="<td>"+msg[i].rName+"</td>";
-                    t +="<td>"+sh(msg[i].rStatus)+"</td>";
+                    t +="<td>"+ msg["list"][i].rName+"</td>";
+                    t +="<td>"+sh( msg["list"][i].rStatus)+"</td>";
                     t +=" <td width='150px'>";
-                    t +="  <a href='${ctx}/system/root/del?rId="+msg[i].rId+"' style='margin-right: 10px;'  title='删除'>";
+                    t +="  <a href='${ctx}/system/root/del?rId="+ msg["list"][i].rId+"' style='margin-right: 10px;'  title='删除'>";
                     t +="<span class='glyphicon glyphicon-trash'></span>";
                     t +="</a>";
-                    t +=" <a href='javascript:void(0);' style='margin-right: 10px;'  onclick='load("+msg[i].rId+")' title='更改状态' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
+                    t +=" <a href='javascript:void(0);' style='margin-right: 10px;'  onclick='load("+msg["list"][i].rId+")' title='更改状态' data-dismiss='modal' data-toggle='modal' data-target='#drd'>";
                     t +="<span class='glyphicon glyphicon-cog'></span>";
                     t +="</a>";
                     t +="</td>";
@@ -167,7 +169,7 @@
 
 
 </table>
-
+<div id="uu" align="center"></div>
 
 <div class="modal fade" data-backdrop="false" id="drd" tabindex="-1">
     <div class="modal-dialog">
@@ -178,7 +180,7 @@
                     <label>管理员账号:&nbsp;</label>
                     <span id="rName">sssss</span>
                     <div>
-                        <form >
+                        <form  id="s">
                             <input type="radio"  name="rStatus"  value="0"/>启动
                             <input type="radio" name="rStatus" value="1"/>不可用
                             <div class="modal-footer">
@@ -187,6 +189,7 @@
                                 <button class="btn btn-success" data-dismiss="modal">取消</button>
                             </div>
                         </form>
+
                     </div>
 
 
