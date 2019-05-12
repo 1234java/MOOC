@@ -11,7 +11,7 @@
 <head>
     <title>认证</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />
+    <%--<link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />--%>
     <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
@@ -106,10 +106,9 @@
                 $("#pname").html(msg.aName);
                 $("#psfz").html(msg.aSfz);
                 $("#front").src='${ctx}'+msg.aFront;
-                //alert('${ctx}'+msg.aFront);
                // $("#reverse").src='msg.aReverse';
                 $("#reverse").attr('src','${ctx}'+msg.aReverse)
-                $("#message").val( msg.aMessage)  ;
+                $("#aMessage").val(msg.aMessage)  ;
             }
 
         })
@@ -153,7 +152,7 @@
         <div class="modal-content">
             <div class="modal-header">认证身份</div>
             <div class="modal-body">
-                <form class="form-group" action="${ctx}/attestaion/update">
+                <form class="form-group" action="${ctx}/attestaion/update" method="post">
                     <table class="table">
                         <tr>
                             <td><label>用户账号:</label> </td>
@@ -179,7 +178,7 @@
                             <td>失败原因：</td>
                             <td>
                                 <input type="hidden" name="aId"  id="aId">
-											<textarea cols="50" id="aMessage" rows="10">
+											<textarea cols="50" id="aMessage" name="aMessage" rows="10">
 
 
 											</textarea>

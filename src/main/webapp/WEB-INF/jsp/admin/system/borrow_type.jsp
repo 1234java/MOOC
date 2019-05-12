@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <title>借款类型</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />
+    <%--<link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />--%>
     <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
@@ -59,9 +59,10 @@
                 //  var s=eval(msg);
                 ew(msg["pageBean"],'uu')
                 var t="";
+
                 for (var i=0; i<= msg["list"].length;i++ ){
                     t+="<tr >";
-                    t+="<td>"+i+"</td>";
+                    t+="<td>"+msg["list"][i].bTypeId+"</td>";
                     t+="<td>"+msg["list"][i].bTypeName+"</td>";
                     t+="<td width='150px'>";
                     t+="<a href='${ctx}/system/del?bTypeId="+msg["list"][i].bTypeId+"' onclick='s()' style='margin-right: 10px;' title='删除'>";

@@ -12,7 +12,7 @@
 <head>
     <title>企业用户管理</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${ctx}/admin/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="${ctx}/admin/css/bootstrap.min.css">--%>
     <link href="${ctx}/admin/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap-responsive.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/style.css"/>

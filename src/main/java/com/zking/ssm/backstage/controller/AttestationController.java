@@ -61,8 +61,8 @@ public class AttestationController {
 
     @RequestMapping("/update")
     public String update(Attestation attestation, HttpServletRequest req, Model model){
-        System.out.println(attestation);
-
+        System.out.println("============="+attestation);
+        attestation.setaMessage(attestation.getaMessage().trim());
         int updateatt = service.updateatt(attestation);
 
 

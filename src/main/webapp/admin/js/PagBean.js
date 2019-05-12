@@ -2,7 +2,7 @@ function ew(obj,index){
     //  alert("-----"+obj.page);
     var htmls="<ul class='pagination'>";
     htmls +="<li  class='"+(obj.page=== 1?"disabled" : "")+"'><a onclick='show("+(obj.page-1)+")'>&laquo;</a></li>";
-    var pageTotal=obj.row>=6?obj.row:6;
+    var pageTotal=obj.row>=6?obj.row:7;
     if(obj.page < 6){
         for (var i = 1; i <= pageTotal ; i++) {
             htmls +="<li  class='"+(obj.page===i?"disabled" : "")+"'><a name='page'  id='page'  onclick='show("+i+")' value='"+i+"'>"+i+"</a></li>";
@@ -18,7 +18,7 @@ function ew(obj,index){
             if(obj.page >3){
                 if(i===4){
                     if(obj.page  === obj.total){
-                        htmls +="<li><a onclick='show("+(obj.page-2)+")' value="+i+"'>"+(obj.page-2)+"</a></li>";
+                        htmls +="<li><a onclick='show("+i+")' value="+i+"'>"+i+"</a></li>";
                     }
                     htmls +="<li><a onclick='show("+(obj.page-1)+")' value="+i+"'>"+(obj.page-1)+"</a></li>";
                 }
@@ -36,7 +36,7 @@ function ew(obj,index){
 
         }
     }
-    htmls +="<li ><a onclick='show("+(obj.page+1)+")'  >&raquo;</a></li> </ul>";
+    htmls +="<li class='"+(obj.page===obj.getMaxPage?"disabled" : "")+"'><a onclick='show("+(obj.page+1)+")'  >&raquo;</a></li> </ul>";
     // alert("#"+index)
     $("#"+index).html(htmls);
 }

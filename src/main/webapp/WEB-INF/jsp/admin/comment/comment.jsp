@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <title>评论管理</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />
+    <%--<link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.min.css" />--%>
     <script src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
     <script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
     <script src="${ctx}/admin/js/bootstrap.min.js"></script>
@@ -39,7 +39,7 @@
          var newTime=year+'-'+month+'-'+day+'-'+hour+':'+min+':'+sec;
          return newTime;
     }
-    function show(obj{
+    function show(obj){
         var url ="${ctx}/comment/list";
         //alert(url);
         var h ={'dContent':$("#exampleInputEmail1").val(),"page":obj}
