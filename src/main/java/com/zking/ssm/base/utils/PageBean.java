@@ -12,7 +12,7 @@ public class PageBean {
 	// ��������
 	private int page = 1;// ҳ��
 	private int rows = 10;// ҳ��С
-	private int row = 7;// 显示页数
+	private int row = 8;// 显示页数
 
 	private int total = 0;// �ܼ�¼��
 	private boolean pagination = true;// �Ƿ��ҳ
