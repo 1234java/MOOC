@@ -118,16 +118,23 @@
                     </div>
                     <!-- end l -->
                     <div class="bor_det_oner fl">
-                        <f:form action="${ctx}/hipoteca/add"  method="post" modelAttribute="borrow">
+                        <f:form action="${ctx}/hipoteca/add?sid=0"  method="post" modelAttribute="borrower">
                      <%--   <form   action="${ctx}/hipoteca/add"  method="get" >--%>
                             <fieldset>
+                                <div style="margin-top: 10px">
+                                    <label>标题</label>
+                                    <f:input path="bName"></f:input><f:errors path="bName"/>
+                                </div>
+
                                     <div>
                                         <label>申请人</label>
-                                        <input type="" name="bUsername">
+                                        <%--<input type="" name="bUsername">--%>
+                                        <f:input path="bUsername"></f:input><f:errors path="bUsername"/>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款金额</label>
-                                        <input type="" class="bor_inputbg01" name="bMoney">
+                                        <%--<input type="" class="bor_inputbg01" name="bMoney">--%>
+                                        <f:input path="bMoney"></f:input><f:errors path="bMoney"/>
 
                                     </div>
                                     <div class="mt15">
@@ -137,24 +144,29 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*手机号码</label>
-                                        <input type="" name="bPhone">
+                                        <f:input path="bPhone"></f:input><f:errors path="bPhone"/>
+                                        <%--<input type="" name="bPhone">--%>
 
                                     </div>
                                     <div class="mt15 guarmethod clearfix">
                                         <label class="guarmethod_l fl">*担保方式</label>
                                         <div class="fl">
                                         <span>房屋数量</span>
-                                        <input type="text" class="bor_inputbg03 input2" name="bHouse"><br><br>
+                                         <%--<f:input path="bHouse"></f:input><f:errors path="bHouse"/>--%>
+
+                                        <input type="text" class="bor_inputbg03 input2" name="bHouse">
+                                            <br><br>
 
                                         <span>总价值</span>
-                                        <input type="text" class="bor_inputbg04 input2" name="bTotalValue"><br>
+                                        <input type="text" class="bor_inputbg04 input2" name="bTotalValue">
+                                            <br>
 
                                     </div>
 
                                 </div>
                                 <div class="mt15">
-                                    <label>*借款用途</label>
-                                    <select name="bUse">
+                                    <label>*借款类别</label>
+                                    <select name="bBorrowerType">
 
                                         <option>选择借款类别</option>
                                         <option value="1">信用贷款</option>
@@ -177,11 +189,11 @@
                                     紧急借款
 
                                 </div>
-                                <div class="mt15">
-                                    <label>*验证码</label>
-                                    <input type="text" class="yanzheng">
+                                <%--<div class="mt15">--%>
+                                    <%--<label>*验证码</label>--%>
+                                    <%--<input type="text" class="yanzheng">--%>
 
-                                </div>
+                                <%--</div>--%>
                                 <div class="mt30">
                                     <label></label>
                                    <%-- <a href="" class="bor_btn">提交材料</a>--%>

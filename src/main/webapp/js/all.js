@@ -32,6 +32,8 @@ function slideNav(slidewper,slidebox)
       qiehuan(".product_tit span","product_curspan",".product_list");
       // borrow 切换
       qiehuan(".bor_detail_tit span","bor_decurspan",".bor_det_one");
+     //detail 切换
+      qiehuan(".detail_con_tit span","det_tit_curspan",".det_proone_l");
 // 项目列表切换
 function qiehuan2(obj,objcur,boxone)
 	{

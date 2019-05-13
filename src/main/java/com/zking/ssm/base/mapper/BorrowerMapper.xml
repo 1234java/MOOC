@@ -27,28 +27,38 @@
       <result column="b_username" property="bUsername" javaType="java.lang.String" />
       <result column="b_money" property="bMoney" javaType="java.lang.Double" />
       <result column="b_rate" property="bRate" javaType="java.lang.Integer" />
-      <result column="b_money_deadline" property="bMoneyDeadline" javaType="java.util.Date" />
+      <result column="b_money_deadline" property="bMoneyDeadline" javaType="java.sql.Date" />
       <result column="b_phone" property="bPhone" javaType="java.lang.String" />
       <result column="b_house" property="bHouse" javaType="java.lang.Integer" />
       <result column="b_total_value" property="bTotalValue" javaType="java.lang.Double" />
       <result column="b_use" property="bUse" javaType="java.lang.String" />
       <result column="b_describe" property="bDescribe" javaType="java.lang.String" />
       <result column="b_condition" property="bCondition" javaType="java.lang.Integer" />
-      <result column="b_borrower_type" property="bBorrowerType" javaType="java.lang.Integer" />
+      <!--<result column="b_borrower_type" property="bBorrowerType" javaType="java.lang.Integer" />-->
       <result column="b_bidCount" property="bBidcount" javaType="java.lang.Integer" />
       <result column="b_status" property="bStatus" javaType="java.lang.Integer" />
+
+      <collection  property="borrowerTyper" ofType="com.zking.ssm.base.model.BorrowerType">
+        <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
+        <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
+      </collection>
+
+
   </resultMap>
   <sql id="Base_Column_List" >
     b_id, b_name, b_username, b_money, b_rate, b_money_deadline, b_phone, b_house, b_total_value, 
     b_use, b_describe, b_condition, b_borrower_type, b_bidCount, b_status
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from borrower
     where b_id = #{bId,jdbcType=INTEGER}
   </select>
-  <select id="listBorrower" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
+
+
+  <!--<select id="listBorrower" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
     select * from borrower
     where 1=1
     <if test="null !=bName and '' !=null">
@@ -58,20 +68,38 @@
       and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")
     </if>
 
+  </select>-->
+  <select id="selectByPrimaryInt" resultType="java.lang.Integer">
+    select DATEDIFF(a.b_money_deadline ,  NOW()) FROM borrower a
+
+
   </select>
+  <select id="listb" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
+        select * from  borrower a JOIN borrower_type  b on a.b_borrower_type=b.b_type_id
+
+  </select>
+  <select id="selectBy" resultType="java.lang.Integer">
+    select  SUM(b_money) from borrower
+
+  </select>
+
+ <!-- <select id="select" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
+            select * from borrower where b_id = #{bId,jdbcType=INTEGER}
+  </select>-->
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from borrower
     where b_id = #{bId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Borrower" >
     insert into borrower ( b_name, b_username,
-      b_money, b_rate, b_money_deadline, 
+      b_money, b_money_deadline,
       b_phone, b_house, b_total_value, 
       b_use, b_describe, b_condition, 
       b_borrower_type, b_bidCount, b_status
       )
     values ( #{bName,jdbcType=VARCHAR}, #{bUsername,jdbcType=VARCHAR},
-      #{bMoney,jdbcType=DOUBLE}, #{bRate,jdbcType=INTEGER}, #{bMoneyDeadline,jdbcType=TIMESTAMP}, 
+      #{bMoney,jdbcType=DOUBLE}, #{bMoneyDeadline,jdbcType=TIMESTAMP},
       #{bPhone,jdbcType=VARCHAR}, #{bHouse,jdbcType=INTEGER}, #{bTotalValue,jdbcType=DOUBLE}, 
       #{bUse,jdbcType=VARCHAR}, #{bDescribe,jdbcType=VARCHAR}, #{bCondition,jdbcType=INTEGER}, 
       #{bBorrowerType,jdbcType=INTEGER}, #{bBidcount,jdbcType=INTEGER}, #{bStatus,jdbcType=INTEGER}

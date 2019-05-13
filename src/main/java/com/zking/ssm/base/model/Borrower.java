@@ -2,22 +2,29 @@ package com.zking.ssm.base.model;
 
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.awt.*;
+import java.awt.print.Book;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Component
 @ToString
-public class Borrower {
+public class Borrower implements Serializable {
 
-    public static interface ValidateGroups{
+    public static interface ValidateGroups {
 
         // 新增/修改
         public static interface AddEdit {
         }
+
         // 上架/下架
         public static interface Del {
         }
@@ -27,48 +34,80 @@ public class Borrower {
         }
 
     }
-    @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})
+
+    //    @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})
     private Integer bId;
 
-    @NotBlank(message = "借款名称不能为空")
+
+    @NotBlank(message = "不能为空",groups = Borrower.ValidateGroups.AddEdit.class)
     private String bName;
 
-    @NotBlank(message = "申请人不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class})
+    @NotBlank(message = "申请人不能为空", groups = Borrower.ValidateGroups.AddEdit.class)
     private String bUsername;
 
-    @NotBlank(message = "申请人不能为空")
+//    @NotBlank(message = "申请人不能为空")
+
+    @NotNull(message = "借款金额不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Double bMoney;
 
     private Integer bRate;
 
+    //还款
+//    @NotNull(message = "还款期限不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Date bMoneyDeadline;
 
 
     //    @Size(max = 11,min =11,message = "手机号码长度为11位数字")
 //    @Range(max = 11,min = 11,message = "手机号码长度为11位数字")
-    @Length(max = 11,min = 11,message = "手机号码长度为11位数字",groups ={Borrower.ValidateGroups.AddEdit.class})
+    @NotBlank(message = "电话不能为空",groups = {Borrower.ValidateGroups.AddEdit.class})
+    @Length(max = 11, min = 11, message = "手机号码长度为11位数字", groups = {Borrower.ValidateGroups.AddEdit.class})
     private String bPhone;
 
+    //房屋数量
+//    @Max(value = 10,message = "房屋数量不能大于10",groups = {Borrower.ValidateGroups.AddEdit.class})
+//    @NotNull(message = "房屋不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Integer bHouse;
-
+    //总价值
+//    @NotNull(message = "总价值不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Double bTotalValue;
 
-    @NotBlank(message = "借款用途不能为空",groups ={Borrower.ValidateGroups.AddEdit.class})
+//    @NotBlank(message = "借款类别不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private String bUse;
 
     private String bDescribe;
 
-    @NotBlank(message = "借款情况不能为空",groups ={Borrower.ValidateGroups.AddEdit.class})
+//    @NotBlank(message = "借款描述不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Integer bCondition;
 
-    @NotBlank(message = "借款类型不能为空",groups ={Borrower.ValidateGroups.AddEdit.class})
+//    @NotBlank(message = "借款类型不能为空", groups = {Borrower.ValidateGroups.AddEdit.class})
     private Integer bBorrowerType;
 
-    @Max(value = 99,message = "已有投标数量不能大于99")
-    @Min(value = 1,message = "已有投标数量不能小于1")
+    //        @Max(value = 99,message = "已有投标数量不能大于99")
+//    @Min(value = 1,message = "已有投标数量不能小于1")
     private Integer bBidcount;
 
     private Integer bStatus;
+
+   // private List<BorrowerType> borrowerTypers;
+
+    /*public List<BorrowerType> getBorrowerTypers() {
+        return borrowerTypers;
+    }
+
+    public void setBorrowerTypers(List<BorrowerType> borrowerTypers) {
+        this.borrowerTypers = borrowerTypers;
+    }*/
+
+
+    private BorrowerType borrowerTyper;
+
+    public BorrowerType getBorrowerTyper() {
+        return borrowerTyper;
+    }
+
+    public void setBorrowerTyper(BorrowerType borrowerTyper) {
+        this.borrowerTyper = borrowerTyper;
+    }
 
     public Borrower(Integer bId, String bName, String bUsername, Double bMoney, Integer bRate, Date bMoneyDeadline, String bPhone, Integer bHouse, Double bTotalValue, String bUse, String bDescribe, Integer bCondition, Integer bBorrowerType, Integer bBidcount, Integer bStatus) {
         this.bId = bId;
