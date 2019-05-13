@@ -1,3 +1,4 @@
+/*
 package com.zking.ssm.Login.shiro;
 
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -9,10 +10,12 @@ import org.apache.shiro.cache.CacheManager;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+*/
 /**
  * 提供了不允许连续错误登录的判断。真正匹配的过程还是交给它的直接父类去完成。
  * 连续登录错误的判断依靠Ehcache缓存来实现。显然match返回true为匹配成功
- */
+ *//*
+
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 
     // 声明一个缓存接口，这个接口是Shiro缓存管理的一部分，它的具体实现可以通过外部容器注入
@@ -55,4 +58,4 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         }
         return match;
     }
-}
+}*/

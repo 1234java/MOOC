@@ -4,7 +4,7 @@ import com.zking.ssm.base.model.User;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IuserService {
     int deleteByPrimaryKey(String pUserid);
 
     void insert(User record);

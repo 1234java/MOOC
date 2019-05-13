@@ -36,7 +36,7 @@
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources location="/fonts/" mapping="/fonts/**"/>
-
+    <mvc:resources mapping="/upload/**" location="/upload/"/>
     <!--4) 后台单独处理图片、样式、js等资源 -->
     <mvc:resources mapping="/admin/css/**" location="/admin/css/"/>
     <mvc:resources mapping="/admin/images/**" location="/admin/images/"/>
@@ -67,6 +67,7 @@
         <!--resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常-->
         <property name="resolveLazily" value="true"/>
     </bean>
+
 
     <!--但是，从spring3.1开始DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter的使用已经过时-->
     <!--spring3.1开始我们应该用RequestMappingHandlerMapping来替换DefaultAnnotationHandlerMapping，-->

@@ -41,10 +41,10 @@
         <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
         <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
       </collection>
-      <collection property="conditionTypeList" ofType="com.zking.ssm.base.model.ConditionType">
+     <!-- <collection property="conditionTypeList" ofType="com.zking.ssm.base.model.ConditionType">
           <id column="condition_type_id" property="conditionTypeId" javaType="java.lang.Integer"></id>
           <result column="condition_type_name" property="conditionTypeName" javaType="java.lang.String"></result>
-      </collection>
+      </collection>-->
     
   </resultMap>
 

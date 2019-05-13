@@ -4,10 +4,12 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
 @ToString
 @Data
-public class User implements Serializable{
+public class User implements Serializable {
     private String pUserid;
 
     private String pUsername;

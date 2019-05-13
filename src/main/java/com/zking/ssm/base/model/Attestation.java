@@ -3,6 +3,7 @@ package com.zking.ssm.base.model;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.util.List;

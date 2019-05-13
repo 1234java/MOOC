@@ -26,6 +26,7 @@
         <div class="gy_top px1000 clearfix">
             <div class="gy_top_l fl"><img src="images/service_pic.png" alt=""><span style="color:#999999;padding-left:10px;">在线客服:</span><img style="padding-left:10px;" src="images/service_photo.png" alt=""><span style="color: #5DB9E9;padding-left:10px;">客服热线：400-660-8612</span></div>
             <div class="gy_top_r fr clearfix">
+                <%=request.getSession().getAttribute("addr")%>
                 <a href="">登录</a><span>|</span>
                 <a href="register.html">注册</a><span>|</span>
                 <a href="serveguide.html">新手指导</a><span>|</span>

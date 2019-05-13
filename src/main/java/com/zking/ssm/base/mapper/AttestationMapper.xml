@@ -40,7 +40,7 @@
 
 
   <select id="selectByPrimaryKey"  resultMap="listdd" parameterType="java.lang.Integer" >
-      SELECT * FROM  p_attestation b join    p_user  a  where b.a_id = #{aId,jdbcType=INTEGER}
+      SELECT * FROM p_attestation b   join  p_user  a on b.p_id =a.p_userid  where b.a_id = #{aId,jdbcType=INTEGER}
   </select>
   <resultMap id="listatt" type="com.zking.ssm.base.model.Attestation" >
       <id column="a_id" property="aId" javaType="java.lang.Integer" />

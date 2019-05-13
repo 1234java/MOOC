@@ -105,7 +105,8 @@
                 $("#user").html(msg.user.pUsername);
                 $("#pname").html(msg.aName);
                 $("#psfz").html(msg.aSfz);
-                $("#front").src='${ctx}'+msg.aFront;
+                $("#front").attr('src',msg.aFront)
+                alert(msg.aFront)
                // $("#reverse").src='msg.aReverse';
                 $("#reverse").attr('src','${ctx}'+msg.aReverse)
                 $("#aMessage").val(msg.aMessage)  ;
@@ -168,11 +169,11 @@
                         </tr>
                         <tr>
                             <td><label>身份证正面照:</label> </td>
-                            <td><img id="front" src="${ctx}/admin/images/12.jpg"  style="width: 300px;height: 150px;"/></td>
+                            <td><img id="front" src=""  style="width: 300px;height: 150px;"/></td>
                         </tr>
                         <tr>
                             <td><label>身份证反面照:</label> </td>
-                            <td><img id="reverse" src="${ctx}/admin/images/12.jpg"   style="width: 300px;height: 150px;"/></td>
+                            <td><img id="reverse" src=""   style="width: 300px;height: 150px;"/></td>
                         </tr>
                         <tr>
                             <td>失败原因：</td>

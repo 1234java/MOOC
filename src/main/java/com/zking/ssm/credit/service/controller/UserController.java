@@ -1,7 +1,7 @@
 package com.zking.ssm.credit.service.controller;
 
 import com.zking.ssm.base.model.User;
-import com.zking.ssm.credit.service.IUserService;
+import com.zking.ssm.credit.service.IuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +16,9 @@ import java.util.List;
 @RequestMapping("/credit/user")
 public class UserController {
 
+
     @Autowired
-    private IUserService userService;
+    private IuserService userService;
 
     @ModelAttribute
     public void init(Model model){

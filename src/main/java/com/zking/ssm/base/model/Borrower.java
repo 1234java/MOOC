@@ -34,7 +34,7 @@ public class Borrower implements Serializable {
     }
     private List<BorrowerType> borrowerTypeList;
 
-    private List<ConditionType> conditionTypeList;
+    //private List<ConditionType> conditionTypeList;
 
 
     @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})

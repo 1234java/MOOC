@@ -5,7 +5,7 @@ import com.zking.ssm.base.utils.PageBean;
 
 import java.util.List;
 
-public interface IBorrowerTypeSerice {
+public interface IBorrowerTypeService {
     int deleteByPrimaryKey(BorrowerType borrowerType);
 
     int insert(BorrowerType borrowerType);
@@ -17,6 +17,7 @@ public interface IBorrowerTypeSerice {
     int updateByPrimaryKeySelective(BorrowerType borrowerType);
 
     int updateByPrimaryKey(BorrowerType borrowerType);
+
 
     List<BorrowerType> list(BorrowerType borrowerType,PageBean pageBean);
 }
