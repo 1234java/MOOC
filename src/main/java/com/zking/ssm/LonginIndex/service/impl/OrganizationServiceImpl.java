@@ -16,6 +16,7 @@ public class OrganizationServiceImpl implements IOrganizationService {
     @Autowired
     private OrganizationMapper organizationMapper;
 
+
     @Override
     public void add(Organization organization) {
         organizationMapper.insert(organization);

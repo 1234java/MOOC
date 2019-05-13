@@ -10,6 +10,7 @@ public interface IOrganizationService {
     //增加
     void add(Organization organization);
 
+
     //查询
     List<Organization> list(Organization organization);
 
