@@ -69,7 +69,7 @@
                     <span class="fl">登录</span>
                     <em class="fr">没有帐号，<a href="">立即注册</a></em>
                 </h2>
-                <form action="${ctx}/LoginIndex/login/lg" method="post">
+                <form action="${ctx}/Oreg/olg" method="post">
                     <fieldset>
                         <p class="mt20">
                             <input type="text" placeholder="用户名/手机" name="pUsername" class="lg_input01 lg_input">

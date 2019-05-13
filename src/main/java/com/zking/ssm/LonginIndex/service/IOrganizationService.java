@@ -12,4 +12,7 @@ public interface IOrganizationService {
 
     //查询
     List<Organization> list(Organization organization);
+
+    //登录
+    Organization login (Organization organization);
 }

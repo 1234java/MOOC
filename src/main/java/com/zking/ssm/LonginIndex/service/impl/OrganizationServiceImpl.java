@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class OrganizationServiceImpl implements IOrganizationService {
 
     @Autowired
@@ -22,6 +23,13 @@ public class OrganizationServiceImpl implements IOrganizationService {
 
     @Override
     public List<Organization> list(Organization organization) {
+
         return organizationMapper.list(organization);
+    }
+
+    @Override
+    public Organization login(Organization organization) {
+
+        return organizationMapper.login(organization);
     }
 }

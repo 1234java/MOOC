@@ -1,3 +1,4 @@
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -9,16 +10,149 @@
 
 <html>
 <head>
+    <%@include file="/common/head.jsp" %>
+    <%@taglib prefix="t" uri="http://www.springframework.org/tags" %>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>注册</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/all.js"></script>
     <script type="text/javascript" src="js/iepng.js"></script>
-    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="js/less.min.js"></script>
-
 </head>
+<style>
+    /*.code
+    {
+        font-family:Arial;
+        font-style:italic;
+        color:blue;
+        font-size:10px;
+        border:0;
+        padding:2px 3px;
+        letter-spacing:3px;
+        font-weight:bolder;
+        float:left;
+        cursor:pointer;
+        width:60px;
+        height:40px;
+        line-height:40px;
+        text-align:center;
+        vertical-align:middle;
+        background-color:#D8B7E3;
+    }
+    span {
+        text-decoration:none;
+        font-size:12px;
+        color:#288bc4;
+        padding-left:10px;
+    }
+
+    span:hover {
+        text-decoration:underline;
+        cursor:pointer;
+    }*/
+</style>
+
+<script type="text/javascript">
+    //页面加载时，生成随机验证码
+    window.onload=function(){
+        createCode(4);
+    }
+
+    //生成验证码的方法
+    function createCode(length) {
+        var code = "";
+        var codeLength = parseInt(length); //验证码的长度
+        var checkCode = document.getElementById("checkCode");
+        ////所有候选组成验证码的字符，当然也可以用中文的
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++)
+        {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 62);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        if (checkCode)
+        {
+            //为验证码区域添加样式名
+            checkCode.className = "code";
+            //将生成验证码赋值到显示区
+            checkCode.innerHTML = code;
+        }
+    }
+
+    //检查验证码是否正确
+    function validateCode()
+    {
+        //获取显示区生成的验证码
+        var checkCode = document.getElementById("checkCode").innerHTML;
+        //获取输入的验证码
+        var inputCode = document.getElementById("inputCode").value;
+
+        console.log(checkCode);
+        console.log(inputCode);
+
+        if (inputCode.length <= 0)
+        {
+            alert("请输入验证码！");
+        }
+        else if (inputCode.toUpperCase() != checkCode.toUpperCase())
+        {
+            alert("验证码输入有误！");
+            createCode(4);
+        }
+        else
+        {
+            alert("验证码正确！");
+        }
+    }
+    /*function clik_form() {
+        var name=document.getElementById("pUsername");
+        var pwd=document.getElementById("pPassword");
+        var pwd1=document.getElementById("pPassword1");
+        var phone=document.getElementById("pInvite");
+        var yzm=document.getElementById("yzm");
+        if(name.value=="") {
+            alert("请设置您的用户名！");
+            return false;
+        }
+        if(name.value.length < 6 ||username.value.length > 18){
+            alert("格式错误,长度应为6-18个字符");
+            return false;
+        }
+        if(pwd.value.length=="")
+        {
+            alert("请输入密码!");
+            return false;
+        }
+        if(pwd.value.length<6 || pwd1.value.length>8)
+        {
+           alert("密码由6-8位字符或数字组成")
+            return false;
+        }
+        if(pwd1.value!=pwd.value){
+            alert("两次密码不一致！")
+            return false;
+        }
+        if(phone.value==""){
+            alert("请输入您的手机号码");
+            return false;
+        }
+        if(yzm.value!=""){
+            alert("请输入验证码");
+            return false;
+        }
+        return true;
+    }
+*/
+</script>
+
+
 <body>
 <div class="gy_box">
     <!-- header start -->
@@ -92,14 +226,14 @@
         </div>
         <div>
             <div id="login1" class="left_form fl" >
-                <form>
+                <form id="from" action="${ctx}/LoginIndex/login/register"  method="post" modelAttribute="user">
                     <div class="form_lb">
-                        <lable>手机/邮箱:</lable>
-                        <input type="text" class="form-control" value="请输入手机/邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入手机/邮箱';}">
+                        <lable>用户名:</lable>
+                        <input type="text" class="form-control" id="pUsername" name="pUsername" value="请输入用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入手机/邮箱';}"><br>
                     </div>
                     <div class="form_lb clearfix">
                         <lable>密码:</lable>
-                        <input type="text" class="form-control" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入密码';}">
+                        <input type="text" class="form-control" id="pPassword" name="pPassword" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入密码';}"><br>
                         <div class="saf_lv_main fl">
                             <div style="background:#29A7E1;" class="saf_lv"></div>
                             <div style="background:#29A7E1;" class="saf_lv"></div>
@@ -110,30 +244,51 @@
                     </div>
                     <div class="form_lb">
                         <lable>确认密码:</lable>
-                        <input type="text" class="form-control " value="请再次输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请再次输入密码';}">
+                        <input type="text" class="form-control " id="pPassword1" name="pPassword1" value="请再次输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请再次输入密码';}">
                     </div>
 
                     <div class="form_lb">
-                        <lable>图片验证码:</lable>
-                        <input type="text" class="chcode " value="请输入右边的验证码" onfocus="this.value ='';" onblur="if (this.value == '') {this.value = '请输入右边的验证码';}">
-                        <span><img src="images/checkcode.png"></span>
+                        <lable>手机号码:</lable>
+                        <input type="text" class="form-control " id="pInvite" name="pInvite" value="选填" size="11" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
                     </div>
+
                     <div class="form_lb">
-                        <lable>邀请码:</lable>
-                        <input type="text" class="form-control " value="选填" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
+                        <lable>验证码:</lable>
+                        <input type="text" class="chcode " id="inputCode" value="请输入右边的验证码" onfocus="this.value ='';" onblur="if (this.value == '') {this.value = '请输入右边的验证码';}">
+                        <span><div id="checkCode" class="code"  onclick="createCode(4)"></div></span>
                     </div>
+
                     <div class="form_lb cheb_yes">
-                        <input type="checkbox" name="" value=""/>
+                        <input type="checkbox" name="aa" value=""/>
                         <span>我已阅读并同意ppp在线的<a href=""><span style="color:#29A7E1;">《服务条款》</span></a> </span>
-                        <p><a href=""><img src="images/login_btn.png"></a></p>
+                        <%--<p><input type="submit" value="注册" style="width:200px;height:30px" /> ></p>--%>
+                       <p><input type="submit" value="注册" onclick="validateCode()" style="width:300px;height:40px;color:#3bc4ee;font-size:0.6cm"></p>
                     </div>
-                </form>
-            </div>
-            <div id="login2" class="left_form fl" style="display:none;">
                 <form>
+            </div>
+
+            <div id="login2" class="left_form fl" style="display:none;"><%--${ctx}/Oreg/add--%>
+                <%--<form action="${ctx}/Oreg/add"  method="post" >
                     <div class="form_lb">
                         <lable>机构用户名:</lable>
-                        <input type="text" class="form-control" value="请输入机构用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入机构用户名';}">
+                        <input type="text" class="form-control" name="oOrganization" value="请输入机构用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入机构用户名';}">
+                    </div>
+                    <div class="form_lb clearfix">
+                        <lable>密码:</lable>
+                        <input type="text" class="form-control" name="oPassword" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入密码';}">
+                        <div class="saf_lv_main fl" >
+                            <div class="saf_lv_main_jd">
+                                <div style="background:#29A7E1;" class="saf_lv"></div>
+                                <div style="" class="saf_lv"></div>
+                                <div class="saf_lv"></div>
+                                <div class="saf_lv"></div>
+                                <div class="saf_lv"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_lb">
+                        <lable>确认密码:</lable>
+                        <input type="text" class="form-control " name="oPassword1" value="请再次输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请再次输入密码';}">
                     </div>
                     <div class="form_lb">
                         <lable>机构类型:</lable>
@@ -148,66 +303,46 @@
                     <div class="form_lb">
                         <lable>办公所在地:</lable>
                         <select name="select" id="form_lb_diqu" class="form_lb_diqu">
-                            <option value="国营企业">北京</option>
+                            <option>辽宁省</option>
+                            <option>湖南省</option>
+                            <option>河北省</option>
+                            <option>河南省</option>
+                            <option>山东省</option>
+                            <option>山西省</option>
+                            <option>浙江省</option>
+                            <option>江苏省</option>
+                            <option>广东省</option>
+                            <option>湖北省</option>
                         </select><span style="margin:auto 5px;color:#808080;">省</span>
                         <select name="select" id="form_lb_diqu" class="form_lb_diqu">
-                            <option value="国营企业">北京</option>
+                            <option>北京</option>
                         </select><span style="margin:auto 5px;color:#808080;">市</span>
                     </div>
 
                     <div class="form_lb_name">
                         <lable>联系人姓名:</lable>
-                        <input type="text" class="form_control_name" value="真实姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '真实姓名';}">
-                        <input type="radio" value="先生" name="men">先生
-                        <input type="radio" value="女士" name="women">女士
+                        <input type="text" class="form_control_name" name="oLinkman" value="真实姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '真实姓名';}">
+                        <input type="radio" value="先生" name="oSex">先生
+                        <input type="radio" value="女士" name="oSex">女士
                     </div>
 
                     <div class="form_lb">
                         <lable>手机号:</lable>
-                        <input type="text" class="form-control" value="请输入手机号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入手机号';}">
+                        <input type="text" class="form-control" name="oPhone" value="请输入手机号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入手机号';}">
                     </div>
                     <div class="form_lb">
                         <lable>固定号码:</lable>
-                        <input type="text" class="form-control" value="选填" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
+                        <input type="text" class="form-control" name="oFixedNumber" value="选填" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
                     </div>
-
-                    <div class="form_lb">
-                        <lable>邮箱:</lable>
-                        <input type="text" class="form-control" value="选填" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
-                    </div>
-
-                    <div class="form_lb">
-                        <lable>推荐人:</lable>
-                        <input type="text" class="form-control" value="选填" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '选填';}">
-                    </div>
-
-                    <div class="form_lb clearfix">
-                        <lable>密码:</lable>
-                        <input type="text" class="form-control" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入密码';}">
-                        <div class="saf_lv_main fl" >
-                            <div class="saf_lv_main_jd">
-                                <div style="background:#29A7E1;" class="saf_lv"></div>
-                                <div style="" class="saf_lv"></div>
-                                <div class="saf_lv"></div>
-                                <div class="saf_lv"></div>
-                                <div class="saf_lv"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form_lb">
-                        <lable>确认密码:</lable>
-                        <input type="text" class="form-control " value="请再次输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请再次输入密码';}">
-                    </div>
-
-
 
                     <div class="form_lb cheb_yes">
                         <input type="checkbox" name="" value=""/>
                         <span>我已阅读并同意ppp在线的<a href=""><span style="color:#29A7E1;">《服务条款》</span></a> </span>
-                        <p><a href=""><img src="images/login_btn.png"></a></p>
+                        <p><input type="submit" value="注册" style="width:300px;height:40px;color:#3bc4ee;font-size:0.6cm"></p>
                     </div>
-                </form>
+                </form>--%>
             </div>
+
         </div>
         <div class="right_pic fl" >
             <div class="l_acc_dl">
@@ -216,9 +351,6 @@
             <p><img src="images/right_bg.jpg"></p>
         </div>
     </div>
-
-
-
 
 
     <div id="gy_guide_help">

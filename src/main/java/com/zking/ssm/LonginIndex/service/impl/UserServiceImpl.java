@@ -16,12 +16,21 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void add(User user) {
+
         userMapper.insert(user);
     }
 
     @Override
     public List<User> list(User user) {
 
-        return null;
+        return userMapper.listUser(user);
     }
+
+    @Override
+    public User login(User user) {
+
+        return userMapper.login(user);
+    }
+
+
 }
