@@ -24,5 +24,7 @@ public interface BorrowerMapper {
     List<Borrower> listBorrower(Borrower borrower);
 
     List<Borrower> listborrower(Borrower borrower);
+
+
     List<Borrower> listBorrowerStatus(Borrower borrower);
 }
