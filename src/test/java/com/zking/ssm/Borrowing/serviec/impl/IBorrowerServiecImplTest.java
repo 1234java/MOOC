@@ -57,7 +57,7 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
     public void updateByPrimaryKey() {
     }
 
-    @Test
+ /*   @Test
     public void listBorrower() {
 
         List<Borrower> b = borrowerServiec.listBorrower(borrower, pageBean);
@@ -65,6 +65,6 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
             System.out.println(br);
         }
     }
-
+*/
 
 }

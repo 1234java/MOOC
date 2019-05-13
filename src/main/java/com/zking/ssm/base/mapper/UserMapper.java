@@ -20,4 +20,7 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     List<User> listUser(User user);
+
+    //登录
+   User login (User user);
 }

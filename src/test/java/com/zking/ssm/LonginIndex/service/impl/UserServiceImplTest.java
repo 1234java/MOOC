@@ -23,7 +23,8 @@ public class UserServiceImplTest extends BaseTestCase {
 
     @Test
     public void add() {
-        user.setpUsername("华为");
+        user.setpUserid("3");
+        user.setpUsername("三星");
         user.setpPassword("123");
         user.setpInvite("马云");
         user.setpStatus(0);

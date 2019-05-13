@@ -22,4 +22,7 @@ public interface OrganizationMapper {
 
     //查询全部
     List<Organization> list(Organization organization);
+
+    //登录
+    Organization login(Organization organization);
 }

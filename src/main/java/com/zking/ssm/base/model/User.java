@@ -1,7 +1,10 @@
 package com.zking.ssm.base.model;
 
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotBlank;
 
 @Component
 @ToString

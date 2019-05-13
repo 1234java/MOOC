@@ -44,16 +44,22 @@
       AND p_username LIKE concat("%",#{pUsername,jdbcType=VARCHAR},"%")
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="login" resultMap="row1" resultType="com.zking.ssm.base.model.User">
+      SELECT p_username,p_password FROM p_user
+      WHERE p_username=#{pUsername,jdbcType=VARCHAR} and  p_password=#{pPassword,jdbcType=VARCHAR}
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from p_user
     where p_userid = #{pUserid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.User" >
-    insert into p_user (p_userid, p_username, p_password, 
+    insert into p_user (p_userid,p_username, p_password,
       p_invite, p_status, p_vip, 
       p_capital, p_usable, p_credit
       )
-    values (#{pUserid,jdbcType=VARCHAR}, #{pUsername,jdbcType=VARCHAR}, #{pPassword,jdbcType=VARCHAR}, 
+    values (#{pUserid,jdbcType=VARCHAR},#{pUsername,jdbcType=VARCHAR}, #{pPassword,jdbcType=VARCHAR},
       #{pInvite,jdbcType=VARCHAR}, #{pStatus,jdbcType=INTEGER}, #{pVip,jdbcType=INTEGER}, 
       #{pCapital,jdbcType=DOUBLE}, #{pUsable,jdbcType=DOUBLE}, #{pCredit,jdbcType=DOUBLE}
       )

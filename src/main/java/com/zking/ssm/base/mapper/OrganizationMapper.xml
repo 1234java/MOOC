@@ -51,6 +51,13 @@
   <select id="list" resultMap="row1" parameterType="com.zking.ssm.base.model.Organization" >
     SELECT * FROM organization WHERE 1=1;
   </select>
+
+  <select id="login" resultMap="row1" resultType="com.zking.ssm.base.model.Organization">
+     SELECT o_organization,o_password FROM organization
+      WHERE o_password=#{oOrganization,jdbcType=VARCHAR} and  o_password=#{oPassword,jdbcType=VARCHAR}
+
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from organization
     where o_oid = #{oOid,jdbcType=INTEGER}
