@@ -1,11 +1,9 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.hipoteca.service;
 
+import com.zking.ssm.base.model.InstitutionalType;
 import com.zking.ssm.base.model.Investment;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
-public interface InvestmentMapper {
+public interface Binvestment {
     int deleteByPrimaryKey(Integer iId);
 
     int insert(Investment record);
@@ -21,6 +19,4 @@ public interface InvestmentMapper {
     int  select();
 
     int update (Integer id);
-
-
 }

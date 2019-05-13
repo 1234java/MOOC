@@ -37,11 +37,6 @@
       <result column="b_borrower_type" property="bBorrowerType" javaType="java.lang.Integer" />
       <result column="b_bidCount" property="bBidcount" javaType="java.lang.Integer" />
       <result column="b_status" property="bStatus" javaType="java.lang.Integer" />
-      <collection property="borrowerTypeList" ofType="com.zking.ssm.base.model.BorrowerType">
-        <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
-        <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
-      </collection>
-    
   </resultMap>
   <sql id="Base_Column_List" >
     b_id, b_name, b_username, b_money, b_rate, b_money_deadline, b_phone, b_house, b_total_value, 
@@ -54,14 +49,14 @@
     where b_id = #{bId,jdbcType=INTEGER}
   </select>
   <select id="listBorrower" resultMap="row1" resultType="com.zking.ssm.base.model.Borrower">
-    select b.*,bt.b_type_name from borrower b left outer join borrower_type bt on b.b_borrower_type=bt.b_type_id
+    select * from borrower
     where 1=1
     <if test="null !=bName and '' !=null">
       and b_name like concat("%",#{bName,jdbcType=VARCHAR},"%")
     </if>
-    <!--<if test="null !=bUsername and '' !=null">-->
-      <!--and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")-->
-    <!--</if>-->
+    <if test="null !=bUsername and '' !=null">
+      and b_username like concat("%",#{bUsername,jdbcType=VARCHAR},"%")
+    </if>
 
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

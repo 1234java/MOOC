@@ -21,6 +21,9 @@
     from investment
     where i_id = #{iId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultType="java.lang.Integer">
+          select  SUM(i_money) from investment
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from investment
     where i_id = #{iId,jdbcType=INTEGER}
@@ -115,5 +118,12 @@
       i_money = #{iMoney,jdbcType=DOUBLE},
       i_status = #{iStatus,jdbcType=INTEGER}
     where i_id = #{iId,jdbcType=INTEGER}
+  </update>
+  <update id="update">
+    update investment set i_money = #{iMoney,jdbcType=DOUBLE}  where b_id = #{bId,jdbcType=INTEGER}
+
+
+
+
   </update>
 </mapper>
