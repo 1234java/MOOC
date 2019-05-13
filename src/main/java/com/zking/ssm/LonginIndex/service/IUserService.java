@@ -12,6 +12,10 @@ public interface IUserService {
     //查询
     List<User> list(User user);
 
+
+    //登录
+    User login (User user);
+
     //删除
     int deleteByPrimaryKey(String pUserid);
 

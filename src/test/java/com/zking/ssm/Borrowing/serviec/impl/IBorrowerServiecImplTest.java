@@ -50,7 +50,7 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
     @Test
     public void selectByPrimaryKey() {
         borrower.setbId(1);
-        Borrower b = borrowerServiec.selectByPrimaryKey(borrower);
+        Borrower b = borrowerServiec.selectByPrimaryKey(borrower.getbId());
         System.out.println(b);
     }
 

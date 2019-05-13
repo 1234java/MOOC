@@ -57,12 +57,12 @@ public class UserServiceImplTest extends BaseTestCase {
         userService.updateByPrimaryKey(user);
     }
 
-    @Test
+   /* @Test
     public void updatePstatus() {
         user.setpUserid("1");
         user.setpStatus(0);
         userService.updatePstatus(user);
-    }
+    }*/
 
     @Test
     public void listUser() {

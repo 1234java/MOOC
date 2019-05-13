@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
+@Repository
 public interface BorrowerMapper {
     int deleteByPrimaryKey(Integer bId);
 
@@ -18,6 +19,14 @@ public interface BorrowerMapper {
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
+
+     List<Borrower> listb();//全部
+
+     List<Integer> selectByPrimaryInt(); //单个
+
+    int selectBy();//总计
+
+
 
     int updatebStatus(Borrower record);
 

@@ -4,7 +4,9 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+
 
 @Component
 @ToString

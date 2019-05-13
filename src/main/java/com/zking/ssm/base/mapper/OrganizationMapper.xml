@@ -21,67 +21,55 @@
     </constructor>
   </resultMap>
 
-  <resultMap id="row2" type="com.zking.ssm.base.model.Organization">
-    <id column="o_oid" property="oOid" javaType="java.lang.Integer"/>
-    <result column="o_organization" property="oOrganization" javaType="java.lang.String"/>
-    <result column="o_password" property="oPassword" javaType="java.lang.String"/>
-    <result column="o_institutional_type" property="oInstitutionalType" javaType="java.lang.Integer"/>
-    <result column="o_address" property="oAddress" javaType="java.lang.String"/>
-    <result column="o_linkman" property="oLinkman" javaType="java.lang.String"/>
-    <result column="o_sex" property="oSex" javaType="java.lang.String"/>
-    <result column="o_phone" property="oPhone" javaType="java.lang.String"/>
-    <result column="o_fixed_number" property="oFixedNumber" javaType="java.lang.String"/>
-    <result column="o_email" property="oEmail" javaType="java.lang.String"/>
-    <result column="o_invite" property="oInvite" javaType="java.lang.String"/>
-    <result column="o_status" property="oStatus" javaType="java.lang.Integer"/>
-    <result column="o_vip" property="oVip" javaType="java.lang.Integer"/>
-    <result column="o_capital" property="oCapital" javaType="java.lang.Double"/>
-    <result column="o_credit" property="oCredit" javaType="java.lang.Double"/>
-    <collection property="institutionalTypeList" ofType="com.zking.ssm.base.model.InstitutionalType">
-      <id column="i_typeid" property="iTypeid" javaType="java.lang.Integer"></id>
-      <result column="i_typename" property="iTypename" javaType="java.lang.String"></result>
-    </collection>
+  <resultMap id="row1" type="com.zking.ssm.base.model.Organization" >
+      <id column="o_oid" property="oOid" javaType="java.lang.Integer" />
+      <result column="o_organization" property="oOrganization" javaType="java.lang.String" />
+      <result column="o_password" property="oPassword" javaType="java.lang.String" />
+      <result column="o_institutional_type" property="oInstitutionalType" javaType="java.lang.Integer" />
+      <result column="o_address" property="oAddress" javaType="java.lang.String" />
+      <result column="o_linkman" property="oLinkman" javaType="java.lang.String" />
+      <result column="o_sex" property="oSex" javaType="java.lang.String" />
+      <result column="o_phone" property="oPhone" javaType="java.lang.String" />
+      <result column="o_fixed_number" property="oFixedNumber" javaType="java.lang.String" />
+      <result column="o_email" property="oEmail" javaType="java.lang.String" />
+      <result column="o_invite" property="oInvite" javaType="java.lang.String" />
+      <result column="o_status" property="oStatus" javaType="java.lang.Integer" />
+      <result column="o_vip" property="oVip" javaType="java.lang.Integer" />
+      <result column="o_capital" property="oCapital" javaType="java.lang.Double" />
+      <result column="o_credit" property="oCredit" javaType="java.lang.Double" />
   </resultMap>
-
   <sql id="Base_Column_List" >
     o_oid, o_organization, o_password, o_institutional_type, o_address, o_linkman, o_sex, 
     o_phone, o_fixed_number, o_email, o_invite, o_status, o_vip, o_capital, o_credit
   </sql>
-  <select id="selectByPrimaryKey" resultMap="row2" parameterType="com.zking.ssm.base.model.Organization" >
-    SELECT o.*,it.* FROM organization o left outer join institutional_type it on o.o_oid=it.i_typeid WHERE 1=1
-    <if test="oOid != null">
-      and o_oid = #{oOid,jdbcType=INTEGER}
-    </if>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where o_oid = #{oOid,jdbcType=INTEGER}
   </select>
-    <select id="listOrganization" resultMap="row2" resultType="com.zking.ssm.base.model.Organization">
-      SELECT o.*,it.* FROM organization o left outer join institutional_type it on o.o_oid=it.i_typeid WHERE 1=1
-      <if test="oOrganization != null">
-        and o_organization like concat("%",#{oOrganization,jdbcType=VARCHAR},"%")
-      </if>
-    </select>
-  <select id="load" resultMap="row2" parameterType="com.zking.ssm.base.model.Organization" >
-    SELECT o.*,it.* FROM organization o left outer join institutional_type it on o.o_oid=it.i_typeid WHERE 1=1
-    <if test="oOid != null">
-      and o_oid = #{oOid,jdbcType=INTEGER}
-    </if>
-
-
-
+  <select id="list" resultMap="row1" parameterType="com.zking.ssm.base.model.Organization" >
+    SELECT * FROM organization WHERE 1=1;
   </select>
 
+  <select id="login" resultMap="row1" resultType="com.zking.ssm.base.model.Organization">
+     SELECT o_organization,o_password FROM organization
+      WHERE o_password=#{oOrganization,jdbcType=VARCHAR} and  o_password=#{oPassword,jdbcType=VARCHAR}
+
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from organization
     where o_oid = #{oOid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.ssm.base.model.Organization" >
-    insert into organization (o_oid, o_organization, o_password, 
+    insert into organization (o_organization, o_password,
       o_institutional_type, o_address, o_linkman, 
       o_sex, o_phone, o_fixed_number, 
       o_email, o_invite, o_status, 
       o_vip, o_capital, o_credit
       )
-    values (#{oOid,jdbcType=INTEGER}, #{oOrganization,jdbcType=VARCHAR}, #{oPassword,jdbcType=VARCHAR}, 
+    values (#{oOrganization,jdbcType=VARCHAR}, #{oPassword,jdbcType=VARCHAR},
       #{oInstitutionalType,jdbcType=INTEGER}, #{oAddress,jdbcType=VARCHAR}, #{oLinkman,jdbcType=VARCHAR}, 
       #{oSex,jdbcType=VARCHAR}, #{oPhone,jdbcType=VARCHAR}, #{oFixedNumber,jdbcType=VARCHAR}, 
       #{oEmail,jdbcType=VARCHAR}, #{oInvite,jdbcType=VARCHAR}, #{oStatus,jdbcType=INTEGER}, 

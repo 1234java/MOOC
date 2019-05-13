@@ -1,7 +1,6 @@
 package com.zking.ssm.base.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,6 @@ import java.util.List;
 
 @Component
 @ToString
-@Data
 public class Borrower implements Serializable {
 
     public static interface ValidateGroups{
@@ -33,7 +31,7 @@ public class Borrower implements Serializable {
 
     }
     private List<BorrowerType> borrowerTypeList;
-    private List<ConditionType> conditionTypeList;
+  //  private List<ConditionType> conditionTypeList;
 
 
     @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})
@@ -54,7 +52,8 @@ public class Borrower implements Serializable {
     private Date bMoneyDeadline;
 
 
-
+    //    @Size(max = 11,min =11,message = "手机号码长度为11位数字")
+//    @Range(max = 11,min = 11,message = "手机号码长度为11位数字")
     @Length(max = 11,min = 11,message = "手机号码长度为11位数字",groups ={Borrower.ValidateGroups.AddEdit.class})
     private String bPhone;
 

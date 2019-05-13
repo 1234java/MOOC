@@ -22,4 +22,7 @@ public interface UserMapper {
 
 
     int updatePstatus(User record);
+
+    //登录
+   User login (User user);
 }

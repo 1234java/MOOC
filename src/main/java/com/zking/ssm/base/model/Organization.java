@@ -1,55 +1,36 @@
 package com.zking.ssm.base.model;
 
-import lombok.Data;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.List;
+
 @Component
 @ToString
-@Data
-public class Organization implements Serializable {
-    private List<InstitutionalType> institutionalTypeList;
-
-    public List<InstitutionalType> getInstitutionalTypeList() {
-        return institutionalTypeList;
-    }
-
-    public void setInstitutionalTypeList(List<InstitutionalType> institutionalTypeList) {
-        this.institutionalTypeList = institutionalTypeList;
-    }
-
+public class Organization implements Serializable{
     private Integer oOid;
 
-    @NotBlank(message = "机构用户名不能为空")
     private String oOrganization;
 
-    @NotBlank(message = "密码不能为空")
     private String oPassword;
 
-    @NotBlank(message = "类别不能为空")
     private Integer oInstitutionalType;
-    @NotBlank(message = "地址不能为空")
+
     private String oAddress;
 
-    @NotBlank(message = "联系人姓名不能为空")
     private String oLinkman;
 
-    @NotBlank(message = "性别不能为空")
     private String oSex;
 
-    @NotBlank(message = "电话不能为空")
     private String oPhone;
 
-    @NotBlank(message = "固定电话不能为空")
     private String oFixedNumber;
 
-    @NotBlank(message = "邮箱不能为空")
     private String oEmail;
 
-    @NotBlank(message = "介绍人不能为空")
     private String oInvite;
 
     private Integer oStatus;
@@ -59,9 +40,6 @@ public class Organization implements Serializable {
     private Double oCapital;
 
     private Double oCredit;
-
-
-
 
     public Organization(Integer oOid, String oOrganization, String oPassword, Integer oInstitutionalType, String oAddress, String oLinkman, String oSex, String oPhone, String oFixedNumber, String oEmail, String oInvite, Integer oStatus, Integer oVip, Double oCapital, Double oCredit) {
         this.oOid = oOid;
