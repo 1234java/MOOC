@@ -1,12 +1,10 @@
-package com.zking.ssm.base.mapper;
+package com.zking.ssm.credit.service;
 
 import com.zking.ssm.base.model.Borrower;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-public interface BorrowerMapper {
+public interface IBorrowerService {
     int deleteByPrimaryKey(Integer bId);
 
     int insert(Borrower record);
@@ -14,15 +12,12 @@ public interface BorrowerMapper {
     int insertSelective(Borrower record);
 
     Borrower selectByPrimaryKey(Borrower record);
-    Borrower load(Borrower record);
+
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
-
+    Borrower load(Borrower record);
     int updatebStatus(Borrower record);
-
-    List<Borrower> listBorrower(Borrower borrower);
-
     List<Borrower> listborrower(Borrower borrower);
-    List<Borrower> listBorrowerStatus(Borrower borrower);
+    List<Borrower> listBorrower(Borrower borrower);
 }

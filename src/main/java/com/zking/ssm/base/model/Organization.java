@@ -5,12 +5,22 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.List;
 @Component
 @ToString
 @Data
-public class Organization {
+public class Organization implements Serializable {
     private List<InstitutionalType> institutionalTypeList;
+
+    public List<InstitutionalType> getInstitutionalTypeList() {
+        return institutionalTypeList;
+    }
+
+    public void setInstitutionalTypeList(List<InstitutionalType> institutionalTypeList) {
+        this.institutionalTypeList = institutionalTypeList;
+    }
+
     private Integer oOid;
 
     @NotBlank(message = "机构用户名不能为空")

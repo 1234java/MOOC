@@ -194,7 +194,7 @@
                 <form class="form-group">
                     <table class="table" id="table110">
 
-
+/*-- jka*/
                     </table>
 
                     <div class="modal-footer">
@@ -212,6 +212,7 @@
 
 </body>
 </html>
+
 <script src="${ctx}/admin/js/jquery.min.js"></script>
 <script src="${ctx}/admin/js/bootstrap-tooltip.js"></script>
 <script src="${ctx}/admin/js/bootstrap-popover.js"></script>

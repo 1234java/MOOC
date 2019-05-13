@@ -14,10 +14,12 @@ public interface UserMapper {
     int insertSelective(User record);
 
     User selectByPrimaryKey(String pUserid);
-
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
 
     List<User> listUser(User user);
+
+
+    int updatePstatus(User record);
 }

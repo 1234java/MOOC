@@ -16,7 +16,7 @@
 <body>
 
 <f:form action="${ctx}/credit/user/listUser" method="post" modelAttribute="user">
-    书名:<f:input path="pUsername"></f:input>
+    用户名:<f:input path="pUsername"></f:input>
          <input type="submit" value="查询">
 </f:form>
 

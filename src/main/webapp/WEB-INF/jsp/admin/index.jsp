@@ -80,7 +80,7 @@ ${ctx}
             <ul>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('${ctx}/admin/userindex');">账号管理</a></li>
-               <%-- <li><a class="a" href="javascript:void(0);"
+                <%--<li><a class="a" href="javascript:void(0);"
                        onClick="openurl('userdocumentQuery.html');">用户文档列表</a></li>--%>
 
             </ul>
@@ -97,28 +97,19 @@ ${ctx}
             </ul>
         </div>
 
-
         <div class="div2">
             <div class="gggl"></div>
-            用户授信管理
+            会员授信管理
         </div>
         <div class="div3">
 
             <ul>
-                <%--<li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">用户借贷资料管理</a></li>--%>
-                <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('deletecomment.html');">用户信用管理</a></li>
-               <%-- <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">用户额度管理</a></li>--%>
-               <%-- <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('useredit.html');">举报信息管理</a></li>--%>
-
-            </ul>
+                <li>
+                    <a class="a" href="javascript:void(0);" onClick="openurl('${ctx}/admin/cradit');">会员信用管理</a>
+                </li>
+            </ul>zz
 
         </div>
-
-
 
         <div class="div2">
             <div class="yhgl"></div>
@@ -127,7 +118,8 @@ ${ctx}
         <div class="div3">
             <ul>
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('studentQuery.html');">借贷申请处理</a></li>
+                       onClick="openurl('${ctx}/admin/debit');">借贷申请处理</a></li>
+
             </ul>
         </div>
 
@@ -139,14 +131,14 @@ ${ctx}
             <ul>
 
                 <li><a class="a" href="javascript:void(0);"
-                       onClick="openurl('afficheAdd.html');">等待初审的借贷</a></li>
-                <li><a class="a" href="javascript:void(0);"
+                       onClick="openurl('${ctx}/adminBorrowing/listBorrowingReviewStatus');">等待初审的借贷</a></li>
+                <%--<li><a class="a" href="javascript:void(0);"
                        onClick="openurl('afficheAdd.html');">还款中的借贷</a></li>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('afficheQuery.html');">发布新借贷</a></li>
                 <li><a class="a" href="javascript:void(0);"
                        onClick="openurl('afficheAdd.html');">逾期的借款</a></li>
-                <li><a class="a" href="${ctx}/adminBorrowing/toBorrowingDetails">借款明细</a></li>
+                <li><a class="a" href="${ctx}/adminBorrowing/listBorrowingDetails">借款明细</a></li>--%>
 
             </ul>
         </div>

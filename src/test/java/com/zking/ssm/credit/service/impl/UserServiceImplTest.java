@@ -1,17 +1,20 @@
 package com.zking.ssm.credit.service.impl;
 
 import com.zking.ssm.Borrowing.serviec.impl.BaseTestCase;
+import com.zking.ssm.LonginIndex.service.IUserService;
 import com.zking.ssm.base.model.User;
-import com.zking.ssm.credit.service.IuserService;
+import com.zking.ssm.credit.service.IUeserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static org.junit.Assert.*;
+
 public class UserServiceImplTest extends BaseTestCase {
 
     @Autowired
-    private IuserService userService;
+    private IUeserService userService;
     private User user;
 
     @Override
@@ -58,7 +61,7 @@ public class UserServiceImplTest extends BaseTestCase {
     public void updatePstatus() {
         user.setpUserid("1");
         user.setpStatus(0);
-//        userService.updatePstatus(user);
+        userService.updatePstatus(user);
     }
 
     @Test

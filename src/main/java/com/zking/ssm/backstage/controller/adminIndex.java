@@ -40,35 +40,34 @@ public class adminIndex {
     }
 
 
+
+
+
     @RequestMapping("/toadmin")
-    public String toadminIndex() {
+    public  String toadminIndex(){
 
-        return "admin/index";
+        return  "admin/index";
     }
-
-
 
 
     @RequestMapping("/userindex")
-    public String userlist() {
+    public  String userlist(){
 
-        return "admin/user/index";
+        return  "admin/user/index";
     }
-
 
     //个人
     @RequestMapping("/userlist")
-    public String userList() {
+    public  String userList(){
 
-        return "admin/user/user";
+        return  "admin/user/user";
     }
 
-
-    //企业方法开始
+    //企业
     @RequestMapping("/userenterpise")
-    public String useRenterpise() {
+    public  String useRenterpise(){
 
-        return "admin/user/enterprise";
+        return  "admin/user/enterprise";
     }
 
     //查询所有
@@ -79,12 +78,12 @@ public class adminIndex {
         PageBean pageBean = new PageBean();
         pageBean.setRequest(request);
         List<Organization> list = organizationSerice.listOrganization(organization, pageBean);
-        for (Organization or : list) {
+      /*  for (Organization or : list) {
             for (InstitutionalType institutionalType : or.getInstitutionalTypeList()) {
                 System.out.println(institutionalType);
             }
 
-        }
+        }*/
         System.out.println(pageBean.getTotal());
         modelAndView.addObject("organization",list);
         modelAndView.addObject("pageBean",pageBean);
@@ -160,6 +159,7 @@ public class adminIndex {
         List<InstitutionalType> institutionalTypes = this.listType(institutionalType);
         or1.setInstitutionalTypeList(institutionalTypes);
         System.out.println("1:"+or1);
+        System.out.println("");
         return or1;
     }
     @RequestMapping(value = "/update",produces ="application/json;text/html;charset=UTF-8")
@@ -210,87 +210,106 @@ public class adminIndex {
     //企业方法结束
 
 
+
+
+
+
+
+
+
+
+
+
     //认证
     @RequestMapping("/attestation")
-    public String attestation() {
+    public  String attestation(){
 
-        return "admin/attestation/attestationList";
+        return  "admin/attestation/attestationList";
     }
 
 
     //借贷
     @RequestMapping("/debit")
-    public String debit() {
+    public  String debit(){
 
-        return "admin/debit/debit";
+        return  "forward:/credit/user/listBorrower";
     }
 
 
     //评论
     @RequestMapping("/comment")
-    public String comment() {
+    public  String comment(){
 
-        return "admin/comment/comment";
+        return  "admin/comment/comment";
     }
 
 
     //信用管理
-    @RequestMapping("/cradit")
-    public String craditlist() {
+       @RequestMapping("/cradit")
+    public  String craditlist(){
 
-        return "admin/credit/creditList";
+        return  "forward:/credit/user/listUser";
     }
-
 
     @RequestMapping("/cradit/report")
-    public String craditreport() {
+    public  String craditreport(){
 
-        return "admin/credit/report";
+        return  "admin/credit/report";
     }
+
+
+
+
+
 
 
     @RequestMapping("/tosyso")
-    public String tosys() {
+    public  String tosys(){
 
-        return "admin/system/index";
+        return  "admin/system/index";
     }
 
 
     //管理列表
     @RequestMapping("/toadminlist")
-    public String toadminlist() {
+    public  String toadminlist(){
 
-        return "admin/system/adminlist";
+        return  "admin/system/adminlist";
     }
 
 
     //借款类型列表
     @RequestMapping("/toborrowtype")
-    public String toBorrowtype() {
+    public  String toBorrowtype(){
 
-        return "admin/system/borrow_type";
+        return  "admin/system/borrow_type";
     }
 
     //资金类型列表
     @RequestMapping("/tocapitaltype")
-    public String toCapitaltype() {
+    public  String toCapitaltype(){
 
-        return "admin/system/capital_type";
+        return  "admin/system/capital_type";
     }
 
     //投资类型列表
     @RequestMapping("/toinvesttype")
-    public String toinvesttype() {
+    public  String toinvesttype(){
 
-        return "admin/system/invest_type";
+        return  "admin/system/invest_type";
     }
 
     // 机构类型列表
     @RequestMapping("/toorganizationtype")
-    public String toOrganizationtype() {
+    public  String toOrganizationtype(){
 
-        return "admin/system/organization_type";
+        return  "admin/system/organization_type";
     }
+
+
+
+
+
 
 
 }

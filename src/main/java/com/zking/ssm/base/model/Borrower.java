@@ -33,8 +33,7 @@ public class Borrower implements Serializable {
 
     }
     private List<BorrowerType> borrowerTypeList;
-
-    //private List<ConditionType> conditionTypeList;
+    private List<ConditionType> conditionTypeList;
 
 
     @NotBlank(message = "Id不能为空",groups = {Borrower.ValidateGroups.AddEdit.class,Borrower.ValidateGroups.UpdateBorrowImage.class,Borrower.ValidateGroups.Del.class})
@@ -55,8 +54,7 @@ public class Borrower implements Serializable {
     private Date bMoneyDeadline;
 
 
-    //    @Size(max = 11,min =11,message = "手机号码长度为11位数字")
-//    @Range(max = 11,min = 11,message = "手机号码长度为11位数字")
+
     @Length(max = 11,min = 11,message = "手机号码长度为11位数字",groups ={Borrower.ValidateGroups.AddEdit.class})
     private String bPhone;
 

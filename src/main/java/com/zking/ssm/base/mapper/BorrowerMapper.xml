@@ -41,10 +41,10 @@
         <id column="b_type_id" property="bTypeId" javaType="java.lang.Integer" />
         <result column="b_type_name" property="bTypeName" javaType="java.lang.String" />
       </collection>
-     <!-- <collection property="conditionTypeList" ofType="com.zking.ssm.base.model.ConditionType">
+      <collection property="conditionTypeList" ofType="com.zking.ssm.base.model.ConditionType">
           <id column="condition_type_id" property="conditionTypeId" javaType="java.lang.Integer"></id>
           <result column="condition_type_name" property="conditionTypeName" javaType="java.lang.String"></result>
-      </collection>-->
+      </collection>
     
   </resultMap>
 
@@ -56,7 +56,6 @@
   <select id="selectByPrimaryKey" resultMap="row1" parameterType="com.zking.ssm.base.model.Borrower" >
      select b.*,ct.condition_type_name,bt.b_type_name from borrower b left outer join borrower_type bt on b.b_borrower_type=bt.b_type_id
       left outer join condition_type ct on b.b_condition=ct.condition_type_id
-
       where 1=1
     <if test="bId != null" >
       and b_id = #{bId,jdbcType=INTEGER}
@@ -95,6 +94,45 @@
     <!--</if>-->
 
   </select>
+
+  <resultMap id="rowp" type="com.zking.ssm.base.model.Borrower" >
+    <id column="b_id" property="bId" javaType="java.lang.Integer" />
+    <result column="b_name" property="bName" javaType="java.lang.String" />
+    <result column="b_username" property="bUsername" javaType="java.lang.String" />
+    <result column="b_money" property="bMoney" javaType="java.lang.Double" />
+    <result column="b_rate" property="bRate" javaType="java.lang.Integer" />
+    <result column="b_money_deadline" property="bMoneyDeadline" javaType="java.util.Date" />
+    <result column="b_phone" property="bPhone" javaType="java.lang.String" />
+    <result column="b_house" property="bHouse" javaType="java.lang.Integer" />
+    <result column="b_total_value" property="bTotalValue" javaType="java.lang.Double" />
+    <result column="b_use" property="bUse" javaType="java.lang.String" />
+    <result column="b_describe" property="bDescribe" javaType="java.lang.String" />
+    <result column="b_condition" property="bCondition" javaType="java.lang.Integer" />
+    <result column="b_borrower_type" property="bBorrowerType" javaType="java.lang.Integer" />
+    <result column="b_bidCount" property="bBidcount" javaType="java.lang.Integer" />
+    <result column="b_status" property="bStatus" javaType="java.lang.Integer" />
+  </resultMap>
+
+  <select id="listborrower" resultMap="rowp" resultType="com.zking.ssm.base.model.Borrower">
+    select *
+    FROM borrower
+    where 1=1
+    <if test="null !=bName and '' !=null">
+      and b_name like concat("%",#{bName,jdbcType=VARCHAR},"%")
+    </if>
+
+
+  </select>
+  <select id="load" resultMap="rowp" resultType="com.zking.ssm.base.model.Borrower">
+    select
+    *
+    from borrower
+    where b_id = #{bId,jdbcType=INTEGER}
+
+  </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from borrower
     where b_id = #{bId,jdbcType=INTEGER}
@@ -276,4 +314,5 @@
       b_status = #{bStatus,jdbcType=INTEGER}
     where b_id = #{bId,jdbcType=INTEGER}
   </update>
+    <update id="updatebStatus"></update>
 </mapper>

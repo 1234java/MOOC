@@ -21,8 +21,8 @@
 <body>
 <div class="form-group" style="width: 100%;text-align: center;margin-top: 10px;">
     <form class="form-inline" style="margin: 0px;display: inline;">
-        <label for="exampleInputEmail1">用户账号:</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户账号">
+        <label for="exampleInputEmail1">申请人:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="申请人">
         <button type="submit" class="btn btn-default" title="搜索"><span class="glyphicon glyphicon-search"></button>
     </form>
 </div>
