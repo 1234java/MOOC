@@ -18,11 +18,13 @@ public interface IBorrowerServiec {
 
     int insertSelective(Borrower record);
 
-    Borrower selectByPrimaryKey(Integer bId);
+    Borrower selectByPrimaryKey(Borrower record);
 
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
 
     List<Borrower> listBorrower(Borrower borrower, PageBean pageBean);
+
+    List<Borrower> listBorrowerStatus(Borrower borrower, PageBean pageBean);
 }

@@ -47,4 +47,6 @@ public class IBorrowerTypeServiecImpl implements IBorrowerTypeServiec {
     public int updateByPrimaryKey(BorrowerType record) {
         return borrowerTypeMapper.updateByPrimaryKey(record);
     }
+
+
 }

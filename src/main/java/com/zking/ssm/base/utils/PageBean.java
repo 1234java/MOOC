@@ -12,13 +12,22 @@ public class PageBean {
 	// ��������
 	private int page = 1;// ҳ��
 	private int rows = 10;// ҳ��С
+	private int row = 8;// 显示页数
+
 	private int total = 0;// �ܼ�¼��
 	private boolean pagination = true;// �Ƿ��ҳ
 	
 	private String url;  //�����·��   ��Ŀ�� + �����action
 	
 	private Map<String,String[]> parameterMap; // �������
-	
+
+	public int getPag() {
+		return row;
+	}
+
+	public void setPag(int row) {
+		this.row = row;
+	}
 
 	public PageBean() {
 		super();

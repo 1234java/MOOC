@@ -119,11 +119,4 @@
       i_status = #{iStatus,jdbcType=INTEGER}
     where i_id = #{iId,jdbcType=INTEGER}
   </update>
-  <update id="update">
-    update investment set i_money = #{iMoney,jdbcType=DOUBLE}  where b_id = #{bId,jdbcType=INTEGER}
-
-
-
-
-  </update>
 </mapper>

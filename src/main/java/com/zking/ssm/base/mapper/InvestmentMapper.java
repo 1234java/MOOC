@@ -1,10 +1,9 @@
 package com.zking.ssm.base.mapper;
 
 import com.zking.ssm.base.model.Investment;
-import org.springframework.stereotype.Repository;
 
+import java.util.List;
 
-@Repository
 public interface InvestmentMapper {
     int deleteByPrimaryKey(Integer iId);
 
@@ -21,6 +20,7 @@ public interface InvestmentMapper {
     int  select();
 
     int update (Integer id);
+
 
 
 }

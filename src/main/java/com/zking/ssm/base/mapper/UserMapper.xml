@@ -161,4 +161,12 @@
     where p_userid = #{pUserid,jdbcType=VARCHAR}
   </update>
 
+
+  <update id="updatePstatus">
+
+
+
+
+  </update>
+
 </mapper>

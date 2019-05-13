@@ -7,6 +7,11 @@
       <arg column="i_typename" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.zking.ssm.base.model.InstitutionalType" >
+      <id column="i_typeid" property="iTypeid" javaType="java.lang.Integer" />
+      <result column="i_typename" property="iTypename" javaType="java.lang.String" />
+  </resultMap>
   <sql id="Base_Column_List" >
     i_typeid, i_typename
   </sql>
@@ -16,7 +21,25 @@
     from institutional_type
     where i_typeid = #{iTypeid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="listInstitutionalType" resultMap="row1" resultType="com.zking.ssm.base.model.InstitutionalType">
+      select * from institutional_type where 1=1
+
+    </select>
+
+  <resultMap id="ro" type="com.zking.ssm.base.model.InstitutionalType" >
+    <id column="i_typeid" property="iTypeid" javaType="java.lang.Integer" />
+    <result column="i_typename" property="iTypename" javaType="java.lang.String" />
+  </resultMap>
+    <select id="list" resultMap="ro"  resultType="com.zking.ssm.base.model.InstitutionalType">
+      SELECT * FROM  institutional_type WHERE 1=1
+        <if test="iTypename != null and iTypename !=''">
+          and i_typename LIKE concat('%',#{iTypename,jdbcType=VARCHAR},'%')
+
+        </if>
+
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from institutional_type
     where i_typeid = #{iTypeid,jdbcType=INTEGER}
   </delete>

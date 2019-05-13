@@ -25,4 +25,7 @@ public interface OrganizationMapper {
 
     //登录
     Organization login(Organization organization);
+    List<Organization> listOrganization(Organization organization);
+
+    Organization load(int organization);
 }

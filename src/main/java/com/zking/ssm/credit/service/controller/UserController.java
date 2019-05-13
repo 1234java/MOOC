@@ -1,12 +1,14 @@
 package com.zking.ssm.credit.service.controller;
 
+import com.zking.ssm.LonginIndex.service.IUserService;
 import com.zking.ssm.base.model.User;
-import com.zking.ssm.credit.service.IUserService;
+import com.zking.ssm.credit.service.IUeserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +19,12 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private IUeserService userService;
 
     @ModelAttribute
     public void init(Model model){
         User user = new User();
-        model.addAttribute(user);
+        model.addAttribute("user",user);
     }
 
     @RequestMapping(value = "/toLoad")
@@ -32,12 +34,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/Load")
-    public ModelAndView Load(User user,ModelAndView modelAndView){
+    @ResponseBody
+    public User Load(User user,ModelAndView modelAndView){
         User user1 = userService.selectByPrimaryKey(user.getpUserid());
         System.out.println(user1);
         modelAndView.addObject("user1",user1);
-        modelAndView.setViewName("credit/update");
-        return modelAndView;
+        modelAndView.setViewName("admin/credit/creditList");
+        return user1;
     }
 
     @RequestMapping(value = "/toList")
@@ -51,14 +54,15 @@ public class UserController {
         List<User> listUser = userService.listUser(user);
         System.out.println(listUser);
         modelAndView.addObject("listUser",listUser);
-        modelAndView.setViewName("credit/list");
+        modelAndView.setViewName("admin/credit/creditList");
         return modelAndView;
     }
 
     @RequestMapping(value = "/Update")
     public String Update(User user){
+        System.out.println("---修改---"+user);
         userService.updateByPrimaryKey(user);
-        return "credit/list";
+        return "forward:/credit/user/listUser";
     }
 
 

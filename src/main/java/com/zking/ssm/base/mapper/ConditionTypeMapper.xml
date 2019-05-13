@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.base.mapper.ConditionTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.base.model.ConditionType" >
+    <constructor >
+      <idArg column="condition_type_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="condition_type_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    condition_type_id, condition_type_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from condition_type
+    where condition_type_id = #{conditionTypeId,jdbcType=INTEGER}
+  </select>
+  <select id="listConditionType" resultType="com.zking.ssm.base.model.ConditionType">
+    select * from condition_type where 1=1
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from condition_type
+    where condition_type_id = #{conditionTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.base.model.ConditionType" >
+    insert into condition_type (condition_type_id, condition_type_name
+      )
+    values (#{conditionTypeId,jdbcType=INTEGER}, #{conditionTypeName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.base.model.ConditionType" >
+    insert into condition_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="conditionTypeId != null" >
+        condition_type_id,
+      </if>
+      <if test="conditionTypeName != null" >
+        condition_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="conditionTypeId != null" >
+        #{conditionTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="conditionTypeName != null" >
+        #{conditionTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.base.model.ConditionType" >
+    update condition_type
+    <set >
+      <if test="conditionTypeName != null" >
+        condition_type_name = #{conditionTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where condition_type_id = #{conditionTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.base.model.ConditionType" >
+    update condition_type
+    set condition_type_name = #{conditionTypeName,jdbcType=VARCHAR}
+    where condition_type_id = #{conditionTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

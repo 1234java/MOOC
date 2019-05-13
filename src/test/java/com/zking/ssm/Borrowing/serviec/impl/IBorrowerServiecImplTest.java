@@ -2,6 +2,7 @@ package com.zking.ssm.Borrowing.serviec.impl;
 
 import com.zking.ssm.Borrowing.serviec.IBorrowerServiec;
 import com.zking.ssm.base.model.Borrower;
+import com.zking.ssm.base.model.BorrowerType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -57,14 +58,28 @@ public class IBorrowerServiecImplTest extends BaseTestCase{
     public void updateByPrimaryKey() {
     }
 
- /*   @Test
+    @Test
     public void listBorrower() {
 
         List<Borrower> b = borrowerServiec.listBorrower(borrower, pageBean);
         for (Borrower br : b) {
-            System.out.println(br);
+            System.out.println();
+//            for (BorrowerType bt : br.getBorrowerTypeList()) {
+//                System.out.println(bt.getbTypeName());
+//            }
         }
     }
-*/
+
+    @Test
+    public void listBorrowerStatus() {
+//        pageBean.setPage(2);
+//        pageBean.setRows(2);
+        List<Borrower> b = borrowerServiec.listBorrowerStatus(borrower, pageBean);
+        for (Borrower br : b) {
+            System.out.println(br);
+
+        }
+    }
+
 
 }

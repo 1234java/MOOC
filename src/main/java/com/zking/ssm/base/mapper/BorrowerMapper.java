@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public interface BorrowerMapper {
     int deleteByPrimaryKey(Integer bId);
@@ -13,8 +14,8 @@ public interface BorrowerMapper {
 
     int insertSelective(Borrower record);
 
-    Borrower selectByPrimaryKey(Integer bId);
-
+    Borrower selectByPrimaryKey(Borrower record);
+    Borrower load(Borrower record);
     int updateByPrimaryKeySelective(Borrower record);
 
     int updateByPrimaryKey(Borrower record);
@@ -26,4 +27,13 @@ public interface BorrowerMapper {
     int selectBy();//总计
 
 
+
+    int updatebStatus(Borrower record);
+
+    List<Borrower> listBorrower(Borrower borrower);
+
+    List<Borrower> listborrower(Borrower borrower);
+
+
+    List<Borrower> listBorrowerStatus(Borrower borrower);
 }

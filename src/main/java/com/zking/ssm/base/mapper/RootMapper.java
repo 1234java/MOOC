@@ -4,7 +4,6 @@ import com.zking.ssm.base.model.Root;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
 public interface RootMapper {
     int deleteByPrimaryKey(Integer rId);
@@ -19,5 +18,14 @@ public interface RootMapper {
 
     int updateByPrimaryKey(Root record);
 
+    Root selectByRName(String rname);
+
     List<Root> list(Root root);
+
+
+
+
+
+
+
 }

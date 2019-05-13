@@ -3,8 +3,10 @@ package com.zking.ssm.base.model;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Component
 @Data
@@ -25,8 +27,26 @@ public class Attestation  implements Serializable {
     private String aMessage;
 
     private String aState;
+    private   User user;
 
-    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+   private List<User> users;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public Attestation(Integer aId, String pId, String aName, String aSfz, String aReverse, String aFront, String aMessage, String aState, User user) {
         this.aId = aId;
         this.pId = pId;
         this.aName = aName;
@@ -35,6 +55,7 @@ public class Attestation  implements Serializable {
         this.aFront = aFront;
         this.aMessage = aMessage;
         this.aState = aState;
+        this.user=user;
     }
 
     public Attestation() {

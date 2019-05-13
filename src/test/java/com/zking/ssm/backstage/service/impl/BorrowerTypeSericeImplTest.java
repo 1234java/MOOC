@@ -1,18 +1,17 @@
 package com.zking.ssm.backstage.service.impl;
 
 import com.zking.ssm.Borrowing.serviec.impl.BaseTestCase;
-import com.zking.ssm.backstage.service.IBorrowerTypeSerice;
+import com.zking.ssm.backstage.service.IBorrowerTypeService;
 import com.zking.ssm.base.model.BorrowerType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class BorrowerTypeSericeImplTest extends BaseTestCase {
     @Autowired
-    private IBorrowerTypeSerice typeSerice;
+    private IBorrowerTypeService typeSerice;
+
     private BorrowerType borrowerType;
 
     @Override

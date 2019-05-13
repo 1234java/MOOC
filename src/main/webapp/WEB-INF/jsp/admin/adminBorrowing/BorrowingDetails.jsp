@@ -15,21 +15,28 @@
     <meta charset="UTF-8">
     <meta name="description" content="Creating Modal Window with Twitter Bootstrap">
     <link href="${ctx}/admin/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/admin/css/style.css"/>
     <script type="text/javascript" src="${ctx}/admin/js/jquery2.js"></script>
-    <script type="text/javascript" src="${ctx}/admin/js/jquery2.sorted.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/bootstrap.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/ckform.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/common.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="${ctx}/admin/js/dropdown.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link href="${ctx}/fonts/**">
 
     <style type="text/css">
         body {
             padding-bottom: 40px;
-            background-color:#e9e7ef;
+            background-color: #e9e7ef;
         }
+
         .sidebar-nav {
             padding: 9px 0;
         }
@@ -46,64 +53,74 @@
 
     </style>
 </head>
-<body onload="mya()">
+<body>
 <script type="text/javascript">
 
 
-
-    $(function (){
-        alert("李江涛傻狗");
-     $("#btn1").click(function() {
-            var userIdcard = $("#menuname").val();
-            alert(userIdcard)
-            var li=document.getElementById("listStudent");
-            $.ajax({
-                url:"http://localhost:8080/MOOC/adminBorrowing/listBorrowingDetails",
-                type:"post",
-                data:{bName:userIdcard},
-                success:function (data) {
-                    alert("!!!")
-                    for(var o=0;o<data.length;o++){
-                        $("#list2").remove();
-                    }
-                    $.each(data,function (index,res) {
-                        alert(res.borrowerTypeList.length);
-
-                            for(var i=0;i<res.borrowerTypeList.length ;i++){
-                            var str="<tr id='list2'> <td>"+res.bName+"</td>"+
-                                "<td>"+res.bUsername+"</td>"
-                                +
-                                "<td>"+res.borrowerTypeList[i].bTypeName+"</td>"
-                                +
-                                "<td>"+res.bMoneyDeadline+"</td>"
-                                +
-                                "<td>投资中</td>"
-
-                                +"<td><a href=''>详情</a></td></tr>";
-                            }
-                            $("thead").append(str);
-
-                    })
-
-                },
-                error:function () {
-                    alert("错误！")
+    //$(function () {
+    // $("#btn1").click(function ()
+    function mya(bId){
+        var userIdcard = bId;
+        //alert(userIdcard)
+        var li = document.getElementById("listStudent");
+        $.ajax({
+            url: "http://localhost:8080/MOOC/adminBorrowing/selectBorrower",
+            type: "post",
+            data: {bId: userIdcard},
+            success: function (data) {
+                //alert(data.length )
+                for (var o = 0; o < data.length; o++) {
+                    $("#table110 tr").remove();
                 }
-            })
+                $.each(data, function (index, res) {
+                    for (var i = 0; i < res.borrowerTypeList.length; i++) {
+                        for (var k = 0; k < res.conditionTypeList.length; k++) {
+                            var str = " <tr><td><label>借款名称:</label></td><td>"+res.bName+"</td></tr>" +
+                                "<tr><td><label>申请人:</label></td><td>"+res.bUsername+"</td></tr>"
+                                +
+                                "<tr><td><label>借款金额:</label></td><td>"+res.bMoney+"</td></tr>"
+                                +
+                                "<tr><td><label>借款利息率:</label></td><td>"+res.bRate+"%</td></tr>"
+                                +
+                                "<tr><td><label>借款期限:</label></td><td>"+res.bMoneyDeadline+"</td></tr>"
 
-       });
-    });
+                                + "<tr><td><label>手机号码:</label></td><td>"+res.bPhone+"</td></tr>"
+                                + "<tr><td><label>房屋:</label></td><td>"+res.bHouse+"</td></tr>"
+                                + "<tr><td><label>总价值:</label></td><td>"+res.bTotalValue+"</td></tr>"
+                                + "<tr><td><label>借款用途:</label></td><td>"+res.bUse+"</td></tr>"
+                                + "<tr><td><label>借款描述:</label></td><td>"+res.bDescribe+"</td></tr>"
+                                + "<tr><td><label>借款情况:</label></td><td>"+res.conditionTypeList[k].conditionTypeName+"</td></tr>"
+                                + "<tr><td><label>借款类型:</label></td><td>"+res.borrowerTypeList[i].bTypeName+"</td></tr>"
+                                + "<tr><td><label>已有投标数量:</label></td><td>"+res.bBidcount+"</td></tr>";
+                        }
+                    }
+                    $(".form-group table").append(str);
+
+                })
+
+            },
+            error: function () {
+                alert("错误！")
+            }
+        })
+    }
+
+    // });
+    //});
 
 
 </script>
-<f:form id="form1" cssClass="form-inline definewidth m20" action=""   method="get">
+<f:form id="form1" cssClass="form-inline definewidth m20" action="${ctx}/adminBorrowing/listBorrowingReviewStatus"
+        modelAttribute="borrower" method="get">
     <font color="#33ccff"><strong>借款名称：</strong></font>
-    <input type="text" name="bName" id="menuname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button  type="button"  id="btn1" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+    <input type="text" name="bName" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <%--<button  type="button"  id="btn1" class="btn btn-primary">查询</button>&nbsp;&nbsp;--%>
+    <button type="submit" class="btn btn-primary">查询</button>
+    &nbsp;&nbsp;
 </f:form>
 <label id="UserError"></label>
 <table class="table table-bordered table-hover definewidth m10">
-    <thead >
+    <thead>
     <tr>
         <th>借款名称</th>
         <th>申请人</th>
@@ -114,33 +131,76 @@
     </tr>
     </thead>
 
-    <%--<c:forEach var="b" items="${borrower}">--%>
-        <%--<tr>--%>
-            <%--<td>${b.bName}</td>--%>
-            <%--<td>${b.bUsername}</td>--%>
-            <%--<c:forEach var="c" items="${b.borrowerTypeList}">--%>
-                <%--<td>${c.bTypeName}</td>--%>
-            <%--</c:forEach>--%>
-            <%--<td>${b.bMoneyDeadline}</td>--%>
-            <%--<c:if test="${b.bStatus}==0">--%>
-                <%--<td>未处理</td>--%>
-            <%--</c:if>--%>
-            <%--<td><a href="">详情</a></td>--%>
-        <%--</tr>--%>
-    <%--</c:forEach>--%>
-
-
+    <c:forEach var="b" items="${borrowers}">
+        <tr>
+            <td>${b.bName}</td>
+            <td>${b.bUsername}</td>
+            <c:forEach var="c" items="${b.borrowerTypeList}">
+                <td>${c.bTypeName}</td>
+            </c:forEach>
+            <td><fmt:formatDate value="${b.bMoneyDeadline}"></fmt:formatDate></td>
+            <td>
+                <c:if test="${b.bStatus==0}">
+                    未处理
+                </c:if>
+                <c:if test="${b.bStatus==1}">
+                    履约中
+                </c:if>
+                <c:if test="${b.bStatus==2}">
+                    已还款
+                </c:if>
+                <c:if test="${b.bStatus==3}">
+                    通过
+                </c:if>
+                <c:if test="${b.bStatus==4}">
+                    未通过
+                </c:if>
+            </td>
+            <td>
+                <a class="btn btn-info" href="javascript:void(0);" onclick="mya('${b.bId}')" data-dismiss="modal" data-toggle="modal"
+                   data-target="#drdc">详情</a>
+            </td>
+        </tr>
+    </c:forEach>
 
 </table>
+<z:page pageBean="${pageBean}"/>
+
+<div class="modal fade" data-backdrop="false" id="drdc" tabindex="-1"  >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">详情</div>
+            <div class="modal-body">
+                <form class="form-group">
+                    <table class="table" id="table110">
+
+                    </table>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-success" data-dismiss="modal">返回</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 
 </body>
 </html>
 <script src="${ctx}/admin/js/jquery.min.js"></script>
 <script src="${ctx}/admin/js/bootstrap-tooltip.js"></script>
 <script src="${ctx}/admin/js/bootstrap-popover.js"></script>
+<script src="${ctx}/admin/js/jquery-3.3.1.min.js"></script>
+<script src="${ctx}/admin/js/bootstrap.min.js"></script>
+
+
 <script>
-    $(function ()
-    { $("#xiangqing").popover();
+    $(function () {
+        $("#xiangqing").popover();
     });
 </script>
 

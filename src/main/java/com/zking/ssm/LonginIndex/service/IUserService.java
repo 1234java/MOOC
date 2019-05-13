@@ -16,4 +16,21 @@ public interface IUserService {
     //登录
     User login (User user);
 
+    //删除
+    int deleteByPrimaryKey(String pUserid);
+
+
+    //修改
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+
+
+    //查询单个
+    User selectByPrimaryKey(String pUserid);
+
+
+
+
+
 }

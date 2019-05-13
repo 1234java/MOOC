@@ -3,9 +3,12 @@ package com.zking.ssm.backstage.service.impl;
 import com.zking.ssm.backstage.service.InvestmentTypeSerive;
 import com.zking.ssm.base.mapper.InvestmentTypeMapper;
 import com.zking.ssm.base.model.InvestmentType;
+import com.zking.ssm.base.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -45,5 +48,10 @@ public class NvestmentTypeSeriveImpl implements InvestmentTypeSerive {
     @Override
     public int updateByPrimaryKey(InvestmentType investmentType) {
         return typeMapper.updateByPrimaryKey(investmentType);
+    }
+
+    public List<InvestmentType> list(InvestmentType institutionalType, PageBean pageBean){
+
+        return  typeMapper.list(institutionalType);
     }
 }
